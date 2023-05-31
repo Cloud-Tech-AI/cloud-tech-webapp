@@ -1,12 +1,18 @@
 from django.db import models
 
-# Create your models here.
+from mixins.models import UUIDMixin, TrailMixin
 
-class BasePost(models.Model):
+
+class Tag(models.Model):
+    name = models.CharField(max_length=200)
+
+
+class BasePost(UUIDMixin, TrailMixin, models.Model):
     title = models.CharField(max_length=200)
     pub_date = models.DateTimeField()
     body = models.TextField()
-    image = models.ImageField(upload_to = 'images/')
+    image = models.ImageField(upload_to='images/')
+    tags = models.ManyToManyField('Tag')
 
 
 class Blog(BasePost, models.Model):
@@ -18,13 +24,5 @@ class Project(BasePost, models.Model):
     link = models.CharField(max_length=200)
 
 
-class Discussions(BasePost, models.Model):
+class Discussion(BasePost, models.Model):
     link = models.CharField(max_length=200)
-
-
-class Tag(models.Model):
-    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='tags')
-    name = models.CharField(max_length=200)
-
-    class Meta:
-        unique_together = ('blog', 'name')
