@@ -29,17 +29,49 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+HAS_MULTI_TYPE_TENANTS = True
+MULTI_TYPE_DATABASE_FIELD = 'type'
 
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-]
+TENANT_TYPES = {
+    'public': {
+        'URLCONF': 'cloudtech_project.urls_public',
+        'APPS': [
+            'django.contrib.admin',
+            'django.contrib.auth',
+            'django.contrib.contenttypes',
+            'django.contrib.sessions',
+            'django.contrib.messages',
+            'django.contrib.staticfiles',
+            'django_tenants',
+            'community',
+        ]
+    },
+    'content': {
+        'URLCONF': 'cloudtech_project.urls',
+        'APPS': [
+            'django.contrib.admin',
+            'django.contrib.auth',
+            'django.contrib.contenttypes',
+            'django.contrib.sessions',
+            'django.contrib.messages',
+            'django.contrib.staticfiles',
+            'content',
+            'web',
+        ]
+    }       
+}
+
+INSTALLED_APPS = []
+for schema in TENANT_TYPES:
+    INSTALLED_APPS += [app for app in TENANT_TYPES[schema]["APPS"] if app not in INSTALLED_APPS]
+
+
+TENANT_MODEL = 'community.Community'
+TENANT_DOMAIN_MODEL = 'community.Domain'
+
 
 MIDDLEWARE = [
+    'django_tenants.middleware.main.TenantMainMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -75,10 +107,19 @@ WSGI_APPLICATION = 'cloudtech_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django_tenants.postgresql_backend',
+        'NAME': 'ishan_tenant',
+        'USER': 'ishan_tenant',
+        'PASSWORD': 'Ishan@123',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
+
+
+DATABASE_ROUTERS = (
+    'django_tenants.routers.TenantSyncRouter',
+)
 
 
 # Password validation
