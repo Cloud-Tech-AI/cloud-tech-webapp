@@ -38,3 +38,7 @@ class Community(TenantMixin):
 
 class Domain(DomainMixin):
     pass
+
+
+class Tag(models.Model):
+    name = models.CharField(max_length=200)
