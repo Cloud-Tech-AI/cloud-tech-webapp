@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -44,6 +48,7 @@ TENANT_TYPES = {
             'django.contrib.staticfiles',
             'django_tenants',
             'community',
+            'web',
         ]
     },
     'content': {
@@ -55,8 +60,8 @@ TENANT_TYPES = {
             'django.contrib.sessions',
             'django.contrib.messages',
             'django.contrib.staticfiles',
+            'home',
             'content',
-            'web',
         ]
     }       
 }
@@ -68,6 +73,11 @@ for schema in TENANT_TYPES:
 
 TENANT_MODEL = 'community.Community'
 TENANT_DOMAIN_MODEL = 'community.Domain'
+
+TENANT_USERS_DOMAIN = env.str('TENANT_DOMAIN_NAME', default='localhost/*')
+TENANT_BASE_URL = env.str('TENANT_BASE_URL', default='http://localhost:8000/%s')
+PUBLIC_SCHEMA_NAME = env.str('PUBLIC_SCHEMA_NAME', default='public')
+PUBLIC_SCHEMA_DOMAIN = env.str('PUBLIC_DOMAIN_NAME', default='localhost')
 
 
 MIDDLEWARE = [
@@ -82,11 +92,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'cloudtech_project.urls'
+PUBLIC_SCHEMA_URLCONF = 'cloudtech_project.urls_public'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

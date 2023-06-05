@@ -201,6 +201,16 @@ files = [
 ]
 
 [[package]]
+name = "python-environ"
+version = "0.4.54"
+description = "Django-environ allows you to utilize 12factor inspired environment variables to configure your Django application."
+optional = false
+python-versions = "*"
+files = [
+    {file = "python-environ-0.4.54.tar.gz", hash = "sha256:6249a14057f95aba3b4906d73276f770e01e659f8098b3f3b34295feac42865b"},
+]
+
+[[package]]
 name = "sqlparse"
 version = "0.4.4"
 description = "A non-validating SQL parser."
@@ -241,4 +251,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "a44e997fcb7f19b0a040fcccea164aa01e1771c83d156af8ffeb5198ab6c3f04"
+content-hash = "dde009c06cca6198ec2495a0e2b03d01b6e289990f5e7ee2586d780c31847a36"
