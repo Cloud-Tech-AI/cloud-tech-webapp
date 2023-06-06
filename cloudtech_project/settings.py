@@ -10,7 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
+
 import environ
 
 env = environ.Env()
@@ -40,13 +42,13 @@ TENANT_TYPES = {
     'public': {
         'URLCONF': 'cloudtech_project.urls_public',
         'APPS': [
+            'django_tenants',
             'django.contrib.admin',
             'django.contrib.auth',
             'django.contrib.contenttypes',
             'django.contrib.sessions',
             'django.contrib.messages',
             'django.contrib.staticfiles',
-            'django_tenants',
             'community',
             'web',
         ]
@@ -74,14 +76,14 @@ for schema in TENANT_TYPES:
 TENANT_MODEL = 'community.Community'
 TENANT_DOMAIN_MODEL = 'community.Domain'
 
-TENANT_USERS_DOMAIN = env.str('TENANT_DOMAIN_NAME', default='localhost/*')
-TENANT_BASE_URL = env.str('TENANT_BASE_URL', default='http://localhost:8000/%s')
+TENANT_USERS_DOMAIN = env.str('TENANT_DOMAIN_NAME', default='*/localhost')
+TENANT_BASE_URL = env.str('TENANT_BASE_URL', default='http://%s.localhost:8000')
 PUBLIC_SCHEMA_NAME = env.str('PUBLIC_SCHEMA_NAME', default='public')
 PUBLIC_SCHEMA_DOMAIN = env.str('PUBLIC_DOMAIN_NAME', default='localhost')
 
 
 MIDDLEWARE = [
-    'django_tenants.middleware.main.TenantMainMiddleware',
+    'content.tenant_middleware.TenantMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -168,6 +170,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "staticfiles"),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
