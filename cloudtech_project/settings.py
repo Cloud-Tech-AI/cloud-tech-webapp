@@ -49,8 +49,9 @@ TENANT_TYPES = {
             'django.contrib.sessions',
             'django.contrib.messages',
             'django.contrib.staticfiles',
-            'community',
             'web',
+            'mixins',
+            'community',
         ]
     },
     'content': {
@@ -75,8 +76,6 @@ for schema in TENANT_TYPES:
 
 TENANT_MODEL = 'community.Community'
 TENANT_DOMAIN_MODEL = 'community.Domain'
-
-AUTH_USER_MODEL = 'web.User'
 
 TENANT_USERS_DOMAIN = env.str('TENANT_DOMAIN_NAME', default='*/localhost')
 TENANT_BASE_URL = env.str('TENANT_BASE_URL', default='http://%s.localhost:8000')
