@@ -49,8 +49,9 @@ TENANT_TYPES = {
             'django.contrib.sessions',
             'django.contrib.messages',
             'django.contrib.staticfiles',
-            'community',
             'web',
+            'mixins',
+            'community',
         ]
     },
     'content': {
@@ -83,7 +84,7 @@ PUBLIC_SCHEMA_DOMAIN = env.str('PUBLIC_DOMAIN_NAME', default='localhost')
 
 
 MIDDLEWARE = [
-    'content.tenant_middleware.TenantMiddleware',
+    'content.tenant_middleware.TenantMainMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -95,6 +96,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'cloudtech_project.urls'
 PUBLIC_SCHEMA_URLCONF = 'cloudtech_project.urls_public'
+
+SHOW_PUBLIC_IF_NO_TENANT_FOUND = True
 
 TEMPLATES = [
     {

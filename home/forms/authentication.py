@@ -21,11 +21,6 @@ class LoginForm(forms.Form):
 
 
 class SignUpForm(UserCreationForm):
-    Choices = (
-        ('1', 'Tenant'),
-        ('2', 'Landlord'),
-    )
-
     username = forms.CharField(
         widget=forms.TextInput(
             attrs={
@@ -54,17 +49,7 @@ class SignUpForm(UserCreationForm):
                 "class": "form-control"
             }
         ))
-    tenant = forms.ChoiceField(
-        choices=Choices,
-        required=True,
-        widget=forms.Select(
-            attrs={
-                "placeholder": "Tenant or Landlord",
-                "class": "form-control"
-            }
-        ))
-
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2', 'tenant')
+        fields = ('username', 'email', 'password1', 'password2')
