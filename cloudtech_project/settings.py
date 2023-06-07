@@ -76,6 +76,8 @@ for schema in TENANT_TYPES:
 TENANT_MODEL = 'community.Community'
 TENANT_DOMAIN_MODEL = 'community.Domain'
 
+AUTH_USER_MODEL = 'web.User'
+
 TENANT_USERS_DOMAIN = env.str('TENANT_DOMAIN_NAME', default='*/localhost')
 TENANT_BASE_URL = env.str('TENANT_BASE_URL', default='http://%s.localhost:8000')
 PUBLIC_SCHEMA_NAME = env.str('PUBLIC_SCHEMA_NAME', default='public')
@@ -83,7 +85,7 @@ PUBLIC_SCHEMA_DOMAIN = env.str('PUBLIC_DOMAIN_NAME', default='localhost')
 
 
 MIDDLEWARE = [
-    'content.tenant_middleware.TenantMiddleware',
+    'content.tenant_middleware.TenantMainMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -95,6 +97,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'cloudtech_project.urls'
 PUBLIC_SCHEMA_URLCONF = 'cloudtech_project.urls_public'
+
+SHOW_PUBLIC_IF_NO_TENANT_FOUND = True
 
 TEMPLATES = [
     {
