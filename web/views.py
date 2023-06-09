@@ -2,7 +2,7 @@ from django.views.generic import TemplateView, RedirectView
 
 
 class Index(TemplateView):
-    template_name = 'test.html'
+    template_name = 'index.html'
 
 
 class TenantRedirect(RedirectView):
