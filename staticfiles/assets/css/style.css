@@ -123,41 +123,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*--------------------------------------------------------------
-# Header
---------------------------------------------------------------*/
-#header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 9997;
-  transition: all 0.5s;
-  padding: 15px;
-  overflow-y: auto;
-}
-
-@media (max-width: 992px) {
-  #header {
-    width: 300px;
-    background: #fff;
-    border-right: 1px solid #e6e9ec;
-    left: -300px;
-  }
-}
-
-@media (min-width: 992px) {
-  #index {
-    padding-left: 165px;
-  }
-}
-
-@media (min-width: 992px) {
-  #main {
-    margin-left: 100px;
-  }
-}
-
-/*--------------------------------------------------------------
 # Navigation Bar
 --------------------------------------------------------------*/
 .navbar {
@@ -178,8 +143,7 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-brand {
   display: flex;
   align-items: center;
-  padding-inline-start: 0%;
-  padding-inline-end: 5%;
+  margin-right: 5%;
 }
 
 .navbar .navbar-brand a {
@@ -333,6 +297,55 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+/*--------------------------------------------------------------
+# Auth General
+--------------------------------------------------------------*/
+.login-container {
+  display: flex;
+  padding-top: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card {
+  width: 400px;
+  border-radius: 5px;
+  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+  background-color: #fff;
+}
+
+.login-card-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.login-card-body {
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.form-group label {
+  flex-basis: 30%;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
 
 /*--------------------------------------------------------------
 # Sections General
@@ -383,6 +396,105 @@ section {
   margin-bottom: 0;
 }
 
+
+/*--------------------------------------------------------------
+# home Section
+--------------------------------------------------------------*/
+.home {
+  padding-top: 50px;
+}
+
+.home h1 {
+  font-size: 45px;
+  font-weight: bold;
+  line-height: 35px;
+  color: #45505b;
+}
+
+.home p {
+  color: #45505b;
+  font-size: 17px;
+  line-height: 25px;
+}
+
+/* Home card
+*/
+.card {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+}
+
+.card-header,
+.card-footer {
+  border-color: #ebeef4;
+  background-color: #fff;
+  color: #798eb3;
+  padding: 15px;
+}
+
+.card-title {
+  padding: 20px 0 15px 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #012970;
+  font-family: "Poppins", sans-serif;
+}
+
+.card-title span {
+  color: #899bbd;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.card-body {
+  padding: 0 20px 20px 20px;
+}
+
+.card-img-overlay {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+
+.dashboard .info-card {
+  padding-bottom: 10px;
+}
+
+.dashboard .info-card h6 {
+  font-size: 28px;
+  color: #012970;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard .card-icon {
+  font-size: 32px;
+  line-height: 0;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.dashboard .sales-card .card-icon {
+  color: #4154f1;
+  background: #f6f6fe;
+}
+
+.dashboard .revenue-card .card-icon {
+  color: #2eca6a;
+  background: #e0f8e9;
+}
+
+.dashboard .customers-card .card-icon {
+  color: #ff771d;
+  background: #ffecdf;
+}
+
 /*--------------------------------------------------------------
 # blogs
 --------------------------------------------------------------*/
@@ -408,6 +520,68 @@ section {
 .blog img {
   margin-left: 15px;
   height: 120px;
+}
+
+
+/*--------------------------------------------------------------
+# projects
+--------------------------------------------------------------*/
+.projects .icon-box {
+  text-align: center;
+  padding: 70px 20px 80px 20px;
+  transition: all ease-in-out 0.3s;
+  background: #fff;
+  box-shadow: 0px 5px 90px 0px rgba(110, 123, 131, 0.05);
+}
+
+.projects .icon-box .icon {
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: ease-in-out 0.3s;
+  position: relative;
+}
+
+.projects .icon-box .icon i {
+  font-size: 36px;
+  transition: 0.5s;
+  position: relative;
+}
+
+.projects .icon-box .icon svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.projects .icon-box .icon svg path {
+  transition: 0.5s;
+  fill: #f5f5f5;
+}
+
+.projects .icon-box h4 {
+  font-weight: 600;
+  margin: 10px 0 15px 0;
+  font-size: 22px;
+}
+
+.projects .icon-box h4 a {
+  color: #45505b;
+  transition: ease-in-out 0.3s;
+}
+
+.projects .icon-box p {
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.projects .icon-box:hover {
+  border-color: #fff;
+  box-shadow: 0px 0 35px 0 rgba(0, 0, 0, 0.08);
 }
 
 /*--------------------------------------------------------------

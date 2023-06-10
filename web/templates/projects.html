@@ -1,0 +1,42 @@
+{% extends 'layouts/base_web.html' %}
+
+{% block title %}Projects{% endblock title %}
+
+{% block content %}
+<section id="projects" class="projects">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>Projects</h2>
+            <p></p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                <div class="icon-box">
+                    <h4><a href="https://github.com/ishan-modi/image-reconstruction">Image Reconstruction</a></h4>
+                    <p>Reconstructing images from eigenvectors thereby reducing storage requirements for large data.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
+                data-aos-delay="200">
+                <div class="icon-box">
+                    <h4><a href="https://github.com/ishan-modi/Deep-Learning-Algorithms">Feed Forward NN</a></h4>
+                    <p>Deep Learning algorithms like Backpropagation, AutoEncoders and CBOW coded from scratch.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
+                data-aos-delay="300">
+                <div class="icon-box">
+                    <h4><a href="https://autosift.glib.ai">Autosift Document Processor</a></h4>
+                    <p>Restructuring and Optimizing "Autosift" Company's document processor. Improving the extraction by using classical ML techniques.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock content %}

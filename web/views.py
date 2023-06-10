@@ -19,8 +19,6 @@ class Projects(TemplateView):
 class About(TemplateView):
     template_name = 'about.html'
 
-
-
 class TenantRedirect(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
 
