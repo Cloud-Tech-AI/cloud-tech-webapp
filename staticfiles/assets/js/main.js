@@ -220,4 +220,13 @@
       dropdownContent.style.display = "none";
     }
   });
+
+  var path = window.location.pathname;
+  var links = document.getElementsByClassName("nav-link");
+  for (var i = 0; i < links.length; i++) {
+    var link = links[i];
+    if (link.getAttribute("href") === path) {
+      link.classList.add("selected");
+    }
+}
 })()
