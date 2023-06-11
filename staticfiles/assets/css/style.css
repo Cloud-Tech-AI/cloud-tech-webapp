@@ -23,7 +23,12 @@ a:hover {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Raleway", sans-serif;
 }
 
@@ -99,6 +104,7 @@ h1, h2, h3, h4, h5, h6 {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -108,6 +114,7 @@ h1, h2, h3, h4, h5, h6 {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -131,7 +138,8 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   justify-content: center;
   margin-top: 10px;
-  width: 100%; /* Increase the width to 100% */
+  width: 100%;
+  /* Increase the width to 100% */
 }
 
 .navbar-line {
@@ -155,7 +163,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar .navbar-brand a.selected {
-  color: rgb(33, 33, 116);
+  color: #012970;
 }
 
 .navbar .navbar-brand a.selected::after {
@@ -165,8 +173,9 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: rgb(33, 33, 116);
+  background-color: #012970;
 }
+
 .navbar-start {
   margin-right: auto;
 }
@@ -175,9 +184,9 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: auto;
 }
 
-.navbar hr{
+.navbar hr {
   padding: auto;
-  margin-top: 0; 
+  margin-top: 0;
   opacity: 0.1;
 }
 
@@ -228,7 +237,8 @@ h1, h2, h3, h4, h5, h6 {
   padding: 10px;
   text-decoration: none;
   color: #333;
-  font-size: 14px; /* Smaller font size for options */
+  font-size: 14px;
+  /* Smaller font size for options */
 }
 
 .dropdown-content a:last-child {
@@ -237,9 +247,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .dropdown-content a:last-child img {
-  width: 10px; /* Adjust the size of the logo */
+  width: 10px;
+  /* Adjust the size of the logo */
   height: 10px;
-  margin-right: 5px; /* Add some spacing between the logo and the text */
+  margin-right: 5px;
+  /* Add some spacing between the logo and the text */
 }
 
 .dropdown-content a:hover {
@@ -341,7 +353,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .login-card-body {
-  padding: 40px 20px 20px 20px; /* Increase the top and bottom padding */
+  padding: 40px 20px 20px 20px;
+  /* Increase the top and bottom padding */
 }
 
 .login-card-body .button {
@@ -357,7 +370,8 @@ h1, h2, h3, h4, h5, h6 {
 .input-group-prepend .input-group-text {
   background-color: #f9f6f6;
   border: none;
-  color: #9b9fa3; /* Adjust the color of the icon */
+  color: #9b9fa3;
+  /* Adjust the color of the icon */
 }
 
 /*--------------------------------------------------------------
@@ -432,24 +446,24 @@ section {
 
 /* Home card
 */
-.card {
-  margin-top: 30px;
+.home .card {
+  margin-top: 100px;
   margin-bottom: 30px;
   border: none;
   border-radius: 5px;
-  padding: 10px;
+  padding: 8px;
   box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
 }
 
-.card-header,
-.card-footer {
+.home .card-header,
+.home .card-footer {
   border-color: #ebeef4;
   background-color: #fff;
   color: #798eb3;
   padding: 15px;
 }
 
-.card-title {
+.home .card-title {
   padding: 20px 0 15px 0;
   font-size: 18px;
   font-weight: 500;
@@ -457,26 +471,26 @@ section {
   font-family: "Poppins", sans-serif;
 }
 
-.card-title span {
+.home .card-title span {
   color: #899bbd;
   font-size: 14px;
   font-weight: 400;
 }
 
-.card-body {
+.home .card-body {
   padding: 0 20px 20px 20px;
 }
 
-.card-img-overlay {
+.home .card-img-overlay {
   background-color: rgba(255, 255, 255, 0.6);
 }
 
 
-.dashboard .info-card {
+.home .dashboard .info-card {
   padding-bottom: 10px;
 }
 
-.dashboard .info-card h6 {
+.home .dashboard .info-card h6 {
   font-size: 28px;
   color: #012970;
   font-weight: 700;
@@ -484,7 +498,7 @@ section {
   padding: 0;
 }
 
-.dashboard .card-icon {
+.home .dashboard .card-icon {
   font-size: 32px;
   line-height: 0;
   width: 64px;
@@ -493,25 +507,71 @@ section {
   flex-grow: 0;
 }
 
-.dashboard .sales-card .card-icon {
+.home .dashboard .sales-card .card-icon {
   color: #4154f1;
   background: #f6f6fe;
 }
 
-.dashboard .revenue-card .card-icon {
+.home .dashboard .revenue-card .card-icon {
   color: #2eca6a;
   background: #e0f8e9;
 }
 
-.dashboard .customers-card .card-icon {
+.home .dashboard .customers-card .card-icon {
   color: #ff771d;
   background: #ffecdf;
 }
 
+.home .social-links {
+  display: flex;
+  justify-content: center;
+}
+
+.home .social-links a i {
+  font-size: 30px;
+  line-height: 1;
+  color: #333;
+  margin: 0 10px;
+}
+
+.home .social-links a i:hover {
+  color: #0563bb;
+}
+
+.home .gallery {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  width: 500px;
+  height: 300px;
+}
+
+.home .gallery img {
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform-style: preserve-3d;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.home .gallery img.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+
+@keyframes fade {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+
 /*--------------------------------------------------------------
 # blogs
 --------------------------------------------------------------*/
-.blog a{
+.blog a {
   font-weight: bold;
   font-size: 21px;
   color: #333537;
@@ -641,8 +701,8 @@ section {
 }
 
 .about .content .circular_image {
-  width: 200px;
-  height: 200px;
+  width: 175px;
+  height: 175px;
   border-radius: 50%;
   overflow: hidden;
   background-color: rgb(255, 255, 255);
@@ -650,8 +710,27 @@ section {
   margin-left: auto;
   margin-right: auto;
 }
-.about .content .circular_image img{
-  width:100%;
+
+.about .content .circular_image img {
+  width: 100%;
+  height: 100%;
+}
+
+.about .social-links {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.about .social-links a i {
+  font-size: 24px;
+  line-height: 1;
+  color: #494949;
+  margin: 0 3px;
+}
+
+.about .social-links a i:hover {
+  color: #0563bb;
 }
 
 /*--------------------------------------------------------------
