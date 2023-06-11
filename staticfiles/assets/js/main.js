@@ -4,7 +4,7 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
-(function() {
+(function () {
   "use strict";
 
   /**
@@ -41,26 +41,6 @@
   }
 
   /**
-   * Navbar links active state on scroll
-   */
-  let navbarlinks = select('#navbar .scrollto', true)
-  const navbarlinksActive = () => {
-    let position = window.scrollY + 200
-    navbarlinks.forEach(navbarlink => {
-      if (!navbarlink.hash) return
-      let section = select(navbarlink.hash)
-      if (!section) return
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        navbarlink.classList.add('active')
-      } else {
-        navbarlink.classList.remove('active')
-      }
-    })
-  }
-  window.addEventListener('load', navbarlinksActive)
-  onscroll(document, navbarlinksActive)
-
-  /**
    * Scrolls to an element with header offset
    */
   const scrollto = (el) => {
@@ -90,7 +70,7 @@
   /**
    * Mobile nav toggle
    */
-  on('click', '.mobile-nav-toggle', function(e) {
+  on('click', '.mobile-nav-toggle', function (e) {
     select('body').classList.toggle('mobile-nav-active')
     this.classList.toggle('bi-list')
     this.classList.toggle('bi-x')
@@ -99,7 +79,7 @@
   /**
    * Scrool with ofset on links with a class name .scrollto
    */
-  on('click', '.scrollto', function(e) {
+  on('click', '.scrollto', function (e) {
     if (select(this.hash)) {
       e.preventDefault()
 
@@ -165,9 +145,9 @@
 
       let blogsFilters = select('#blogs-flters li', true);
 
-      on('click', '#blogs-flters li', function(e) {
+      on('click', '#blogs-flters li', function (e) {
         e.preventDefault();
-        blogsFilters.forEach(function(el) {
+        blogsFilters.forEach(function (el) {
           el.classList.remove('filter-active');
         });
         this.classList.add('filter-active');
@@ -176,7 +156,7 @@
         blogsIsotope.arrange({
           filter: this.getAttribute('data-filter')
         });
-        blogsIsotope.on('arrangeComplete', function() {
+        blogsIsotope.on('arrangeComplete', function () {
           AOS.refresh()
         });
       }, true);
@@ -212,7 +192,7 @@
     console.log("Selected option:", option);
   }
 
-  document.addEventListener("click", function(event) {
+  document.addEventListener("click", function (event) {
     var dropdownContent = document.getElementById("dropdownContent");
     var dropdownBtn = document.querySelector(".dropdown-btn");
 
@@ -228,5 +208,19 @@
     if (link.getAttribute("href") === path) {
       link.classList.add("selected");
     }
+  }
+
+  var images = document.querySelectorAll('.gallery img');
+var currentIndex = 0;
+
+// Initially show the first image
+images[currentIndex].classList.add('active');
+
+function showNextImage() {
+  images[currentIndex].classList.remove('active');
+  currentIndex = (currentIndex + 1) % images.length;
+  images[currentIndex].classList.add('active');
 }
+
+setInterval(showNextImage, 3000);
 })()

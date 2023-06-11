@@ -1,6 +1,6 @@
 {% extends 'layouts/base_web.html' %}
 
-{% block title %}About{% endblock %}
+{% block title %}About{% endblock title %}
 
 {% block content %}
 <section id="about" class="about">
@@ -13,12 +13,18 @@
         <div class="row">
             <div class="col-lg-3 content">
                 <div class="circular_image">
-                    <img src="/static/assets/img/profile-img.jpg" class="img-fluid" alt="">
+                    <img src="/static/assets/img/cloudtech_logo.jpg" class="img-fluid" alt="">
                 </div>
                 <br>
                 <h2>Cloud Tech</h2>
-                <h3>Machine Learning Engineer<h3>
-                <h3>GlIB.ai<h3></h3>
+                <h3>
+                    <div class="social-links">
+                        <a href="mailto:ishan.modi24@gmail.com"><i class="bi bi-envelope-fill"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="https://www.linkedin.com/company/cloud-techs/?viewAsMember=true"><i class="bi bi-linkedin"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="https://twitter.com/AboutCloudTech"><i class="bi bi-twitter"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="https://github.com/Cloud-Tech-Projects"><i class="bi bi-github"></i></a>
+                    </div>    
+                <h3>
             </div>
             <div class="col-lg-8 content">
                 <p class="fst-italic">
@@ -37,4 +43,4 @@
     </div>
 </section><!-- End About Section -->
 
-{% endblock %}
+{% endblock content %}
