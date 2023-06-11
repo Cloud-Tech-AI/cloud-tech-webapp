@@ -9,9 +9,10 @@ from .forms.authentication import LoginForm, SignUpForm
 User = get_user_model()
 
 
-class Index(LoginRequiredMixin,TemplateView):
+class Index(LoginRequiredMixin, TemplateView):
     login_url = reverse_lazy('home:login')
     template_name = 'home/index.html'
+
 
 class Login(FormView):
     template_name = 'accounts/login.html'
@@ -29,7 +30,7 @@ class Login(FormView):
                 login(self.request, user)
                 return super().form_valid(form)
             else:
-                form.add_error(None, "Invalid credentials") 
+                form.add_error(None, "Invalid credentials")
         else:
             form.add_error(None, "Error validating the form")
         return self.form_invalid(form)
@@ -48,7 +49,8 @@ class Register(FormView):
             password = form.cleaned_data['password1']
 
             # Create the User object
-            user = User.objects.create_user(username=username, email=email, password=password)
+            user = User.objects.create_user(
+                username=username, email=email, password=password)
             return super().form_valid(form)
         form.add_error(None, "Error validating the form")
         return self.form_invalid(form)
