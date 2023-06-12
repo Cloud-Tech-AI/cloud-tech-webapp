@@ -210,17 +210,36 @@
     }
   }
 
-  var images = document.querySelectorAll('.gallery img');
-var currentIndex = 0;
-
-// Initially show the first image
-images[currentIndex].classList.add('active');
-
-function showNextImage() {
-  images[currentIndex].classList.remove('active');
-  currentIndex = (currentIndex + 1) % images.length;
-  images[currentIndex].classList.add('active');
-}
-
-setInterval(showNextImage, 3000);
+  var imagePaths = [
+    "/static/assets/img/blogs/blog2.jpg",
+    "/static/assets/img/blogs/blog1.jpg",
+    "/static/assets/img/blogs/blog3.jpg"
+  ];
+  
+  var images = imagePaths.map(function(imagePath) {
+    var imgElement = document.createElement('img');
+    imgElement.src = imagePath;
+    return imgElement;
+  });
+  
+  var currentIndex = 0;
+  var galleryContainer = document.querySelector('.gallery');
+  galleryContainer.appendChild(images[currentIndex]);
+  
+  function showNextImage() {
+    var currentImage = images[currentIndex];
+    var nextIndex = (currentIndex + 1) % images.length;
+    var nextImage = images[nextIndex];
+  
+    currentImage.classList.remove('active');
+    nextImage.classList.add('active');
+  
+    galleryContainer.innerHTML = '';
+    galleryContainer.appendChild(nextImage);
+  
+    currentIndex = nextIndex;
+  }
+  
+  setInterval(showNextImage, 3000);
+  
 })()
