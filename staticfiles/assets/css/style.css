@@ -241,26 +241,8 @@ h6 {
   /* Smaller font size for options */
 }
 
-.dropdown-content a:last-child {
-  display: flex;
-  align-items: center;
-}
-
-.dropdown-content a:last-child img {
-  width: 10px;
-  /* Adjust the size of the logo */
-  height: 10px;
-  margin-right: 5px;
-  /* Add some spacing between the logo and the text */
-}
-
 .dropdown-content a:hover {
   background-color: #ddd;
-}
-
-.dropdown-content img {
-  width: 100%;
-  height: auto;
 }
 
 .circular-image {
@@ -520,6 +502,11 @@ section {
 .home .dashboard .customers-card .card-icon {
   color: #ff771d;
   background: #ffecdf;
+}
+
+.home .dashboard .stats-card .card-icon {
+  color: #bb5757;
+  background: #ecdfdf;
 }
 
 .home .social-links {
