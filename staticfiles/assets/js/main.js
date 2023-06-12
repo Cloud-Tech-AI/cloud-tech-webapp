@@ -34,24 +34,6 @@
   }
 
   /**
-   * Easy on scroll event listener 
-   */
-  const onscroll = (el, listener) => {
-    el.addEventListener('scroll', listener)
-  }
-
-  /**
-   * Scrolls to an element with header offset
-   */
-  const scrollto = (el) => {
-    let elementPos = select(el).offsetTop
-    window.scrollTo({
-      top: elementPos,
-      behavior: 'smooth'
-    })
-  }
-
-  /**
    * Back to top button
    */
   let backtotop = select('.back-to-top')
@@ -74,36 +56,7 @@
     select('body').classList.toggle('mobile-nav-active')
     this.classList.toggle('bi-list')
     this.classList.toggle('bi-x')
-  })
-
-  /**
-   * Scrool with ofset on links with a class name .scrollto
-   */
-  on('click', '.scrollto', function (e) {
-    if (select(this.hash)) {
-      e.preventDefault()
-
-      let body = select('body')
-      if (body.classList.contains('mobile-nav-active')) {
-        body.classList.remove('mobile-nav-active')
-        let navbarToggle = select('.mobile-nav-toggle')
-        navbarToggle.classList.toggle('bi-list')
-        navbarToggle.classList.toggle('bi-x')
-      }
-      scrollto(this.hash)
-    }
-  }, true)
-
-  /**
-   * Scroll with ofset on page load with hash links in the url
-   */
-  window.addEventListener('load', () => {
-    if (window.location.hash) {
-      if (select(window.location.hash)) {
-        scrollto(window.location.hash)
-      }
-    }
-  });
+  }) 
 
   /**
    * Preloader
@@ -112,22 +65,6 @@
   if (preloader) {
     window.addEventListener('load', () => {
       preloader.remove()
-    });
-  }
-
-  /**
-   * Home type effect
-   */
-  const typed = select('.typed')
-  if (typed) {
-    let typed_strings = typed.getAttribute('data-typed-items')
-    typed_strings = typed_strings.split(',')
-    new Typed('.typed', {
-      strings: typed_strings,
-      loop: true,
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 2000
     });
   }
 
@@ -165,13 +102,6 @@
   });
 
   /**
-   * Initiate blogs lightbox 
-   */
-  const blogsLightbox = GLightbox({
-    selector: '.blogs-lightbox'
-  });
-
-  /**
    * Animation on scroll
    */
   window.addEventListener('load', () => {
@@ -183,17 +113,18 @@
     })
   });
 
-  const toggleDropdown = () => {
-    var dropdownContent = document.getElementById("dropdownContent");
+  window.toggleDropdown = () => {
+    console.log("toggleDropdown");
+    var dropdownContent = document.getElementById("dropdown-content");
     dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
   }
 
-  const handleDropdownOption = (option) => {
+  window.handleDropdownOption = (option) => {
     console.log("Selected option:", option);
   }
 
   document.addEventListener("click", function (event) {
-    var dropdownContent = document.getElementById("dropdownContent");
+    var dropdownContent = document.getElementById("dropdown-content");
     var dropdownBtn = document.querySelector(".dropdown-btn");
 
     if (!dropdownContent.contains(event.target) && !dropdownBtn.contains(event.target)) {
@@ -210,17 +141,34 @@
     }
   }
 
-  var images = document.querySelectorAll('.gallery img');
-var currentIndex = 0;
+  var imagePaths = [
+    "/static/assets/img/blogs/blog2.jpg",
+    "/static/assets/img/blogs/blog1.jpg",
+    "/static/assets/img/blogs/blog3.jpg"
+  ];
 
-// Initially show the first image
-images[currentIndex].classList.add('active');
+  var images = imagePaths.map(function (imagePath) {
+    var imgElement = document.createElement('img');
+    imgElement.src = imagePath;
+    return imgElement;
+  });
 
-function showNextImage() {
-  images[currentIndex].classList.remove('active');
-  currentIndex = (currentIndex + 1) % images.length;
-  images[currentIndex].classList.add('active');
-}
+  var currentIndex = 0;
+  var galleryContainer = document.querySelector('.gallery');
+  if (galleryContainer){
+    galleryContainer.appendChild(images[currentIndex]);
 
-setInterval(showNextImage, 3000);
+    function showNextImage() {
+      var currentImage = images[currentIndex];
+      var nextIndex = (currentIndex + 1) % images.length;
+      var nextImage = images[nextIndex];
+      currentImage.classList.remove('active');
+      nextImage.classList.add('active');
+      galleryContainer.innerHTML = '';
+      galleryContainer.appendChild(nextImage);
+      currentIndex = nextIndex;
+    }
+    setInterval(showNextImage, 3000);
+  }
+
 })()

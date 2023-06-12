@@ -1,7 +1,8 @@
 from django.views.generic import TemplateView, RedirectView
+from mixins.views import NavbarMixin
 
 
-class Index(TemplateView):
+class Index(NavbarMixin, TemplateView):
     template_name = 'index.html'
 
 
@@ -25,7 +26,11 @@ class About(TemplateView):
     template_name = 'about.html'
 
 
-class TenantRedirect(RedirectView):
+class RedirectTenant(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
+        domain = kwargs['domain']
+        # Perform any necessary processing using the domain
+        
+        # Return the desired URL to redirect to
+        return f"http://{domain}:8000/"
 
-        return "http://member.localhost:8000/"

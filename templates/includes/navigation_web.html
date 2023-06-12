@@ -1,21 +1,27 @@
 <nav class="navbar">
-    <div class="navbar-start">
-      <img src="/static/assets/img/cloudtech_logo.jpg" alt="Company Logo" class="company-logo">
-      <span class="company-name">CLOUD TECH</span>
-    </div>
-    <div class="navbar-brand">
-      <a class="nav-link" href="/">Home</a>
-      <a class="nav-link" href="{% url 'web:blogs' %}">Blogs</a>
-      <a class="nav-link" href="{% url 'web:newsletters' %}">Newsletters</a>
-      <a class="nav-link" href="{% url 'web:monthly' %}">Monthly</a>
-      <a class="nav-link" href="{% url 'web:projects' %}">Projects</a>
-      <a class="nav-link" href="{% url 'web:about' %}">About</a>
-    </div>
-    <div class="navbar-end">
+  <div class="navbar-start">
+    <img src="/static/assets/img/cloudtech_logo.jpg" alt="Company Logo" class="company-logo">
+    <span class="company-name">CLOUD TECH</span>
+  </div>
+  <div class="navbar-brand">
+    <a class="nav-link" href="/">Home</a>
+    <a class="nav-link" href="{% url 'web:blogs' %}">Blogs</a>
+    <a class="nav-link" href="{% url 'web:newsletters' %}">Newsletters</a>
+    <a class="nav-link" href="{% url 'web:monthly' %}">Monthly</a>
+    <a class="nav-link" href="{% url 'web:projects' %}">Projects</a>
+    <a class="nav-link" href="{% url 'web:about' %}">About</a>
+  </div>
+  <div class="navbar-end">
+    <div class="dropdown">
       <span class="name">Contribute</span>
-      <a href="{% url 'web:redirect' %}">
-        <img src="/static/assets/img/contrib.jpg" class="circular-image" alt="Contributor Image">
-      </a>
+      <img src="/static/assets/img/contrib.jpg" class="dropdown-btn circular-image" onclick="toggleDropdown()">
+      <div class="dropdown-content" id="dropdown-content">
+        {% for tenant in tenants %}
+        <a class="dropdown-item" href="{% url 'web:redirect' tenant.get_domains|first %}">{{ tenant.name }}</a>
+        {% endfor %}
+        </a>
+      </div>
     </div>
+  </div>
 </nav>
 <hr class="navbar-line">
