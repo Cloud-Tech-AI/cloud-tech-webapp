@@ -15,6 +15,7 @@ class Community(TenantMixin):
     add_project = models.BooleanField(default=False)
     add_discussion = models.BooleanField(default=False)
     add_blog = models.BooleanField(default=True)
+    add_newsletter = models.BooleanField(default=True)
     
     
     auto_create_schema = True
