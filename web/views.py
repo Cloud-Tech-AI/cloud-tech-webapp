@@ -6,23 +6,23 @@ class Index(NavbarMixin, TemplateView):
     template_name = 'index.html'
 
 
-class Blogs(TemplateView):
+class Blogs(NavbarMixin, TemplateView):
     template_name = 'blogs.html'
 
 
-class NewsLetters(TemplateView):
+class NewsLetters(NavbarMixin, TemplateView):
     template_name = 'newsletters.html'
 
 
-class Monthly(TemplateView):
+class Monthly(NavbarMixin, TemplateView):
     template_name = 'monthly.html'
 
 
-class Projects(TemplateView):
+class Projects(NavbarMixin, TemplateView):
     template_name = 'projects.html'
 
 
-class About(TemplateView):
+class About(NavbarMixin, TemplateView):
     template_name = 'about.html'
 
 
