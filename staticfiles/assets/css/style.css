@@ -542,7 +542,7 @@ section {
   transform: translate(-50%, -50%);
   opacity: 1;
   width: 100%;
-  height: auto;
+  height: 100%;
   border-radius: 10px;
 }
 
@@ -566,6 +566,15 @@ section {
   text-decoration: underline;
 }
 
+.blog .edit-icon{
+  font-size: 15px;
+  padding-left: 10px;
+}
+
+.blog .break-word {
+  word-wrap: break-word;
+}
+
 .blog p {
   margin-top: 10px;
   font-style: italic;
@@ -575,8 +584,83 @@ section {
 .blog img {
   margin-left: 15px;
   height: 120px;
+  width: 200px;
 }
 
+/*--------------------------------------------------------------
+# NewsLetters
+--------------------------------------------------------------*/
+.newsletter a {
+  font-weight: bold;
+  font-size: 21px;
+  color: #333537;
+  text-align: left;
+  padding-right: 15px;
+}
+
+.newsletter a:hover {
+  color: #0563bb;
+  text-decoration: underline;
+}
+
+.newsletter .edit-icon{
+  font-size: 15px;
+  padding-left: 10px;
+}
+
+.newsletter .break-word {
+  word-wrap: break-word;
+}
+
+.newsletter p {
+  margin-top: 10px;
+  font-style: italic;
+  padding-right: 15px;
+}
+
+.newsletter img {
+  margin-left: 15px;
+  height: 120px;
+  width: 200px;
+}
+
+/*--------------------------------------------------------------
+# monthly
+--------------------------------------------------------------*/
+.monthly .icon-box {
+  text-align: center;
+  padding: 20px;
+  transition: all ease-in-out 0.3s;
+  background: #fff;
+  box-shadow: 0px 5px 90px 0px rgba(110, 123, 131, 0.05);
+}
+
+.monthly .icon-box img {
+  padding : 20px;
+  max-width: 100%; /* Ensure the image fits within the icon */
+}
+
+.monthly .icon-box h4 {
+  font-weight: 600;
+  margin: 10px 0 15px 0;
+  font-size: 22px;
+}
+
+.monthly .icon-box h4 a {
+  color: #45505b;
+  transition: ease-in-out 0.3s;
+}
+
+.monthly .icon-box p {
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.monthly .icon-box:hover {
+  border-color: #fff;
+  box-shadow: 0px 0 35px 0 rgba(0, 0, 0, 0.08);
+}
 
 /*--------------------------------------------------------------
 # projects
@@ -598,23 +682,6 @@ section {
   justify-content: center;
   transition: ease-in-out 0.3s;
   position: relative;
-}
-
-.projects .icon-box .icon i {
-  font-size: 36px;
-  transition: 0.5s;
-  position: relative;
-}
-
-.projects .icon-box .icon svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.projects .icon-box .icon svg path {
-  transition: 0.5s;
-  fill: #f5f5f5;
 }
 
 .projects .icon-box h4 {

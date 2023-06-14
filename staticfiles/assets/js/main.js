@@ -141,11 +141,13 @@
     }
   }
 
-  var imagePaths = [
-    "/static/assets/img/blogs/blog2.jpg",
-    "/static/assets/img/blogs/blog1.jpg",
-    "/static/assets/img/blogs/blog3.jpg"
-  ];
+  var imagePaths = [];
+  var numberOfImages = 5;
+
+  for (var i = 1; i <= numberOfImages; i++) {
+    var imagePath = "/static/assets/img/gallery/img" + i + ".jpg";
+    imagePaths.push(imagePath);
+  }
 
   var images = imagePaths.map(function (imagePath) {
     var imgElement = document.createElement('img');

@@ -1,6 +1,6 @@
 {% extends 'layouts/base_home.html' %}
 
-{% block title %}About{% endblock title %}
+{% block title %}Blogs{% endblock title %}
 
 {% block content %}
 <!-- ======= blogs Section ======= -->
@@ -13,14 +13,22 @@
         <div class="row justify-content-center" style="margin-top: 25px;">
             <div class="blog col-md-8">
                 {% for blog in blogs %}
-                <div class="row d-flex justify-content-between">
+                <div class="row d-flex justify-content-between" style="padding-bottom: 25px;">
                     <div class="col-lg-9">
-                        <a href="article.html">{{ blog.title }}</a>
-                        <p>
-                            {{ blog.body }}
+                        <a href="view/{{ blog.pk }}">{{ blog.title }}</a>
+                        {% if user.is_authenticated and blog.created_by == user %}
+                        <a href="" class="edit-icon">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                    {% endif %}
+                        <p class="break-word">
+                            {{ blog.sub_title }}
                         </p>
                         <div class="card-text text-muted small">
-                            {{ blog.author }}{{ blog.tags }}
+                            {{ blog.author }}&nbsp;|
+                            {% for tag in blog.tags.all %}
+                                {{ tag.name }}&nbsp;
+                            {% endfor %}
                         </div>
                         <small class="text-muted">{{ blog.pub_date|date:"M d" }}</small>
                     </div>

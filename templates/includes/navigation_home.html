@@ -1,17 +1,17 @@
 <nav class="navbar">
   <div class="navbar-start">
-    <img src="/static/assets/img/cloudtech_logo.jpg" alt="Company Logo" class="company-logo">
+    <img src="/static/assets/img/nav/cloudtech_logo.jpg" alt="Company Logo" class="company-logo">
     <span class="company-name">CLOUD TECH</span>
   </div>
   
   <div class="navbar-end">
     <div class="dropdown">
-      <span class="name">Ishan</span>
-      <img src="/static/assets/img/profile_pic.jpg" class="dropdown-btn circular-image" onclick="toggleDropdown()">
+      <span class="name">{{ user.username }}</span>
+      <img src="/static/assets/img/nav/profile_pic.jpg" class="dropdown-btn circular-image" onclick="toggleDropdown()">
       <div class="dropdown-content" id="dropdown-content">
-        <a class="dropdown-item" href="#">Home</a>
-        <a class="dropdown-item" href="blogs">Blogs</a>
-        <a class="dropdown-item" href="logout">Logout</a>
+        <a class="dropdown-item" href="/">Home</a>
+        <a class="dropdown-item" href="/blogs">Blogs</a>
+        <a class="dropdown-item" href="/logout">Logout</a>
         </a>
       </div>
     </div>

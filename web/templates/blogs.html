@@ -12,51 +12,32 @@
         </div>
         <div class="row justify-content-center" style="margin-top: 25px;">
             <div class="blog col-md-8">
-                <div class="row d-flex justify-content-between">
+                {% for blog in blogs %}
+                <div class="row d-flex justify-content-between" style="padding-bottom: 25px;">
                     <div class="col-lg-9">
-                        <a href="./article.html">Nearly 200 Great Barrier Reef coral species also live in the deep sea</a>
-                        <p>
-                            Nasa says it has detected the first signs of significant melting in a swathe of glaciers in East Antarctica.
+                        <a href="view/{{ blog.pk }}">{{ blog.title }}</a>
+                        {% if blog.created_by == user %}
+                        <a href="" class="edit-icon">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                    {% endif %}
+                        <p class="break-word">
+                            {{ blog.body }}
                         </p>
                         <div class="card-text text-muted small">
-                            Jake Bittle in SCIENCE
+                            {{ blog.author }}&nbsp;|
+                            {% for tag in blog.tags.all %}
+                                {{ tag.name }}&nbsp;
+                            {% endfor %}
                         </div>
-                        <small class="text-muted">Dec 12 &middot; 5 min read</small>
+                        <small class="text-muted">{{ blog.pub_date|date:"M d" }}</small>
                     </div>
                     <div class="col-lg-3">
-                        <img src="https://ishanportfolio.s3.amazonaws.com/assets/img/blogs/blog1.jpg">
+                        <img src="{{ blog.image.url }}">
                     </div>
-                </div><br>
-                <div class="row d-flex justify-content-between">
-                    <div class="col-lg-9">    
-                        <a href="./article.html">50 years ago, armadillos hinted that DNA wasn't destiny</a>
-                        <p>
-                            Nasa says it has detected the first signs of significant melting in a swathe of glaciers in East Antarctica.
-                        </p>
-                        <div class="card-text text-muted small">
-                            Jakes Bittle in SCIENCE
-                        </div>
-                        <small class="text-muted">Dec 12 &middot; 5 min read</small>
-                    </div>
-                    <div class="col-lg-3">
-                        <img src="https://ishanportfolio.s3.amazonaws.com/assets/img/blogs/blog2.jpg">
-                    </div>
-                </div><br>
-                <div class="row d-flex justify-content-between">
-                    <div class="col-lg-9">
-                        <a href="./article.html">East Antarctica's glaciers are stirring</a>
-                        <p>
-                            Nasa says it has detected the first signs of significant melting in a swathe of glaciers in East Antarctica.
-                        </p>
-                        <div class="card-text text-muted small">
-                            Jake Bittle in SCIENCE
-                        </div>
-                        <small class="text-muted">Dec 12 &middot; 5 min read</small>
-                    </div>
-                    <div class="col-lg-3">
-                        <img src="https://ishanportfolio.s3.amazonaws.com/assets/img/blogs/blog3.jpg">
-                    </div>
-                </div><br><br><br>
+                </div>
+                <br>
+                {% endfor %}
             </div>
         </div>
     </div>

@@ -1,16 +1,10 @@
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, FormView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import FormView
 from django.contrib.auth import authenticate, login, get_user_model
 from ..forms.authentication import LoginForm, SignUpForm
 
 
 User = get_user_model()
-
-
-class Index(LoginRequiredMixin, TemplateView):
-    login_url = reverse_lazy('home:login')
-    template_name = 'home/index.html'
 
 
 class Login(FormView):
