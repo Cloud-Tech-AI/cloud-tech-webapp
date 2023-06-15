@@ -1,16 +1,11 @@
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, FormView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import FormView
 from django.contrib.auth import authenticate, login, get_user_model
 from ..forms.authentication import LoginForm, SignUpForm
+from ..models import ProfileMixin
 
 
 User = get_user_model()
-
-
-class Index(LoginRequiredMixin, TemplateView):
-    login_url = reverse_lazy('home:login')
-    template_name = 'home/index.html'
 
 
 class Login(FormView):
@@ -50,6 +45,7 @@ class Register(FormView):
             # Create the User object
             user = User.objects.create_user(
                 username=username, email=email, password=password)
+            ProfileMixin.objects.create(user=user)
             return super().form_valid(form)
         form.add_error(None, "Error validating the form")
         return self.form_invalid(form)

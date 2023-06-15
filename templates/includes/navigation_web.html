@@ -1,6 +1,6 @@
 <nav class="navbar">
   <div class="navbar-start">
-    <img src="/static/assets/img/cloudtech_logo.jpg" alt="Company Logo" class="company-logo">
+    <img src="/static/assets/img/nav/cloudtech_logo.jpg" alt="Company Logo" class="company-logo">
     <span class="company-name">CLOUD TECH</span>
   </div>
   <div class="navbar-brand">
@@ -14,7 +14,7 @@
   <div class="navbar-end">
     <div class="dropdown">
       <span class="name">Contribute</span>
-      <img src="/static/assets/img/contrib.jpg" class="dropdown-btn circular-image" onclick="toggleDropdown()">
+      <img src="/static/assets/img/nav/contrib.jpg" class="dropdown-btn circular-image" onclick="toggleDropdown()">
       <div class="dropdown-content" id="dropdown-content">
         {% for tenant in tenants %}
         <a class="dropdown-item" href="{% url 'web:redirect' tenant.get_domains|first %}">{{ tenant.name }}</a>

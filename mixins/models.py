@@ -6,7 +6,6 @@ from django.db.models import UUIDField
 
 User = get_user_model()
 
-
 class UUIDMixin(models.Model):
     id = UUIDField(primary_key=True, editable=False, default=uuid.uuid4)
 

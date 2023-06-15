@@ -13,6 +13,7 @@ django-tenants = "^3.5.0"
 psycopg2-binary = "^2.9.6"
 pillow = "^9.5.0"
 python-environ = "^0.4.54"
+markdown = "^3.4.3"
 
 
 [build-system]

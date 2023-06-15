@@ -1,13 +1,28 @@
-from django.views.generic import TemplateView, RedirectView
+import logging
+from django.views.generic import TemplateView, RedirectView, ListView, DetailView
+from content.models import Blog
 from mixins.views import NavbarMixin
 
 
 class Index(NavbarMixin, TemplateView):
     template_name = 'index.html'
 
-
-class Blogs(NavbarMixin, TemplateView):
+class BlogsListView(NavbarMixin, ListView):
+    model = Blog
     template_name = 'blogs.html'
+    context_object_name = 'blogs'
+
+    def get_context_data(self, **kwargs):
+        logging.info('#'*20)
+        sorted_blogs = Blog.objects.all().order_by('-pub_date')
+        kwargs['blogs'] = sorted_blogs
+        return super().get_context_data(**kwargs)
+
+class BlogDetailView(NavbarMixin, DetailView):
+    model = Blog
+    template_name = 'blog_detail.html'
+    context_object_name = 'blog'
+    pk_url_kwarg = 'pk'
 
 
 class NewsLetters(NavbarMixin, TemplateView):
