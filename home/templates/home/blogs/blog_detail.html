@@ -4,10 +4,41 @@
 
 {% block content %}
   <!-- ======= blogs Section ======= -->
-  <div class="blog-container">
-    <h1>{{ blog.title }}</h1>
-    <p>{{ blog.body }}</p>
-    <p>Author: {{ blog.author }}</p>
-    <p>Tags: {{ blog.tags }}</p>
-  </div>
+  <section id="blog-details" class="blog-details">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>{{ blog.title }}</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 content">
+              <div class="author-info">
+                <img src="/static/assets/img/nav/cloudtech_logo.jpg" class="circular-image img-fluid" alt="">
+                <span class="name">Cloud Tech</span>
+                <div class="social-links">
+                  <a href="https://www.linkedin.com/company/cloud-techs/?viewAsMember=true"><i class="bi bi-linkedin"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a href="https://twitter.com/AboutCloudTech"><i class="bi bi-twitter"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a href="https://github.com/Cloud-Tech-Projects"><i class="bi bi-github"></i></a>
+                </div>
+              <hr>
+              </div>
+              <div class="author-info">
+                <img src="/static/assets/img/nav/cloudtech_logo.jpg" class="circular-image img-fluid" alt="">
+                <span class="name">Cloud Tech</span>
+                <div class="social-links">
+                  <a href="https://www.linkedin.com/company/cloud-techs/?viewAsMember=true"><i class="bi bi-linkedin"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a href="https://twitter.com/AboutCloudTech"><i class="bi bi-twitter"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a href="https://github.com/Cloud-Tech-Projects"><i class="bi bi-github"></i></a>
+                </div>
+              <hr>
+              </div>
+            </div>
+            <div class="col-lg-8 content">
+              {{ html_content|safe }}
+            </div>
+        </div>
+
+    </div>
+</section>
 {% endblock content %}

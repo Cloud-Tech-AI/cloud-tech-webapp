@@ -6,9 +6,19 @@ from django.db.models import UUIDField
 
 User = get_user_model()
 
-
 class UUIDMixin(models.Model):
     id = UUIDField(primary_key=True, editable=False, default=uuid.uuid4)
+
+    class Meta:
+        abstract = True
+
+
+class ProfileMixin(models.Model):
+    profile_picture = models.ImageField(upload_to='', default='assets/img/nav/profile_pic.jpg')
+    linkedin = models.URLField(max_length=200, null=True, blank=True)
+    github = models.URLField(max_length=200, null=True, blank=True)
+    twitter = models.URLField(max_length=200, null=True, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=False, blank=False, related_name='profile')
 
     class Meta:
         abstract = True
