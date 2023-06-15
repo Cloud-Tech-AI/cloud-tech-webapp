@@ -1,7 +1,17 @@
 from django import forms
-from mixins.models import ProfileMixin
+from ..models import ProfileMixin
+from django.contrib.auth import get_user_model
 
-class ProfileForm(forms.Form):
+User = get_user_model()
+
+class ProfileForm(forms.ModelForm):
+    author_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": User.username,
+                "class": "form-control"
+            }
+        ))
     profile_pic = forms.ImageField(
         widget=forms.FileInput(
             attrs={
@@ -11,22 +21,25 @@ class ProfileForm(forms.Form):
     linkedin = forms.URLField(
         widget=forms.URLInput(
             attrs={
+                "placeholder": "LinkedIn",
                 "class": "form-control"
             }
         ))
     github = forms.URLField(
         widget=forms.URLInput(
             attrs={
+                "placeholder": "Github",
                 "class": "form-control"
             }
         ))
     twitter = forms.URLField(
         widget=forms.URLInput(
             attrs={
+                "placeholder": "Twitter",
                 "class": "form-control"
             }
         ))
 
-    class meta:
-        ProfileMixin
-        fields = ('profile_pic', 'linkedin', 'github', 'twitter')
+    class Meta:
+        model = ProfileMixin
+        fields = ('author_name', 'profile_pic', 'linkedin', 'github', 'twitter')

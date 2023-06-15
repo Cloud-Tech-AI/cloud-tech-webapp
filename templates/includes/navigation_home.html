@@ -7,10 +7,15 @@
   <div class="navbar-end">
     <div class="dropdown">
       <span class="name">{{ user.username }}</span>
-      <img src="/static/assets/img/nav/profile_pic.jpg" class="dropdown-btn circular-image" onclick="toggleDropdown()">
+      {% if user.profile.profile_pic %}
+        <img src="{{ user.profile.profile_pic.url }}" class="dropdown-btn circular-image" onclick="toggleDropdown()">
+      {% else %}
+        <img src="/static/assets/img/nav/profile_pic.jpg" class="dropdown-btn circular-image" onclick="toggleDropdown()">
+      {% endif %}
       <div class="dropdown-content" id="dropdown-content">
         <a class="dropdown-item" href="/">Home</a>
         <a class="dropdown-item" href="/blogs">Blogs</a>
+        <a class="dropdown-item" href="/profile/{{ user.profile.id }}">Profile</a>
         <a class="dropdown-item" href="/logout">Logout</a>
         </a>
       </div>

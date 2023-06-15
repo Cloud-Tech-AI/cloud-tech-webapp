@@ -1,5 +1,5 @@
 from django.urls import path
-from home.views.general import Index
+from home.views.general import Index, Profile
 from home.views.auth import Login, Register
 from home.views.blogs import BlogsListView, BlogDetailView
 from django.contrib.auth.views import LogoutView
@@ -9,7 +9,7 @@ app_name = 'home'
 
 urlpatterns = [
     path('', Index.as_view(), name='home'),
-
+    path('profile/<str:pk>/', Profile.as_view(), name='profile'),
 ]
 
 urlpatterns += [

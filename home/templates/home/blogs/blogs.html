@@ -25,7 +25,7 @@
                             {{ blog.sub_title }}
                         </p>
                         <div class="card-text text-muted small">
-                            {{ blog.author }}&nbsp;|
+                            {{ user.profile.author_name }}&nbsp;|
                             {% for tag in blog.tags.all %}
                                 {{ tag.name }}&nbsp;
                             {% endfor %}

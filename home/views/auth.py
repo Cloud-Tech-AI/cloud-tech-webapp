@@ -2,7 +2,7 @@ from django.urls import reverse_lazy
 from django.views.generic import FormView
 from django.contrib.auth import authenticate, login, get_user_model
 from ..forms.authentication import LoginForm, SignUpForm
-from mixins.models import ProfileMixin
+from ..models import ProfileMixin
 
 
 User = get_user_model()
@@ -45,7 +45,7 @@ class Register(FormView):
             # Create the User object
             user = User.objects.create_user(
                 username=username, email=email, password=password)
-            profile = ProfileMixin.objects.create(user=user)
+            ProfileMixin.objects.create(user=user)
             return super().form_valid(form)
         form.add_error(None, "Error validating the form")
         return self.form_invalid(form)

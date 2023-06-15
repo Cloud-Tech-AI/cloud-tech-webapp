@@ -1,8 +1,10 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
 from mixins.models import UUIDMixin, TrailMixin
 from community.models import Tag
 
+User = get_user_model()
 
 class BasePost(UUIDMixin, TrailMixin, models.Model):
     title = models.CharField(max_length=200, null=False)
@@ -16,15 +18,13 @@ class BasePost(UUIDMixin, TrailMixin, models.Model):
 
 
 class Blog(BasePost, models.Model):
-    author = models.CharField(max_length=200, null=False)
-    co_author = models.CharField(max_length=200, null=True, blank=True)
     body = models.TextField(null=True, blank=True)
+    co_author = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
 
 
 class NewsLetter(BasePost, models.Model):
-    author = models.CharField(max_length=200, null=False)
-    co_author = models.CharField(max_length=200, null=True, blank=True)
     body = models.TextField(null=True, blank=True)
+    co_author = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
 
 
 class Project(BasePost, models.Model):
