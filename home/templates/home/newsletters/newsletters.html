@@ -1,0 +1,46 @@
+{% extends 'layouts/base_home.html' %}
+
+{% block title %}NewsLetters{% endblock title %}
+
+{% block content %}
+<!-- ======= newsletters Section ======= -->
+<section id="newsletters" class="newsletters section-bg">
+    <div class="container" data-aos="fade-up">
+        <div class="section-title">
+            <h2>NewsLetters</h2>
+            <p></p>
+        </div>
+        <div class="row justify-content-center" style="margin-top: 25px;">
+            <div class="newsletter col-md-8">
+                {% for newsletter in newsletters %}
+                <div class="row d-flex justify-content-between" style="padding-bottom: 25px;">
+                    <div class="col-lg-9">
+                        <a href="view/{{ newsletter.pk }}">{{ newsletter.title }}</a>
+                        {% if user.is_authenticated and newsletter.created_by == user %}
+                        <a href="" class="edit-icon">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                    {% endif %}
+                        <p class="break-word">
+                            {{ newsletter.sub_title }}
+                        </p>
+                        <div class="card-text text-muted small">
+                            {{ user.profile.author_name }}&nbsp;|
+                            {% for tag in newsletter.tags.all %}
+                                {{ tag.name }}&nbsp;
+                            {% endfor %}
+                        </div>
+                        <small class="text-muted">{{ newsletter.pub_date|date:"M d" }}</small>
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="{{ newsletter.image.url }}">
+                    </div>
+                </div>
+                <br>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
