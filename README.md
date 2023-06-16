@@ -8,15 +8,17 @@ Web Application for Cloud Tech
 * will be able to view content from all schemas
 
 ## Content Tenant (shared tenant)
-* member (default users created under this schema)
+* member (users can be created)
 * moderator (users can be created)
 * hero (users can be created)
 
 ## TODO
 * Short term
-  * create a custom middleware that routes domain (member.localhost) to (localhost/member) make appropriate changes to settings.py
-  * default redirect to landing page, ask to login in order to write blog
-  * open home app only upon login (user should be able to write blogs here)
+  * create and write a blog
+  * link to landing page in login screen
+  * change user profile primary key to int (remove UUID)
 * Long term
-  * create a simple form view to create tenant schema (create 3 schemas member/moderator/hero)
-  * list the user specific blogs written upon login
+  * script for default image populate in db and replace if updated
+  * previous article and next article and back to prev screen
+  * filter on blog and news letter
+  * create and update buttons in all tabs
