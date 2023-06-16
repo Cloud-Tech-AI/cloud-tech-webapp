@@ -435,6 +435,12 @@ section {
   border-radius: 5px;
   padding: 8px;
   box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+  transition: transform 0.2s ease-in-out; /* Add transition property */
+}
+
+.home .card:hover {
+  transform: scale(1.05); /* Enlarge the card on hover */
+  z-index: 2;
 }
 
 .home .card-header,
@@ -726,7 +732,7 @@ section {
   font-size: 22px;
 }
 
-.monthly .icon-box h4 a {
+.monthly a {
   color: #45505b;
   transition: ease-in-out 0.3s;
 }
@@ -734,7 +740,6 @@ section {
 .monthly .icon-box p {
   line-height: 24px;
   font-size: 14px;
-  margin-bottom: 0;
 }
 
 .monthly .icon-box:hover {
@@ -753,24 +758,13 @@ section {
   box-shadow: 0px 5px 90px 0px rgba(110, 123, 131, 0.05);
 }
 
-.projects .icon-box .icon {
-  margin: 0 auto;
-  width: 100px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: ease-in-out 0.3s;
-  position: relative;
-}
-
 .projects .icon-box h4 {
   font-weight: 600;
   margin: 10px 0 15px 0;
   font-size: 22px;
 }
 
-.projects .icon-box h4 a {
+.projects a {
   color: #45505b;
   transition: ease-in-out 0.3s;
 }
@@ -778,7 +772,6 @@ section {
 .projects .icon-box p {
   line-height: 24px;
   font-size: 14px;
-  margin-bottom: 0;
 }
 
 .projects .icon-box:hover {

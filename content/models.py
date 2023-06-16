@@ -10,8 +10,8 @@ class BasePost(UUIDMixin, TrailMixin, models.Model):
     title = models.CharField(max_length=200, null=False)
     pub_date = models.DateTimeField(auto_now_add=True, null=False)
     sub_title = models.CharField(max_length=500, null=False)
-    image = models.ImageField(upload_to='', null=False)
-    tags = models.ManyToManyField(Tag, blank=False)
+    image = models.ImageField(upload_to='', null=False, blank=False)
+    tags = models.ManyToManyField(Tag, blank=True)
 
     class Meta:
         abstract = True
@@ -19,16 +19,17 @@ class BasePost(UUIDMixin, TrailMixin, models.Model):
 
 class Blog(BasePost, models.Model):
     body = models.TextField(null=True, blank=True)
-    co_author = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
+    co_author = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True)
 
 
 class NewsLetter(BasePost, models.Model):
     body = models.TextField(null=True, blank=True)
-    co_author = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
+    co_author = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True)
 
 
 class Project(BasePost, models.Model):
     link = models.CharField(max_length=200, null=False)
+    image = models.ImageField(upload_to='', null=False, blank=True)
 
 
 class Monthly(BasePost, models.Model):

@@ -1,0 +1,31 @@
+{% extends 'layouts/base_home.html' %}
+
+{% block title %}Projects{% endblock title %}
+
+{% block content %}
+<section id="projects" class="projects">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>Projects</h2>
+            <p></p>
+        </div>
+
+        <div class="row">
+            {% for project in projects %}
+            <div class="col-lg-4 col-md-6 mb-4 align-items-stretch" data-aos="zoom-in">
+
+                <a href="{{ project.link }}">
+                    <div class="icon-box">
+                        <h4>{{ project.title }}</h4>
+                        <p>{{ project.sub_title }}</p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

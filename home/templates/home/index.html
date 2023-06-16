@@ -10,7 +10,8 @@
 <div class="dashboard">
   <div class="row justify-content-center">
       <div class="col-xl-3 col-md-6">
-          <div class="card info-card sales-card">
+        <a href="{% url 'home:blogs' %}">  
+            <div class="card info-card sales-card">
               <div class="card-body">
                   <h5 class="card-title">Blogs</h5>
 
@@ -25,10 +26,12 @@
               </div>
 
           </div>
+        </a>
       </div><!-- End Sales Card -->
 
       <!-- Revenue Card -->
       <div class="col-xl-3 col-md-6">
+        <a href="{% url 'home:newsletters' %}">  
           <div class="card info-card revenue-card">
               <div class="card-body">
                   <h5 class="card-title">Newsletters</h5>
@@ -45,13 +48,14 @@
               </div>
 
           </div>
+          </a>
       </div><!-- End Revenue Card -->
       </div>
 
       <div class="dashboard"><div class="row justify-content-center">
 
         <div class="col-xl-3 col-md-6">
-        
+        <a href="{% url 'home:projects' %}">
           <div class="card info-card customers-card">
             <div class="card-body">
               <h5 class="card-title">Projects <span>| AI & Cloud</span></h5>
@@ -67,13 +71,15 @@
               </div>
             </div>
           </div>
+          </a>
         </div>
       
             <!-- Revenue Card -->
             <div class="col-xl-3 col-md-6">
+                <a href="{% url 'home:monthly' %}">
                 <div class="card info-card stats-card">
                     <div class="card-body">
-                        <h5 class="card-title">Newsletters</h5>
+                        <h5 class="card-title">Monthly Discussions</h5>
       
                         <div class="d-flex align-items-center">
                             <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
