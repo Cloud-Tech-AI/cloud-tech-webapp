@@ -710,6 +710,85 @@ section {
   width: 200px;
 }
 
+/**
+ Newsletter Details
+**/
+
+.newsletter-details .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: justify;
+}
+
+.newsletter-details .content hr {
+  display: block;
+  height: 1px;
+  width: 100%; 
+  opacity: 0.3;
+}
+
+.newsletter-details .content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.newsletter-details .content h2 {
+  font-weight: 800;
+  font-size: 29px;
+  color: #45505b;
+  text-align: center;
+  padding-top: 35px;
+  padding-bottom: 28px;
+}
+
+.newsletter-details .content h3 {
+  font-size: 16px;
+  color: #45505b;
+  text-align: center;
+}
+
+.newsletter-details .content .author-info {
+  width: 75%;
+  align-items: center;
+}
+
+.newsletter-details .content .author-info .circular-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: rgb(255, 255, 255);
+  display: inline;
+}
+
+.newsletter-details .content .author-info .name {
+  font-size: 16px;
+  color: #45505b;
+  font-weight: 1000;
+  font-style: italic;
+}
+
+.newsletter-details .content .author-info .circular-image img {
+  width: 100%;
+  height: 100%;
+}
+
+.newsletter-details .content .author-info .social-links {
+  display: flex;
+  justify-content: right;
+}
+
+.newsletter-details .author-info .social-links a i {
+  font-size: 15px;
+  line-height: 1;
+  color: #494949;
+}
+
+.newsletter-details .author-info .social-links a i:hover {
+  color: #0563bb;
+}
+
 /*--------------------------------------------------------------
 # monthly
 --------------------------------------------------------------*/

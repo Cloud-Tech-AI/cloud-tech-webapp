@@ -3,12 +3,12 @@
 {% block title %}Blogs{% endblock title %}
 
 {% block content %}
-  <!-- ======= blogs Section ======= -->
-  <section id="blog-details" class="blog-details">
+  <!-- ======= newsletters Section ======= -->
+  <section id="newsletter-details" class="newsletter-details">
     <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-            <h2>{{ blog.title }}</h2>
+            <h2>{{ newsletter.title }}</h2>
         </div>
 
         <div class="row">
@@ -27,18 +27,18 @@
                 </div>
               <hr>
               </div>
-              {% if blog.co_author %}
+              {% if newsletter.co_author %}
                 <div class="author-info">
-                  {% if blog.co_author.profile.profile_pic %}
-                  <img src="{{ blog.co_author.profile.profile_pic.url }}" class="circular-image img-fluid" alt="">
+                  {% if newsletter.co_author.profile.profile_pic %}
+                  <img src="{{ newsletter.co_author.profile.profile_pic.url }}" class="circular-image img-fluid" alt="">
                   {% else %}
                     <img src="/static/assets/img/nav/profile_pic.jpg" class="circular-image img-fluid" alt="">
                   {% endif %}
-                  <span class="name">{{ blog.co_author.profile.author_name }}</span>
+                  <span class="name">{{ newsletter.co_author.profile.author_name }}</span>
                   <div class="social-links">
-                    <a href="{{ blog.co_author.profile.linkedin }}"><i class="bi bi-linkedin"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="{{ blog.co_author.profile.twitter }}"><i class="bi bi-twitter"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="{{ blog.co_author.profile.github }}"><i class="bi bi-github"></i></a>
+                    <a href="{{ newsletter.co_author.profile.linkedin }}"><i class="bi bi-linkedin"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{{ newsletter.co_author.profile.twitter }}"><i class="bi bi-twitter"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{{ newsletter.co_author.profile.github }}"><i class="bi bi-github"></i></a>
                   </div>
                 <hr>
                 </div>
