@@ -1,14 +1,13 @@
-import uuid
-
 from django.db import models
 from django.urls import reverse
 
 from django_tenants.models import DomainMixin, TenantMixin
 from django_tenants.utils import get_tenant_type_choices
 
+from mixins.models import UUIDMixin
 
-class Community(TenantMixin):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+
+class Community(UUIDMixin, TenantMixin):
     name = models.CharField(max_length=100)
     type = models.CharField(max_length=100, choices=get_tenant_type_choices(), default='content')
 
@@ -43,3 +42,6 @@ class Domain(DomainMixin):
 
 class Tag(models.Model):
     name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name

@@ -2,8 +2,7 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from ..forms.profile import ProfileForm
-from ..models import ProfileMixin
-import logging
+from web.models import UserProfile
 
 
 class Index(LoginRequiredMixin, TemplateView):
@@ -13,7 +12,7 @@ class Index(LoginRequiredMixin, TemplateView):
 
 class Profile(LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('home:login')
-    model = ProfileMixin
+    model = UserProfile
     template_name = 'home/profile.html'
     form_class = ProfileForm
     success_url = reverse_lazy('home:home')
