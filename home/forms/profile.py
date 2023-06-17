@@ -1,5 +1,5 @@
 from django import forms
-from ..models import ProfileMixin
+from web.models import UserProfile
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -13,12 +13,14 @@ class ProfileForm(forms.ModelForm):
             }
         ))
     profile_pic = forms.ImageField(
+        required=False,
         widget=forms.FileInput(
             attrs={
                 "class": "form-control"
             }
         ))
     linkedin = forms.URLField(
+        required=False,
         widget=forms.URLInput(
             attrs={
                 "placeholder": "LinkedIn",
@@ -26,6 +28,7 @@ class ProfileForm(forms.ModelForm):
             }
         ))
     github = forms.URLField(
+        required=False,
         widget=forms.URLInput(
             attrs={
                 "placeholder": "Github",
@@ -33,6 +36,7 @@ class ProfileForm(forms.ModelForm):
             }
         ))
     twitter = forms.URLField(
+        required=False,
         widget=forms.URLInput(
             attrs={
                 "placeholder": "Twitter",
@@ -41,5 +45,5 @@ class ProfileForm(forms.ModelForm):
         ))
 
     class Meta:
-        model = ProfileMixin
+        model = UserProfile
         fields = ('author_name', 'profile_pic', 'linkedin', 'github', 'twitter')

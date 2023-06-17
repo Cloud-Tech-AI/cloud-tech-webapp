@@ -1,13 +1,13 @@
+from urllib.parse import urlparse
 import logging
-from django.shortcuts import render
+
+from django_tenants.utils import get_tenant_model, get_tenant_type_choices,get_public_schema_name, get_tenant
 from community.models import Community
 
-# Create your views here.
 
-class NavbarMixin:
+class GetTenantsMixin:
     def get_context_data(self, **kwargs):
+        tenant = get_tenant(self.request)
         context = super().get_context_data(**kwargs)
         context['tenants'] = Community.objects.all()
-        for tenant in context['tenants']:
-            logging.info(tenant.get_domains()[0])
         return context
