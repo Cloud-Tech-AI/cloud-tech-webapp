@@ -16,16 +16,14 @@
                 <div class="row d-flex justify-content-between" style="padding-bottom: 25px;">
                     <div class="col-lg-9">
                         <a href="view/{{ blog.pk }}">{{ blog.title }}</a>
-                        {% if user.is_authenticated and blog.created_by == user %}
                         <a href="" class="edit-icon">
                             <i class="bi bi-pencil-square"></i>
                         </a>
-                    {% endif %}
                         <p class="break-word">
                             {{ blog.sub_title }}
                         </p>
                         <div class="card-text text-muted small">
-                            {{ user.profile.author_name }}&nbsp;|
+                            {{ blog.created_by.profile.author_name }}&nbsp;|
                             {% for tag in blog.tags.all %}
                                 {{ tag.name }}&nbsp;
                             {% endfor %}
