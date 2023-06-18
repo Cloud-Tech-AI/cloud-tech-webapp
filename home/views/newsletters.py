@@ -8,11 +8,8 @@ class NewsLettersListView(LoginRequiredMixin, ListView):
     model = NewsLetter
     template_name = 'home/newsletters/newsletters.html'
     context_object_name = 'newsletters'
+    ordering = ['created_at']
 
-    def get_context_data(self, **kwargs):
-        sorted_newsletters = NewsLetter.objects.filter(created_by=self.request.user).order_by('created_at')
-        kwargs['newsletters'] = sorted_newsletters
-        return super().get_context_data(**kwargs)
 
 class NewsLetterDetailView(LoginRequiredMixin, DetailView):
     model = NewsLetter

@@ -23,15 +23,12 @@ class Login(FormView):
             tenant = get_tenant(self.request)
             if not tenant in user.profile.tenants.all():
                 raise Exception("Permission Denied")
-            if form.is_valid():
-                if user is not None:
-                    # Login the user
-                    login(self.request, user)
-                    return super().form_valid(form)
-                else:
-                    form.add_error(None, "Invalid credentials")
+            if user is not None:
+                # Login the user
+                login(self.request, user)
+                return super().form_valid(form)
             else:
-                form.add_error(None, "Error validating the form")
+                form.add_error(None, "Invalid credentials")
         except Exception as e:
             form.add_error(None, str(e))
         return self.form_invalid(form)
@@ -43,19 +40,16 @@ class Register(FormView):
     success_url = reverse_lazy('home:login')
 
     def form_valid(self, form):
-        if form.is_valid():
-            # Create the user object
-            username = form.cleaned_data['username']
-            email = form.cleaned_data['email']
-            password = form.cleaned_data['password1']
+        # Create the user object
+        username = form.cleaned_data['username']
+        email = form.cleaned_data['email']
+        password = form.cleaned_data['password1']
 
-            # Create the User object
-            user = User.objects.create_user(
-                username=username, email=email, password=password)
-            tenant = get_tenant(self.request)
-            user_profile = UserProfile.objects.create(user=user)
-            user_profile.tenants.set([tenant])
-            
-            return super().form_valid(form)
-        form.add_error(None, "Error validating the form")
-        return self.form_invalid(form)
+        # Create the User object
+        user = User.objects.create_user(
+            username=username, email=email, password=password)
+        tenant = get_tenant(self.request)
+        user_profile = UserProfile.objects.create(user=user)
+        user_profile.tenants.set([tenant])
+        
+        return super().form_valid(form)

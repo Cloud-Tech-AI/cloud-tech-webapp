@@ -8,11 +8,8 @@ class BlogsListView(LoginRequiredMixin, ListView):
     model = Blog
     template_name = 'home/blogs/blogs.html'
     context_object_name = 'blogs'
+    ordering = ['created_at']
 
-    def get_context_data(self, **kwargs):
-        sorted_blogs = Blog.objects.filter(created_by=self.request.user).order_by('created_at')
-        kwargs['blogs'] = sorted_blogs
-        return super().get_context_data(**kwargs)
 
 class BlogDetailView(LoginRequiredMixin, DetailView):
     model = Blog

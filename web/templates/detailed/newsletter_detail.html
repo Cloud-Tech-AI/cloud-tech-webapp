@@ -14,16 +14,16 @@
         <div class="row">
             <div class="col-lg-3 content">
               <div class="author-info">
-                {% if user.profile.profile_pic %}
-                  <img src="{{ user.profile.profile_pic.url }}" class="circular-image img-fluid" alt="">
+                {% if blog.created_by.profile.profile_pic %}
+                  <img src="{{ blog.created_by.profile.profile_pic.url }}" class="circular-image img-fluid" alt="">
                 {% else %}
                   <img src="/static/assets/img/nav/profile_pic.jpg" class="circular-image img-fluid" alt="">
                 {% endif %}
-                <span class="name">{{ user.profile.author_name }}</span>
+                <span class="name">{{ blog.created_by.profile.author_name }}</span>
                 <div class="social-links">
-                  <a href="{{ user.profile.linkedin }}"><i class="bi bi-linkedin"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <a href="{{ user.profile.twitter }}"><i class="bi bi-twitter"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <a href="{{ user.profile.github }}"><i class="bi bi-github"></i></a>
+                  <a href="{{ blog.created_by.profile.linkedin }}"><i class="bi bi-linkedin"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a href="{{ blog.created_by.profile.twitter }}"><i class="bi bi-twitter"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a href="{{ blog.created_by.profile.github }}"><i class="bi bi-github"></i></a>
                 </div>
               <hr>
               </div>

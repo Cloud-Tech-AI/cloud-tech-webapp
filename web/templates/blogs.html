@@ -15,7 +15,7 @@
                 {% for blog in blogs %}
                 <div class="row d-flex justify-content-between" style="padding-bottom: 25px;">
                     <div class="col-lg-9">
-                        <a href="view/{{ blog.pk }}">{{ blog.title }}</a>
+                        <a href="{{ blog.tenant_name }}/{{ blog.pk }}">{{ blog.title }}</a>
                         <p class="break-word">
                             {{ blog.sub_title }}
                         </p>
