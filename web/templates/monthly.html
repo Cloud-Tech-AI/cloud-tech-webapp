@@ -4,47 +4,28 @@
 
 {% block content %}
 <section id="monthly" class="monthly">
-    <div class="container" data-aos="fade-up">
+  <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
-            <h2>Monthly</h2>
-            <p></p>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="icon-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png" alt="Image">
-                        <h4><a href="#">Title</a></h4>
-                        <p>Description adad adad a dvxc vxcv xvx vxc vwdfsdevdf dsf sdfs esdf df</p>
-                      
-                    </div>
-            </div>
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-                data-aos-delay="200">
-                <div class="icon-box">
-                  <div class="icon">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png" alt="Image">
-                  </div>
-                    <h4><a href="#">Title</a></h4>
-                    <p>Description</p>
-                </div>
-        </div>
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-                data-aos-delay="200">
-                <div class="icon-box">
-              <div class="icon">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png" alt="Image">
-              </div>
-                <h4><a href="#">Title</a></h4>
-                <p>Description</p>
-            </div>
+    <div class="section-title">
+        <h2>Monthly</h2>
+        <p></p>
     </div>
 
-        
-        </div>
+    <div class="row">
+        {% for discussion in monthly %}
+        <div class="col-lg-4 col-md-6 align-items-stretch" data-aos="zoom-in">
+            <div class="icon-box">
+                <img src="{{ discussion.image.url }}"
+                    alt="Image">
+                <h4><a href="{{ discussion.link }}">{{ discussion.title }}</a></h4>
+                <p>{{ discussion.sub_title }}</p>
 
+            </div>
+        </div>
+        {% endfor %}
     </div>
+
+</div>
 </section>
 
 {% endblock content %}
