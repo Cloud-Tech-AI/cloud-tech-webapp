@@ -7,7 +7,6 @@ from community.models import Community
 
 class GetTenantsMixin:
     def get_context_data(self, **kwargs):
-        tenant = get_tenant(self.request)
         context = super().get_context_data(**kwargs)
         context['tenants'] = Community.objects.all()
         return context
