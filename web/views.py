@@ -3,7 +3,7 @@ from django.views.generic import TemplateView, RedirectView, ListView, DetailVie
 from django_tenants.utils import tenant_context, get_public_schema_name
 from django.db.models import Value, CharField, Prefetch
 from django.contrib.auth import get_user_model
-from content.models import Blog, NewsLetter
+from content.models import Blog, Monthly, NewsLetter, Project
 from community.models import Tag
 from mixins.views import GetTenantsMixin
 
@@ -63,47 +63,47 @@ class NewsLettersListView(GetTenantsMixin, ListView):
 
 
 class MonthlyListView(GetTenantsMixin, ListView):
-    model = NewsLetter
-    template_name = 'newsletters.html'
-    context_object_name = 'newsletters'
+    model = Monthly
+    template_name = 'monthly.html'
+    context_object_name = 'monthly'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        newsletters = []
+        monthly = []
         logging.info(self.request.user)
         logging.info(context['tenants'])
         for tenant in context['tenants']:
             with tenant_context(tenant):
-                tenant_newsletters = NewsLetter.objects.all().annotate(
+                tenant_monthly = Monthly.objects.all().annotate(
                     tenant_name=Value(tenant.name, output_field=CharField()),
                 ).prefetch_related(Prefetch('tags'))
-                newsletters.extend(tenant_newsletters)
+                monthly.extend(tenant_monthly)
         
-        sorted_newsletters = sorted(newsletters, key=lambda x: x.pub_date, reverse=True)
-        context['newsletters'] = sorted_newsletters
+        sorted_monthly = sorted(monthly, key=lambda x: x.pub_date, reverse=True)
+        context['monthly'] = sorted_monthly
         return context
 
 
 
 class ProjectsListView(GetTenantsMixin, ListView):
-    model = NewsLetter
-    template_name = 'newsletters.html'
-    context_object_name = 'newsletters'
+    model = Project
+    template_name = 'projects.html'
+    context_object_name = 'projects'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        newsletters = []
+        projects = []
         logging.info(self.request.user)
         logging.info(context['tenants'])
         for tenant in context['tenants']:
             with tenant_context(tenant):
-                tenant_newsletters = NewsLetter.objects.all().annotate(
+                tenant_projects = Project.objects.all().annotate(
                     tenant_name=Value(tenant.name, output_field=CharField()),
                 ).prefetch_related(Prefetch('tags'))
-                newsletters.extend(tenant_newsletters)
+                projects.extend(tenant_projects)
         
-        sorted_newsletters = sorted(newsletters, key=lambda x: x.pub_date, reverse=True)
-        context['newsletters'] = sorted_newsletters
+        sorted_projects = sorted(projects, key=lambda x: x.pub_date, reverse=True)
+        context['projects'] = sorted_projects
         return context
 
 

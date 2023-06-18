@@ -12,30 +12,19 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-                <div class="icon-box">
-                    <h4><a href="https://github.com/ishan-modi/image-reconstruction">Image Reconstruction</a></h4>
-                    <p>Reconstructing images from eigenvectors thereby reducing storage requirements for large data.</p>
-                </div>
-            </div>
+            {% for project in projects %}
+            <div class="col-lg-4 col-md-6 mb-4 align-items-stretch" data-aos="zoom-in">
 
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-                data-aos-delay="200">
-                <div class="icon-box">
-                    <h4><a href="https://github.com/ishan-modi/Deep-Learning-Algorithms">Feed Forward NN</a></h4>
-                    <p>Deep Learning algorithms like Backpropagation, AutoEncoders and CBOW coded from scratch.</p>
-                </div>
+                <a href="{{ project.link }}">
+                    <div class="icon-box">
+                        <h4>{{ project.title }}</h4>
+                        <p>{{ project.sub_title }}</p>
+                    </div>
+                </a>
             </div>
+            {% endfor %}
 
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-                data-aos-delay="300">
-                <div class="icon-box">
-                    <h4><a href="https://autosift.glib.ai">Autosift Document Processor</a></h4>
-                    <p>Restructuring and Optimizing "Autosift" Company's document processor. Improving the extraction by using classical ML techniques.</p>
-                </div>
-            </div>
         </div>
-
     </div>
 </section>
 
