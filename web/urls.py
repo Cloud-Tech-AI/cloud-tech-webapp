@@ -1,6 +1,9 @@
 from django.urls import path
-from web.views import Index, About, BlogsListView,BlogDetailView, NewsLettersListView, MonthlyListView, ProjectsListView, RedirectTenant
-
+from web.views.general import Index, About, RedirectTenant
+from web.views.blogs import BlogsListView, BlogDetailView
+from web.views.newsletters import NewsLettersListView, NewsLetterDetailView
+from web.views.projects import ProjectsListView
+from web.views.monthly import MonthlyListView
 
 app_name = 'web'
 
@@ -12,12 +15,12 @@ urlpatterns = [
 
 urlpatterns += [
     path("blogs/", BlogsListView.as_view(), name="blogs"),
-    path('blogs/view/<str:pk>/', BlogDetailView.as_view(), name='blog_detail'),
+    path('blogs/<str:tenant>/<str:pk>/', BlogDetailView.as_view(), name='blog_detail'),
 ]
 
 urlpatterns += [
     path("newsletters/", NewsLettersListView.as_view(), name="newsletters"),
-    path('newsletters/view/<str:pk>/', BlogDetailView.as_view(), name='newsletter_detail'),
+    path('newsletters/<str:tenant>/<str:pk>/', NewsLetterDetailView.as_view(), name='newsletter_detail'),
 ]
 
 urlpatterns += [

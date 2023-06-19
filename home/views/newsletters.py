@@ -1,18 +1,23 @@
 from markdown import markdown
 
-from django.views.generic import ListView, DetailView
+from django.views.generic import DetailView
+from django_filters.views import FilterView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from content.models import NewsLetter
+from web.filter import NewsLetterFilter
 
-class NewsLettersListView(LoginRequiredMixin, ListView):
+class NewsLettersListView(LoginRequiredMixin, FilterView):
     model = NewsLetter
+    filterset_class = NewsLetterFilter
     template_name = 'home/newsletters/newsletters.html'
     context_object_name = 'newsletters'
+    ordering = ['created_at']
 
     def get_context_data(self, **kwargs):
-        sorted_newsletters = NewsLetter.objects.filter(created_by=self.request.user).order_by('created_at')
-        kwargs['newsletters'] = sorted_newsletters
-        return super().get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
+        context['filter'] = self.filterset_class
+        return context
+
 
 class NewsLetterDetailView(LoginRequiredMixin, DetailView):
     model = NewsLetter
