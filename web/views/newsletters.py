@@ -5,11 +5,11 @@ from django.db.models import Value, CharField, Prefetch
 from content.models import NewsLetter
 from community.models import Community
 from mixins.views import GetTenantsMixin
-from ..filter import NewsletterFilter
+from ..filter import NewsLetterFilter
 
 class NewsLettersListView(GetTenantsMixin, ListView):
     model = NewsLetter
-    filterset_class = NewsletterFilter
+    filterset_class = NewsLetterFilter
     template_name = 'newsletters.html'
 
     def get_queryset(self, **kwargs):

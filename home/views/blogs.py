@@ -1,14 +1,22 @@
 from markdown import markdown
 
-from django.views.generic import ListView, DetailView
+from django.views.generic import DetailView
+from django_filters.views import FilterView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from content.models import Blog
+from web.filter import BlogFilter
 
-class BlogsListView(LoginRequiredMixin, ListView):
+class BlogsListView(LoginRequiredMixin, FilterView):
     model = Blog
+    filterset_class = BlogFilter
     template_name = 'home/blogs/blogs.html'
     context_object_name = 'blogs'
     ordering = ['created_at']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter'] = self.filterset_class
+        return context
 
 
 class BlogDetailView(LoginRequiredMixin, DetailView):

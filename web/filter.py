@@ -60,7 +60,7 @@ class BlogFilter(django_filters.FilterSet):
         fields = ('search_blog', 'search_author', 'tag', 'tenant')
 
 
-class NewsletterFilter(django_filters.FilterSet):
+class NewsLetterFilter(django_filters.FilterSet):
     search_newsletter = django_filters.CharFilter(method='search_newsletter_filter',
                                        field_name='search_newsletter',
                                        widget=widgets.TextInput(attrs={
@@ -112,6 +112,6 @@ class NewsletterFilter(django_filters.FilterSet):
         return queryset.filter(created_by__profile__author_name__icontains=value)
 
     class Meta:
-        model = Blog
+        model = NewsLetter
         fields = ('search_newsletter', 'search_author', 'tag', 'tenant')
 
