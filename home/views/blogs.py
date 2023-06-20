@@ -15,7 +15,7 @@ class BlogsListView(LoginRequiredMixin, FilterView):
     filterset_class = BlogFilter
     template_name = 'home/blogs/blogs.html'
     context_object_name = 'blogs'
-    ordering = ['created_at']
+    ordering = ['-pub_date']
 
     def get_queryset(self):
         queryset = super().get_queryset()

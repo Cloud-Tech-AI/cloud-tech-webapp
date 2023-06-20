@@ -1,3 +1,4 @@
+import logging
 from markdown import markdown
 from django.views.generic import ListView, DetailView
 from django_tenants.utils import tenant_context
@@ -11,6 +12,7 @@ class NewsLettersListView(GetTenantsMixin, ListView):
     model = NewsLetter
     filterset_class = NewsLetterFilter
     template_name = 'newsletters.html'
+    ordering = ['-pub_date']
 
     def get_queryset(self, **kwargs):
         if 'tenant' in kwargs:
@@ -23,12 +25,12 @@ class NewsLettersListView(GetTenantsMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['tenants'] = self.get_tenants()
-        newletters = []
+        newsletters = []
         for tenant in context['tenants']:
             with tenant_context(tenant):
                 filtered_newletters = self.filterset_class(self.request.GET, queryset=self.get_queryset(tenant = tenant))
-                newletters.extend(list(filtered_newletters.qs))
-        context['newletters'] = newletters
+                newsletters.extend(list(filtered_newletters.qs))
+        context['newsletters'] = newsletters
         context['filter'] = self.filterset_class
         return context
 

@@ -7,23 +7,23 @@
 
 {% block content %}
 <section id="index" class="home d-flex flex-column justify-content-center">
-<div class="dashboard">
-  <div class="row justify-content-center">
+  <div class="dashboard">
+    <div class="row justify-content-center">
       <div class="col-xl-3 col-md-6">
-        <a href="{% url 'home:blogs' %}">  
-            <div class="card info-card sales-card">
-              <div class="card-body">
-                  <h5 class="card-title">Blogs</h5>
+        <a href="{% url 'home:blogs' %}">
+          <div class="card info-card sales-card">
+            <div class="card-body">
+              <h5 class="card-title">Blogs</h5>
 
-                  <div class="d-flex align-items-center">
-                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                          <i class="bi bi-cart"></i>
-                      </div>
-                      <div class="ps-3">
-                          <h6>100</h6>
-                      </div>
-                  </div>
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-cart"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>100</h6>
+                </div>
               </div>
+            </div>
 
           </div>
         </a>
@@ -31,70 +31,72 @@
 
       <!-- Revenue Card -->
       <div class="col-xl-3 col-md-6">
-        <a href="{% url 'home:newsletters' %}">  
+        <a href="{% url 'home:newsletters' %}">
           <div class="card info-card revenue-card">
-              <div class="card-body">
-                  <h5 class="card-title">Newsletters</h5>
-
-                  <div class="d-flex align-items-center">
-                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                          <i class="bi bi-cash"></i>
-                      </div>
-                      <div class="ps-3">
-                          <h6>20</h6>
-                          
-                      </div>
-                  </div>
-              </div>
-
-          </div>
-          </a>
-      </div><!-- End Revenue Card -->
-      </div>
-
-      <div class="dashboard"><div class="row justify-content-center">
-
-        <div class="col-xl-3 col-md-6">
-        <a href="{% url 'home:projects' %}">
-          <div class="card info-card customers-card">
             <div class="card-body">
-              <h5 class="card-title">Projects <span>| AI & Cloud</span></h5>
-        
+              <h5 class="card-title">Newsletters</h5>
+
               <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-cart"></i>
+                  <i class="bi bi-cash"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>50</h6>
+                  <h6>20</h6>
+
                 </div>
-        
               </div>
             </div>
+
           </div>
+        </a>
+      </div><!-- End Revenue Card -->
+    </div>
+
+    <div class="dashboard">
+      <div class="row justify-content-center">
+
+        <div class="col-xl-3 col-md-6">
+          <a href="{% url 'home:projects' %}">
+            <div class="card info-card customers-card">
+              <div class="card-body">
+                <h5 class="card-title">Projects <span>| AI & Cloud</span></h5>
+
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-cart"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6>50</h6>
+                  </div>
+
+                </div>
+              </div>
+            </div>
           </a>
         </div>
-      
-            <!-- Revenue Card -->
-            <div class="col-xl-3 col-md-6">
-                <a href="{% url 'home:monthly' %}">
-                <div class="card info-card stats-card">
-                    <div class="card-body">
-                        <h5 class="card-title">Monthly Discussions</h5>
-      
-                        <div class="d-flex align-items-center">
-                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                <i class="bi bi-cash"></i>
-                            </div>
-                            <div class="ps-3">
-                                <h6>20</h6>
-                                
-                            </div>
-                        </div>
-                    </div>
-      
+
+        <!-- Revenue Card -->
+        <div class="col-xl-3 col-md-6">
+          <a href="{% url 'home:monthly' %}">
+            <div class="card info-card stats-card">
+              <div class="card-body">
+                <h5 class="card-title">Monthly Discussions</h5>
+
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-cash"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6>20</h6>
+
+                  </div>
                 </div>
-            </div><!-- End Revenue Card -->
-          </div>
-        </div>
-  </section>
+              </div>
+
+            </div>
+        </div><!-- End Revenue Card -->
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock content %}
