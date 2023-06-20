@@ -21,7 +21,6 @@ environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -32,7 +31,6 @@ SECRET_KEY = 'django-insecure-39yux8xnm4d$aqwc&9!wn_hxz%1ki=1rivuibwj$f38u0gl(5s
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 HAS_MULTI_TYPE_TENANTS = True
@@ -65,13 +63,12 @@ TENANT_TYPES = {
             'home',
             'content',
         ]
-    }       
+    }
 }
 
 INSTALLED_APPS = []
 for schema in TENANT_TYPES:
     INSTALLED_APPS += [app for app in TENANT_TYPES[schema]["APPS"] if app not in INSTALLED_APPS]
-
 
 TENANT_MODEL = 'community.Community'
 TENANT_DOMAIN_MODEL = 'community.Domain'
@@ -80,7 +77,6 @@ TENANT_USERS_DOMAIN = env.str('TENANT_DOMAIN_NAME', default='*/localhost')
 TENANT_BASE_URL = env.str('TENANT_BASE_URL', default='http://%s.localhost:8000')
 PUBLIC_SCHEMA_NAME = env.str('PUBLIC_SCHEMA_NAME', default='public')
 PUBLIC_SCHEMA_DOMAIN = env.str('PUBLIC_DOMAIN_NAME', default='localhost')
-
 
 MIDDLEWARE = [
     'content.tenant_middleware.TenantMainMiddleware',
@@ -116,7 +112,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cloudtech_project.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -131,11 +126,9 @@ DATABASES = {
     }
 }
 
-
 DATABASE_ROUTERS = (
     'django_tenants.routers.TenantSyncRouter',
 )
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -155,7 +148,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -166,7 +158,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -184,3 +175,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = env.str('MEDIA_ROOT', os.path.join(BASE_DIR, 'media'))
+
+PUBLIC_URL = env.str('PUBLIC_URL', default='http://localhost:8000/')
