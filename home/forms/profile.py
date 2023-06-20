@@ -8,7 +8,7 @@ class ProfileForm(forms.ModelForm):
     author_name = forms.CharField(
         widget=forms.TextInput(
             attrs={
-                "placeholder": User.username,
+                "placeholder": "Author Name",
                 "class": "form-control"
             }
         ))

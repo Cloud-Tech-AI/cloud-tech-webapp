@@ -9,7 +9,11 @@ class UserProfileForm(forms.ModelForm):
         model = UserProfile
         fields = '__all__'
         widgets = {
-            'tags': FilteredSelectMultiple('Tags', False),
+            'tenants': FilteredSelectMultiple('Communitys', False),
         }
 
-admin.site.register(UserProfile)
+class UserProfileAdmin(admin.ModelAdmin):
+    form = UserProfileForm
+    
+
+admin.site.register(UserProfile, UserProfileAdmin)
