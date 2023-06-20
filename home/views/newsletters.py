@@ -1,10 +1,12 @@
 from markdown import markdown
 
-from django.views.generic import DetailView
+from django.urls import reverse_lazy
+from django.views.generic import DetailView, CreateView, UpdateView
 from django_filters.views import FilterView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from content.models import NewsLetter
 from web.filter import NewsLetterFilter
+from ..forms.newsletter import NewsLetterCreateForm
 
 class NewsLettersListView(LoginRequiredMixin, FilterView):
     model = NewsLetter
@@ -12,6 +14,11 @@ class NewsLettersListView(LoginRequiredMixin, FilterView):
     template_name = 'home/newsletters/newsletters.html'
     context_object_name = 'newsletters'
     ordering = ['created_at']
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(created_by=self.request.user)
+        return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -31,5 +38,28 @@ class NewsLetterDetailView(LoginRequiredMixin, DetailView):
         html_content = markdown(markdown_text)
         context['html_content'] = html_content
         return context
+    
+
+class NewsLetterCreateView(LoginRequiredMixin, CreateView):
+    model = NewsLetter
+    template_name = 'home/newsletters/newsletter_create.html'
+    form_class = NewsLetterCreateForm
+    success_url = reverse_lazy('home:newsletters')
+
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
+
+
+class NewsLetterUpdateView(LoginRequiredMixin, UpdateView):
+    model = NewsLetter
+    template_name = 'home/newsletters/newsletter_update.html'
+    form_class = NewsLetterCreateForm
+    success_url = reverse_lazy('home:newsletters')
+    pk_url_kwarg = 'pk'
+
+    def form_valid(self, form):
+        form.instance.updated_by = self.request.user
+        return super().form_valid(form)
 
 

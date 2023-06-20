@@ -1,8 +1,8 @@
 from django.urls import path
 from home.views.general import Index, Profile
 from home.views.auth import Login, Register
-from home.views.blogs import BlogsListView, BlogDetailView
-from home.views.newsletters import NewsLettersListView, NewsLetterDetailView
+from home.views.blogs import BlogsListView, BlogDetailView, BlogCreateView, BlogUpdateView
+from home.views.newsletters import NewsLettersListView, NewsLetterDetailView, NewsLetterCreateView, NewsLetterUpdateView
 from home.views.projects import ProjectsListView
 from home.views.monthly import MonthlyListView
 from django.contrib.auth.views import LogoutView
@@ -25,11 +25,15 @@ urlpatterns += [
 urlpatterns += [
     path("blogs/", BlogsListView.as_view(), name="blogs"),
     path('blogs/view/<str:pk>/', BlogDetailView.as_view(), name='blog_detail'),
+    path('blogs/create/', BlogCreateView.as_view(), name='blog_create'),
+    path('blogs/update/<str:pk>/', BlogUpdateView.as_view(), name='blog_update'),
 ]
 
 urlpatterns += [
     path("newsletters/", NewsLettersListView.as_view(), name="newsletters"),
     path('newsletters/view/<str:pk>/', NewsLetterDetailView.as_view(), name='newsletter_detail'),
+    path('newsletters/create/', NewsLetterCreateView.as_view(), name='newsletter_create'),
+    path('newsletters/update/<str:pk>/', NewsLetterUpdateView.as_view(), name='newsletter_update'),
 ]
 
 urlpatterns += [
