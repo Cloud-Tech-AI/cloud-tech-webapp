@@ -61,6 +61,15 @@ class NewsLetterCreateForm(forms.ModelForm):
             }
         ))
     
+    pub_date = forms.DateTimeField(
+        required=False,
+        widget=forms.DateTimeInput(
+            attrs={
+                "class": "form-control"
+            }
+        )
+    )
+    
     class Meta:
         model = NewsLetter
-        fields = ['title', 'sub_title','image', 'body', 'co_author', 'tags']
+        fields = ['title', 'sub_title','image', 'body', 'co_author', 'tags', 'pub_date']

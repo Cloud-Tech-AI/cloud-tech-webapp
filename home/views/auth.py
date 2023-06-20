@@ -21,14 +21,13 @@ class Login(FormView):
             password = form.cleaned_data['password']
             user = authenticate(username=username, password=password)
             tenant = get_tenant(self.request)
-            if not tenant in user.profile.tenants.all():
-                raise Exception("Permission Denied")
-            if user is not None:
-                # Login the user
-                login(self.request, user)
-                return super().form_valid(form)
-            else:
+            if not user:
                 form.add_error(None, "Invalid credentials")
+            else:
+                if not tenant in user.profile.tenants.all():
+                    raise Exception("Permission Denied")
+                login(self.request, user)
+                return super().form_valid(form)    
         except Exception as e:
             form.add_error(None, str(e))
         return self.form_invalid(form)

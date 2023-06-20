@@ -14,7 +14,7 @@ class BlogsListView(GetTenantsMixin, ListView):
     model = Blog
     filterset_class = BlogFilter
     template_name = 'blogs.html'
-    ordering = ['created_at']
+    ordering = ['-pub_date']
 
     def get_queryset(self, **kwargs):
         if 'tenant' in kwargs:
