@@ -1,6 +1,9 @@
 from django.contrib.auth import authenticate, login, get_user_model
 from django.urls import reverse_lazy
 from django.views.generic import FormView
+from django.conf import settings
+from ..forms.authentication import LoginForm, SignUpForm
+from web.models import UserProfile
 from django_tenants.utils import get_tenant
 from django.core.exceptions import PermissionDenied
 
@@ -15,6 +18,11 @@ class Login(FormView):
     form_class = LoginForm
     success_url = reverse_lazy('home:home')
 
+    def get_context_data(self, **kwargs):
+        context = super(Login, self).get_context_data()
+        context['public_url'] = settings.PUBLIC_URL
+        return context
+      
     def authenticate_user(self, username, password):
         user = authenticate(username=username, password=password)
         if user is not None:

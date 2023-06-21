@@ -1,59 +1,62 @@
 {% extends 'layouts/base_auth.html' %}
-
+{% load static %}
 {% block title %}Login{% endblock title %}
 
 <!-- Specific CSS goes HERE -->
 {% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
-<div class="login-container">
-  <div class="login-card">
-    <h2 class="login-card-title">Sign In</h2>
-    <div class="login-card-subtitle">
+    <div class="login-container">
+        <div class="login-card">
+            <h2 class="login-card-title">Sign In</h2>
+            <div class="login-card-subtitle">
       <span>
         {% if form.errors %}
-        <p>
+            <p>
           {{ form.non_field_errors.0 }}
         </p>
         {% else %}
-        <p>
+            <p>
           Add your credentials
         </p>
         {% endif %}
       </span>
+            </div>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="login-card-body">
+                    <div class="form-group">
+                        <div class="input-group input-group-alternative">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="bi bi-people"></i></span>
+                            </div>
+                            {{ form.username }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group input-group-alternative">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                            </div>
+                            {{ form.password }}
+                        </div>
+                    </div>
+                    <div class="custom-control custom-control-alternative custom-checkbox">
+                        <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
+                        <label class="custom-control-label" for=" customCheckLogin">
+                            <span class="text-muted">Remember me</span>
+                        </label>
+                    </div>
+                    <div class="text-center button">
+                        <button type="submit" class="btn btn-primary my-4">Sign in</button>
+                    </div>
+                    <a href="{{ public_url }}" class="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 float-end"><i
+                            class="fa-solid fa-arrow-left-long fa-xs"></i>
+                        Back to the blog</a>
+                </div>
+            </form>
+        </div>
     </div>
-    <form method="POST">
-      {% csrf_token %}
-      <div class="login-card-body">
-        <div class="form-group">
-          <div class="input-group input-group-alternative">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="bi bi-people"></i></span>
-            </div>
-            {{ form.username }}
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="input-group input-group-alternative">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="bi bi-lock"></i></span>
-            </div>
-            {{ form.password }}
-          </div>
-        </div>
-        <div class="custom-control custom-control-alternative custom-checkbox">
-          <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
-          <label class="custom-control-label" for=" customCheckLogin">
-            <span class="text-muted">Remember me</span>
-          </label>
-        </div>
-        <div class="text-center button">
-          <button type="submit" class="btn btn-primary my-4">Sign in</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
 
 
 {% endblock content %}
