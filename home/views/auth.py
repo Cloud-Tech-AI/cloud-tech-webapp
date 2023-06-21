@@ -1,10 +1,11 @@
-from django.urls import reverse_lazy
-from django_tenants.utils import get_tenant
-from django.views.generic import FormView
 from django.contrib.auth import authenticate, login, get_user_model
-from ..forms.authentication import LoginForm, SignUpForm
-from web.models import UserProfile
+from django.urls import reverse_lazy
+from django.views.generic import FormView
+from django_tenants.utils import get_tenant
+from django.core.exceptions import PermissionDenied
 
+from web.models import UserProfile
+from ..forms.authentication import LoginForm, SignUpForm
 
 User = get_user_model()
 
@@ -14,22 +15,30 @@ class Login(FormView):
     form_class = LoginForm
     success_url = reverse_lazy('home:home')
 
+    def authenticate_user(self, username, password):
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            return user
+        raise PermissionDenied("Invalid credentials")
+
     def form_valid(self, form):
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
+
         try:
-            # Authenticate the user
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(username=username, password=password)
-            tenant = get_tenant(self.request)
-            if not user:
-                form.add_error(None, "Invalid credentials")
-            else:
-                if not tenant in user.profile.tenants.all():
-                    raise Exception("Permission Denied")
-                login(self.request, user)
-                return super().form_valid(form)    
-        except Exception as e:
+            user = self.authenticate_user(username, password)
+
+            if UserProfile.objects.filter(user=user).exists():
+                tenant = get_tenant(self.request)
+                if tenant not in user.profile.tenants.all():
+                    raise PermissionDenied("Permission Denied")
+
+            login(self.request, user)
+            return super().form_valid(form)
+
+        except PermissionDenied as e:
             form.add_error(None, str(e))
+
         return self.form_invalid(form)
 
 
@@ -50,5 +59,5 @@ class Register(FormView):
         tenant = get_tenant(self.request)
         user_profile = UserProfile.objects.create(user=user)
         user_profile.tenants.set([tenant])
-        
+
         return super().form_valid(form)
