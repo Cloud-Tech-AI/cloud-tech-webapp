@@ -189,3 +189,12 @@ DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL', default="ishan.modi24@gmail.c
 if EMAIL_BACKEND == 'django_ses.SESBackend':
     AWS_SES_REGION_NAME = os.environ.get("AWS_DEFAULT_REGION", "ap-south-1")
     AWS_SES_REGION_ENDPOINT = f"email.{AWS_SES_REGION_NAME}.amazonaws.com"
+
+
+CLOUDTECH_URLS = {
+    "email":"mailto:ishan.modi24@gmail.com",
+    "linkedin":"https://www.linkedin.com/company/cloud-techs/?viewAsMember=true",
+    "twitter":"https://twitter.com/AboutCloudTech",
+    "github": "https://github.com/Cloud-Tech-Projects",
+    "youtube":"https://www.youtube.com/@aboutcloudtech"
+}
