@@ -13,7 +13,7 @@ class NewsLettersListView(LoginRequiredMixin, FilterView):
     filterset_class = NewsLetterFilter
     template_name = 'home/newsletters/newsletters.html'
     context_object_name = 'newsletters'
-    ordering = ['created_at']
+    ordering = ['-pub_date']
 
     def get_queryset(self):
         queryset = super().get_queryset()
