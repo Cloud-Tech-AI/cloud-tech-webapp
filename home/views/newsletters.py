@@ -35,6 +35,7 @@ class NewsLetterDetailView(LoginRequiredMixin, IsValidUserMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['previous_page'] = self.request.META.get('HTTP_REFERER')
         markdown_text = self.object.body
         html_content = markdown(markdown_text)
         context['html_content'] = html_content

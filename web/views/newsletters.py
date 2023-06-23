@@ -28,17 +28,18 @@ class NewsLettersListView(GetTenantsMixin, ListView):
         newsletters = []
         for tenant in context['tenants']:
             with tenant_context(tenant):
-                filtered_newletters = self.filterset_class(self.request.GET, queryset=self.get_queryset(tenant = tenant))
-                newsletters.extend(list(filtered_newletters.qs))
+                filtered_newsletters = self.filterset_class(self.request.GET, queryset=self.get_queryset(tenant = tenant))
+                newsletters.extend(list(filtered_newsletters.qs))
         context['newsletters'] = newsletters
+        logging.info(context['newsletters'][0].tenant_name)
         context['filter'] = self.filterset_class
         return context
 
 
 class NewsLetterDetailView(GetTenantsMixin, DetailView):
     model = NewsLetter
-    template_name = 'detailed/newletter_detail.html'
-    context_object_name = 'newletter'
+    template_name = 'detailed/newsletter_detail.html'
+    context_object_name = 'newsletter'
 
     def get_object(self):
         tenant = Community.objects.get(name=self.kwargs['tenant'])
@@ -48,6 +49,7 @@ class NewsLetterDetailView(GetTenantsMixin, DetailView):
         
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['previous_page'] = self.request.META.get('HTTP_REFERER')
         context['tenants'] = self.get_tenants()
         markdown_text = self.object.body
         html_content = markdown(markdown_text)

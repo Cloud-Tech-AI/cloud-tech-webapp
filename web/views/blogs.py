@@ -49,6 +49,7 @@ class BlogDetailView(GetTenantsMixin, DetailView):
         
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['previous_page'] = self.request.META.get('HTTP_REFERER')
         context['tenants'] = self.get_tenants()
         markdown_text = self.object.body
         html_content = markdown(markdown_text)
