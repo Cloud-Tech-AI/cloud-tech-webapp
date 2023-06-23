@@ -1,5 +1,6 @@
 import uuid
 
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.db.models import UUIDField
@@ -37,3 +38,8 @@ class TimestampMixin(models.Model):
 class TrailMixin(TimestampMixin, UserMixin):
     class Meta:
         abstract = True
+
+
+class IsValidUserMixin(UserPassesTestMixin):
+    def test_func(self):
+        return self.get_object().created_by == self.request.user 

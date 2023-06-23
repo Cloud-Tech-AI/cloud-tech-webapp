@@ -7,6 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from content.models import NewsLetter
 from web.filter import NewsLetterFilter
 from ..forms.newsletter import NewsLetterCreateForm
+from mixins.models import IsValidUserMixin
 
 class NewsLettersListView(LoginRequiredMixin, FilterView):
     model = NewsLetter
@@ -26,7 +27,7 @@ class NewsLettersListView(LoginRequiredMixin, FilterView):
         return context
 
 
-class NewsLetterDetailView(LoginRequiredMixin, DetailView):
+class NewsLetterDetailView(LoginRequiredMixin, IsValidUserMixin, DetailView):
     model = NewsLetter
     template_name = 'home/newsletters/newsletter_detail.html'
     context_object_name = 'newsletter'
@@ -51,7 +52,7 @@ class NewsLetterCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class NewsLetterUpdateView(LoginRequiredMixin, UpdateView):
+class NewsLetterUpdateView(LoginRequiredMixin, IsValidUserMixin, UpdateView):
     model = NewsLetter
     template_name = 'home/newsletters/newsletter_update.html'
     form_class = NewsLetterCreateForm
