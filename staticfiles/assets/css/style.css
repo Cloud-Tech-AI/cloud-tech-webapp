@@ -495,22 +495,22 @@ section {
   flex-grow: 0;
 }
 
-.home .dashboard .sales-card .card-icon {
+.home .dashboard .card-1 .card-icon {
   color: #4154f1;
   background: #f6f6fe;
 }
 
-.home .dashboard .revenue-card .card-icon {
+.home .dashboard .card-2 .card-icon {
   color: #2eca6a;
   background: #e0f8e9;
 }
 
-.home .dashboard .customers-card .card-icon {
+.home .dashboard .card-3 .card-icon {
   color: #ff771d;
   background: #ffecdf;
 }
 
-.home .dashboard .stats-card .card-icon {
+.home .dashboard .card-4 .card-icon {
   color: #bb5757;
   background: #ecdfdf;
 }

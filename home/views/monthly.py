@@ -8,6 +8,6 @@ class MonthlyListView(LoginRequiredMixin, ListView):
     model = Monthly
     template_name = 'home/monthly/monthly.html'
     context_object_name = 'monthly'
-    ordering = ['created_at']
+    ordering = ['-pub_date']
 
 

@@ -12,10 +12,10 @@
             🌱 Join our vibrant community and gain the knowledge and connections you need to excel in the world of Artificial Intelligence & Cloud Computing. ✨</p><hr style="width:100%"><br>
         
         <div class="social-links">
-            <a href="mailto:ishan.modi24@gmail.com"><i class="bi bi-envelope-fill"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="https://www.linkedin.com/company/cloud-techs/?viewAsMember=true"><i class="bi bi-linkedin"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="https://twitter.com/AboutCloudTech"><i class="bi bi-twitter"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="https://github.com/Cloud-Tech-Projects"><i class="bi bi-github"></i></a>
+            <a href="{{ urls.email }}"><i class="bi bi-envelope-fill"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="{{ urls.linkedin }}"><i class="bi bi-linkedin"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="{{ urls.twitter }}"><i class="bi bi-twitter"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="{{ urls.github }}"><i class="bi bi-github"></i></a>
         </div>
         <div class="gallery">
         </div> 
@@ -24,7 +24,8 @@
     <div class="dashboard">
         <div class="row justify-content-center">
             <div class="col-xl-3 col-md-6">
-                <div class="card info-card sales-card">
+                <a href="{{ urls.linkedin }}">
+                <div class="card info-card card-1">
                     <div class="card-body">
                         <h5 class="card-title">Followers <span>| Community Members</span></h5>
     
@@ -41,11 +42,13 @@
                     </div>
     
                 </div>
+            </a>
             </div><!-- End Sales Card -->
     
             <!-- Revenue Card -->
             <div class="col-xl-3 col-md-6">
-                <div class="card info-card revenue-card">
+                <a href="{{ urls.youtube }}">
+                <div class="card info-card card-2">
                     <div class="card-body">
                         <h5 class="card-title">Talks <span>| Seminars & Meetups</span></h5>
     
@@ -63,12 +66,13 @@
                     </div>
     
                 </div>
+            </a>
             </div><!-- End Revenue Card -->
     
             <!-- Customers Card -->
             <div class="col-xl-3 col-md-6">
-    
-                <div class="card info-card customers-card">
+                <a href="{{ urls.github }}">
+                <div class="card info-card card-3">
                     <div class="card-body">
                         <h5 class="card-title">Projects <span>| AI & Cloud</span></h5>
     
@@ -85,6 +89,7 @@
     
                     </div>
                 </div>
+                </a>
     
             </div><!-- End Customers Card -->
         </div>

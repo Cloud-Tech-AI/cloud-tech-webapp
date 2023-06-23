@@ -9,6 +9,6 @@ class ProjectsListView(LoginRequiredMixin, ListView):
     model = Project
     template_name = 'home/projects/projects.html'
     context_object_name = 'projects'
-    ordering = ['created_at']
+    ordering = ['-pub_date']
 
 
