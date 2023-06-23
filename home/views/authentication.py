@@ -1,14 +1,14 @@
+import logging
 from django.contrib.auth import authenticate, login, get_user_model
 from django.urls import reverse_lazy
 from django.views.generic import FormView
 from django.conf import settings
-from ..forms.authentication import LoginForm, SignUpForm
-from web.models import UserProfile
 from django_tenants.utils import get_tenant
 from django.core.exceptions import PermissionDenied
 
 from web.models import UserProfile
 from ..forms.authentication import LoginForm, SignUpForm
+from ..tasks import admin_notification_email, user_notification_email
 
 User = get_user_model()
 
@@ -65,7 +65,11 @@ class Register(FormView):
         user = User.objects.create_user(
             username=username, email=email, password=password)
         tenant = get_tenant(self.request)
+        logging.info(type(tenant))
         user_profile = UserProfile.objects.create(user=user)
         user_profile.tenants.set([tenant])
-
+        task1 = admin_notification_email.si(tenant.id,user.username).set(queue='queue1')
+        task1.apply_async()
+        task2 = user_notification_email.si(tenant.id,user.username).set(queue='queue2')
+        task2.apply_async()
         return super().form_valid(form)
