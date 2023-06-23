@@ -8,6 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from content.models import Blog
 from web.filter import BlogFilter
 from ..forms.blog import BlogCreateForm
+from mixins.models import IsValidUserMixin
 
 
 class BlogsListView(LoginRequiredMixin, FilterView):
@@ -28,7 +29,7 @@ class BlogsListView(LoginRequiredMixin, FilterView):
         return context
 
 
-class BlogDetailView(LoginRequiredMixin, DetailView):
+class BlogDetailView(LoginRequiredMixin, IsValidUserMixin, DetailView):
     model = Blog
     template_name = 'home/blogs/blog_detail.html'
     context_object_name = 'blog'
@@ -53,7 +54,7 @@ class BlogCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class BlogUpdateView(LoginRequiredMixin, UpdateView):
+class BlogUpdateView(LoginRequiredMixin, IsValidUserMixin, UpdateView):
     model = Blog
     template_name = 'home/blogs/blog_update.html'
     form_class = BlogCreateForm
