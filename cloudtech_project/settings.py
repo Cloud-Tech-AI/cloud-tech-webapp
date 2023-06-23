@@ -40,13 +40,15 @@ TENANT_TYPES = {
     'public': {
         'URLCONF': 'cloudtech_project.urls_public',
         'APPS': [
-            'django_tenants',
             'django.contrib.admin',
             'django.contrib.auth',
             'django.contrib.contenttypes',
             'django.contrib.sessions',
             'django.contrib.messages',
             'django.contrib.staticfiles',
+            'django_tenants',
+            'django_filters',
+            'django_celery_results',
             'web',
             'mixins',
             'community',
@@ -60,6 +62,7 @@ TENANT_TYPES = {
             'django.contrib.sessions',
             'django.contrib.messages',
             'django.contrib.staticfiles',
+            'django_filters',
             'home',
             'content',
         ]
@@ -177,3 +180,12 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = env.str('MEDIA_ROOT', os.path.join(BASE_DIR, 'media'))
 
 PUBLIC_URL = env.str('PUBLIC_URL', default='http://localhost:8000/')
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'django-db'
+
+EMAIL_BACKEND = env.str('EMAIL_BACKEND', default="django.core.mail.backends.console.EmailBackend")
+DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL', default="ishan.modi24@gmail.com")
+if EMAIL_BACKEND == 'django_ses.SESBackend':
+    AWS_SES_REGION_NAME = os.environ.get("AWS_DEFAULT_REGION", "ap-south-1")
+    AWS_SES_REGION_ENDPOINT = f"email.{AWS_SES_REGION_NAME}.amazonaws.com"

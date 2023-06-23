@@ -1,6 +1,6 @@
 from django.urls import path
 from home.views.general import Index, Profile
-from home.views.auth import Login, Register
+from home.views.authentication import Login, Register
 from home.views.blogs import BlogsListView, BlogDetailView, BlogCreateView, BlogUpdateView
 from home.views.newsletters import NewsLettersListView, NewsLetterDetailView, NewsLetterCreateView, NewsLetterUpdateView
 from home.views.projects import ProjectsListView
