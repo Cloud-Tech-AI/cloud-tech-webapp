@@ -118,14 +118,20 @@ WSGI_APPLICATION = 'cloudtech_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+DATABASE_NAME = env.str('DATABASE_NAME', default='test')
+DATABASE_USER = env.str('DATABASE_USER', default='ishan_tenant')
+DATABASE_PASSWORD = env.str('DATABASE_PASSWORD', default='Ishan@123')
+DATABASE_HOST = env.str('DATABASE_HOST', default='localhost')
+DATABASE_PORT = env.str('DATABASE_PORT', default='5432')
+
 DATABASES = {
     'default': {
         'ENGINE': 'django_tenants.postgresql_backend',
-        'NAME': 'ishan_tenant',
-        'USER': 'ishan_tenant',
-        'PASSWORD': 'Ishan@123',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': DATABASE_NAME,
+        'USER': DATABASE_USER,
+        'PASSWORD': DATABASE_PASSWORD,
+        'HOST': DATABASE_HOST,
+        'PORT': DATABASE_PORT,
     }
 }
 
