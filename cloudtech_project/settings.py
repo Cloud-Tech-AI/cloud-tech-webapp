@@ -187,7 +187,7 @@ MEDIA_ROOT = env.str('MEDIA_ROOT', os.path.join(BASE_DIR, 'media'))
 
 PUBLIC_URL = env.str('PUBLIC_URL', default='http://localhost:8000/')
 
-CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_BROKER_URL = 'redis://redis:6379'
 CELERY_RESULT_BACKEND = 'django-db'
 
 EMAIL_BACKEND = env.str('EMAIL_BACKEND', default="django.core.mail.backends.console.EmailBackend")
