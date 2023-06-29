@@ -1,5 +1,4 @@
 from django.db import models
-from django.urls import reverse
 
 from django_tenants.models import DomainMixin, TenantMixin
 from django_tenants.utils import get_tenant_type_choices
@@ -25,12 +24,6 @@ class Community(UUIDMixin, TenantMixin):
 
     def get_domains(self):
         return self.domains.all().values_list('domain', flat=True)
-
-    def get_absolute_url(self):
-        return reverse('content:manage.general', kwargs={'pk': str(self.pk)})
-
-    def get_update_url(self):
-        return reverse('content:manage.general.edit', kwargs={'pk': str(self.pk)})
 
     def get_domain_str(self):
         return self.domains.first().domain

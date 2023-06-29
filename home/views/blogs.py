@@ -6,7 +6,7 @@ from django.views.generic import DetailView, CreateView, UpdateView
 from django_filters.views import FilterView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from content.models import Blog
-from web.filter import BlogFilter
+from web.filters import BlogFilter
 from ..forms.blog import BlogCreateForm
 from mixins.models import IsValidUserMixin
 

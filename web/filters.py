@@ -1,4 +1,5 @@
 import django_filters
+from django.db import connection
 from django.forms import widgets
 from content.models import Blog, NewsLetter
 from community.models import Community, Tag
@@ -27,7 +28,7 @@ class BlogFilter(django_filters.FilterSet):
                                        }),
                                        label='Author')
     
-    tag = django_filters.ChoiceFilter(choices=[(tag.name, tag.name) for tag in Tag.objects.all()],
+    tag = django_filters.ChoiceFilter(choices=[],
                                        field_name='tags__name',
                                        empty_label='Tag',
                                        widget=widgets.Select(attrs={
@@ -38,7 +39,7 @@ class BlogFilter(django_filters.FilterSet):
                                        }),
                                        label='Tag')
     
-    tenant = django_filters.ChoiceFilter(choices=[(community.name, community.name) for community in Community.objects.all()],
+    tenant = django_filters.ChoiceFilter(choices=[],
                                          field_name='tenant_name',
                                          empty_label='Tier',
                                         widget=widgets.Select(attrs={
@@ -48,6 +49,12 @@ class BlogFilter(django_filters.FilterSet):
                                             'onblur': "this.style.border='1px solid #ced4da';",
                                        }),
                                          label='Tier')
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if connection.connection is not None:
+            self.filters['tag'].extra['choices'] = [(tag.name, tag.name) for tag in Tag.objects.all()]
+            self.filters['tenant'].extra['choices'] = [(community.name, community.name) for community in Community.objects.all()]
     
     def search_blog_filter(self, queryset, name, value):
         return queryset.filter(title__icontains=value)
@@ -83,7 +90,7 @@ class NewsLetterFilter(django_filters.FilterSet):
                                        }),
                                        label='Author')
     
-    tag = django_filters.ChoiceFilter(choices=[(tag.name, tag.name) for tag in Tag.objects.all()],
+    tag = django_filters.ChoiceFilter(choices=[],
                                        field_name='tags__name',
                                        empty_label='Tag',
                                        widget=widgets.Select(attrs={
@@ -94,7 +101,7 @@ class NewsLetterFilter(django_filters.FilterSet):
                                        }),
                                        label='Tag')
     
-    tenant = django_filters.ChoiceFilter(choices=[(community.name, community.name) for community in Community.objects.all()],
+    tenant = django_filters.ChoiceFilter(choices=[],
                                          field_name='tenant_name',
                                          empty_label='Tier',
                                         widget=widgets.Select(attrs={
@@ -104,6 +111,12 @@ class NewsLetterFilter(django_filters.FilterSet):
                                             'onblur': "this.style.border='1px solid #ced4da';",
                                        }),
                                          label='Tier')
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if connection.connection is not None:
+            self.filters['tag'].extra['choices'] = [(tag.name, tag.name) for tag in Tag.objects.all()]
+            self.filters['tenant'].extra['choices'] = [(community.name, community.name) for community in Community.objects.all()]
     
     def search_newsletter_filter(self, queryset, name, value):
         return queryset.filter(title__icontains=value)

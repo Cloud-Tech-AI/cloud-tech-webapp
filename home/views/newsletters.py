@@ -5,7 +5,7 @@ from django.views.generic import DetailView, CreateView, UpdateView
 from django_filters.views import FilterView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from content.models import NewsLetter
-from web.filter import NewsLetterFilter
+from web.filters import NewsLetterFilter
 from ..forms.newsletter import NewsLetterCreateForm
 from mixins.models import IsValidUserMixin
 

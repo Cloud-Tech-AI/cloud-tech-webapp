@@ -6,7 +6,7 @@ from django.db.models import Value, CharField, Prefetch
 from content.models import NewsLetter
 from community.models import Community
 from mixins.views import GetTenantsMixin
-from ..filter import NewsLetterFilter
+from ..filters import NewsLetterFilter
 
 class NewsLettersListView(GetTenantsMixin, ListView):
     model = NewsLetter

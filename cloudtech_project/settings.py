@@ -118,14 +118,20 @@ WSGI_APPLICATION = 'cloudtech_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+DATABASE_NAME = env.str('DATABASE_NAME', default='test')
+DATABASE_USER = env.str('DATABASE_USER', default='ishan_tenant')
+DATABASE_PASSWORD = env.str('DATABASE_PASSWORD', default='Ishan@123')
+DATABASE_HOST = env.str('DATABASE_HOST', default='localhost')
+DATABASE_PORT = env.str('DATABASE_PORT', default='5432')
+
 DATABASES = {
     'default': {
         'ENGINE': 'django_tenants.postgresql_backend',
-        'NAME': 'ishan_tenant',
-        'USER': 'ishan_tenant',
-        'PASSWORD': 'Ishan@123',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': DATABASE_NAME,
+        'USER': DATABASE_USER,
+        'PASSWORD': DATABASE_PASSWORD,
+        'HOST': DATABASE_HOST,
+        'PORT': DATABASE_PORT,
     }
 }
 
@@ -181,7 +187,7 @@ MEDIA_ROOT = env.str('MEDIA_ROOT', os.path.join(BASE_DIR, 'media'))
 
 PUBLIC_URL = env.str('PUBLIC_URL', default='http://localhost:8000/')
 
-CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_BROKER_URL = 'redis://redis:6379'
 CELERY_RESULT_BACKEND = 'django-db'
 
 EMAIL_BACKEND = env.str('EMAIL_BACKEND', default="django.core.mail.backends.console.EmailBackend")

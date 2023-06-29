@@ -7,7 +7,7 @@ from django.db.models import Value, CharField, Prefetch
 from content.models import Blog
 from community.models import Community
 from mixins.views import GetTenantsMixin
-from ..filter import BlogFilter
+from ..filters import BlogFilter
 
 
 class BlogsListView(GetTenantsMixin, ListView):
