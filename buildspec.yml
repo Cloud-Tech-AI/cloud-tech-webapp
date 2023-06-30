@@ -8,8 +8,8 @@ phases:
   build:
     commands:
       - echo Building the Docker image...
-      - sudo docker build -t 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech/webapp:latest .
+      - docker build -t 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech/webapp:latest .
   post_build:
     commands:
       - echo Pushing the Docker image to Amazon ECR...
-      - sudo docker push 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech/webapp:latest
+      - docker push 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech/webapp:latest
