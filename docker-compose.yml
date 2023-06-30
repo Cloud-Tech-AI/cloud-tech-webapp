@@ -6,13 +6,13 @@ services:
       - 6379:6379
 
   django-app:
-    image: cloudtech
+    image: 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech/webapp:latest
     ports:
       - 8000:8000
     command: python manage.py runserver 0.0.0.0:8000
 
   celery-worker:
-    image: cloudtech
+    image: 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech/webapp:latest
     command: celery -A cloudtech_project worker -l info
     depends_on:
       - redis
