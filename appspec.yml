@@ -1,0 +1,20 @@
+version: 0.0
+os: linux
+resources:
+  - docker-compose.yml
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech
+
+  build:
+    commands:
+      - echo Pulling Docker image from ECR...
+      - docker-compose -f docker-compose.yml pull
+
+  post_build:
+    commands:
+      - echo Starting the application...
+      - docker-compose -f docker-compose.yml up -d
