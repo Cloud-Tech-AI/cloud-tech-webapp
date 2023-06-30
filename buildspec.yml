@@ -9,22 +9,23 @@ phases:
     commands:
       - echo Deleting the Docker image if it exists...
       - |
-        if docker inspect 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:webapp >/dev/null 2>&1; then
-          docker rmi 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:webapp
+        if docker inspect 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest >/dev/null 2>&1; then
+          docker rmi 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest
+          echo Deleted File 1
         fi
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech
-      
       - echo Deleting the Docker image from ECR if it exists...
       - |
-        if aws ecr describe-images --repository-name 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech --image-ids imageTag=webapp >/dev/null 2>&1; then
-          aws ecr batch-delete-image --repository-name 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech --image-ids imageTag=webapp
+        if aws ecr describe-images --repository-name 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech --image-ids imageTag=latest >/dev/null 2>&1; then
+          aws ecr batch-delete-image --repository-name 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech --image-ids imageTag=latest
+          echo Deleted File 2
         fi
   build:
     commands:
       - echo Building the Docker image...
-      - docker build -t 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:webapp .
+      - docker build -t 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest .
   post_build:
     commands:
       - echo Pushing the Docker image to Amazon ECR...
-      - docker push 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:webapp
+      - docker push 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest
