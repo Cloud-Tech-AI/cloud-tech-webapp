@@ -7,8 +7,19 @@ phases:
       - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
   pre_build:
     commands:
+      - echo Deleting the Docker image if it exists...
+      - |
+        if docker inspect 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:webapp >/dev/null 2>&1; then
+          docker rmi 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:webapp
+        fi
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech
+      
+      - echo Deleting the Docker image from ECR if it exists...
+      - |
+        if aws ecr describe-images --repository-name 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech --image-ids imageTag=webapp >/dev/null 2>&1; then
+          aws ecr batch-delete-image --repository-name 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech --image-ids imageTag=webapp
+        fi
   build:
     commands:
       - echo Building the Docker image...
