@@ -29,3 +29,7 @@ phases:
     commands:
       - echo Pushing the Docker image to Amazon ECR...
       - docker push 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest
+
+artifacts:
+  files:
+    - '**/*'
