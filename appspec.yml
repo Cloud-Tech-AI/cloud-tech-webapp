@@ -12,9 +12,9 @@ phases:
   build:
     commands:
       - echo Pulling Docker image from ECR...
-      - docker-compose -f docker-compose.yml pull
+      - docker pull 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest
 
   post_build:
     commands:
       - echo Starting the application...
-      - docker-compose -f docker-compose.yml up -d
+      - docker-compose up
