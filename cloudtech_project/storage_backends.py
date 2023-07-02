@@ -14,5 +14,6 @@ class MediaStorage(S3Boto3Storage):
 class StaticStorage(S3Boto3Storage):
     bucket_name = os.getenv('S3_STATIC_BUCKET')
     region_name = os.getenv('S3_STATIC_BUCKET_REGION')
+    default_acl = 'public-read'
     querystring_auth = False
     file_overwrite = True

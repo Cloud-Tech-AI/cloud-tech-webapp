@@ -13,10 +13,10 @@ User = get_user_model()
 def admin_notification_email(community_id, username):
     community = Community.objects.get(id=community_id)
     user = User.objects.get(username=username)
-    logging.info(type(user))
     message = f"""
     <p>User Created !</p>
-    <p>Name: {user.username} {user.email}</p>
+    <p>Name: {user.username}</p>
+    <p>Email: {user.email}</p>
     <p>Tenant: {community.name}</p>
     """
     send_mail(subject=f"User Creation Notification",
@@ -35,8 +35,8 @@ def user_notification_email(community_id, username):
     login_url = urllib.parse.urljoin(domain_url, settings.LOGIN_URL)
     message = f"""
     <p>Hello {user.username},</p>
-    <p>We are elated to welcome you to CloudTech Community !</p>
-    <p>Congratulations on successfully creating your account! We believe that you will have a great experience engaging and collaborating with other members on CloudTech.</p>
+    <p>We are elated to welcome you to the CloudTech Community !</p>
+    <p>Congratulations on successfully creating your account! We hope you will have a great experience engaging and collaborating with other members on CloudTech.</p>
     
     <p>Please login <a href="{login_url}">here</a> to access your account.</p>
 
@@ -46,5 +46,5 @@ def user_notification_email(community_id, username):
     send_mail(subject=f"Welcome to CloudTech !",
               message=message,
               from_email=settings.DEFAULT_FROM_EMAIL,
-              recipient_list=[user.email],
+              recipient_list=[settings.DEFAULT_FROM_EMAIL], # user.email
               html_message=message)
