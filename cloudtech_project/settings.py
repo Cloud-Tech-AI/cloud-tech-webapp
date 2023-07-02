@@ -123,7 +123,7 @@ WSGI_APPLICATION = 'cloudtech_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASE_NAME = env.str('DATABASE_NAME', default='test')
+DATABASE_NAME = env.str('DATABASE_NAME', default='ishan_tenant')
 DATABASE_USER = env.str('DATABASE_USER', default='ishan_tenant')
 DATABASE_PASSWORD = env.str('DATABASE_PASSWORD', default='Ishan@123')
 DATABASE_HOST = env.str('DATABASE_HOST', default='localhost')
@@ -189,20 +189,19 @@ else:
     AWS_S3_SIGNATURE_VERSION = 's3v4'
     AWS_S3_ADDRESSING_STYLE = "path"
     STATICFILES_STORAGE = 'cloudtech_project.storage_backends.StaticStorage'
-    STATIC_URL = f'https://{os.getenv("S3_STATIC_BUCKET_REGION")}.s3.amazonaws.com/static/'
+    STATIC_URL = '/static/' # This doesn't get used
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "staticfiles"),
 ]
 
-print(STATIC_URL)
 PUBLIC_URL = env.str('PUBLIC_URL', default='http://localhost:8000/')
 
-CELERY_BROKER_URL = 'redis://redis:6379'
+CELERY_BROKER_URL = 'redis://localhost:6379'
 CELERY_RESULT_BACKEND = 'django-db'
 
 EMAIL_BACKEND = env.str('EMAIL_BACKEND', default="django.core.mail.backends.console.EmailBackend")
-DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL', default="ishan.modi24@gmail.com")
+DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL', default="thecloudtechforall@gmail.com")
 if EMAIL_BACKEND == 'django_ses.SESBackend':
     AWS_SES_REGION_NAME = os.environ.get("AWS_DEFAULT_REGION", "ap-south-1")
     AWS_SES_REGION_ENDPOINT = f"email.{AWS_SES_REGION_NAME}.amazonaws.com"
