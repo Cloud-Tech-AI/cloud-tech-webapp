@@ -76,10 +76,15 @@ for schema in TENANT_TYPES:
 TENANT_MODEL = 'community.Community'
 TENANT_DOMAIN_MODEL = 'community.Domain'
 
-TENANT_USERS_DOMAIN = env.str('TENANT_DOMAIN_NAME', default='*/localhost')
+TENANT_USERS_DOMAIN = env.str('TENANT_USERS_DOMAIN', default='*/localhost')
 TENANT_BASE_URL = env.str('TENANT_BASE_URL', default='http://%s.localhost:8000')
 PUBLIC_SCHEMA_NAME = env.str('PUBLIC_SCHEMA_NAME', default='public')
-PUBLIC_SCHEMA_DOMAIN = env.str('PUBLIC_DOMAIN_NAME', default='localhost')
+PUBLIC_SCHEMA_DOMAIN = env.str('PUBLIC_SCHEMA_DOMAIN', default='localhost')
+
+print(TENANT_USERS_DOMAIN)
+print(TENANT_BASE_URL)
+print(PUBLIC_SCHEMA_NAME)
+print(PUBLIC_SCHEMA_DOMAIN)
 
 MIDDLEWARE = [
     'content.tenant_middleware.TenantMainMiddleware',
@@ -168,23 +173,29 @@ USE_I18N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
+if 'localhost' in TENANT_USERS_DOMAIN:
+    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+    DEFAULT_MEDIA_STORAGE = 'django.core.files.storage.FileSystemStorage'
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+    STATIC_URL = '/static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+else:
+    DEFAULT_FILE_STORAGE = 'cloudtech_project.storage_backends.MediaStorage'
+    DEFAULT_MEDIA_STORAGE = 'cloudtech_project.storage_backends.MediaStorage'
+    AWS_S3_FILE_OVERWRITE = False
+    AWS_QUERYSTRING_AUTH = True
+    AWS_S3_SIGNATURE_VERSION = 's3v4'
+    AWS_S3_ADDRESSING_STYLE = "path"
+    STATICFILES_STORAGE = 'cloudtech_project.storage_backends.StaticStorage'
+    STATIC_URL = f'https://{os.getenv("S3_STATIC_BUCKET_REGION")}.s3.amazonaws.com/static/'
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "staticfiles"),
 ]
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = env.str('MEDIA_ROOT', os.path.join(BASE_DIR, 'media'))
-
+print(STATIC_URL)
 PUBLIC_URL = env.str('PUBLIC_URL', default='http://localhost:8000/')
 
 CELERY_BROKER_URL = 'redis://redis:6379'
