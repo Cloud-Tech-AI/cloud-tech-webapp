@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-39yux8xnm4d$aqwc&9!wn_hxz%1ki=1rivuibwj$f38u0gl(5s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [env.str('TENANT_USERS_DOMAIN')[1:]] if env.str('TENANT_USERS_DOMAIN', None) else ['*']
 
 # Application definition
 HAS_MULTI_TYPE_TENANTS = True
@@ -77,12 +77,11 @@ TENANT_MODEL = 'community.Community'
 TENANT_DOMAIN_MODEL = 'community.Domain'
 
 TENANT_USERS_DOMAIN = env.str('TENANT_USERS_DOMAIN', default='*/localhost')
-TENANT_BASE_URL = env.str('TENANT_BASE_URL', default='http://%s.localhost:8000')
+PUBLIC_URL = env.str('PUBLIC_URL', default='http://localhost:8000')
 PUBLIC_SCHEMA_NAME = env.str('PUBLIC_SCHEMA_NAME', default='public')
 PUBLIC_SCHEMA_DOMAIN = env.str('PUBLIC_SCHEMA_DOMAIN', default='localhost')
 
 print(TENANT_USERS_DOMAIN)
-print(TENANT_BASE_URL)
 print(PUBLIC_SCHEMA_NAME)
 print(PUBLIC_SCHEMA_DOMAIN)
 
@@ -195,9 +194,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "staticfiles"),
 ]
 
-PUBLIC_URL = env.str('PUBLIC_URL', default='http://localhost:8000/')
-
-CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_BROKER_URL = 'redis://redis:6379'
 CELERY_RESULT_BACKEND = 'django-db'
 
 EMAIL_BACKEND = env.str('EMAIL_BACKEND', default="django.core.mail.backends.console.EmailBackend")
