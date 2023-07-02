@@ -31,7 +31,6 @@ class NewsLettersListView(GetTenantsMixin, ListView):
                 filtered_newsletters = self.filterset_class(self.request.GET, queryset=self.get_queryset(tenant = tenant))
                 newsletters.extend(list(filtered_newsletters.qs))
         context['newsletters'] = newsletters
-        logging.info(context['newsletters'][0].tenant_name)
         context['filter'] = self.filterset_class
         return context
 
