@@ -24,7 +24,8 @@ phases:
   build:
     commands:
       - echo Building the Docker image...
-      - docker build -t 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest .
+      - docker build -t cloudtech .
+      - docker tag cloutech:latest 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest
   post_build:
     commands:
       - echo Pushing the Docker image to Amazon ECR...
