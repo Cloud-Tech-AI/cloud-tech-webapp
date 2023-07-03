@@ -1,20 +1,20 @@
 version: 0.0
 os: linux
-resources:
-  - docker-compose.yml
+files:
+  - source: /
+    destination: /home/ubuntu/cloud-tech-webapp/
+permissions:
+  - object: /home/ubuntu/cloud-tech-webapp/
+    pattern: "**"
+    owner: root
+    group: root
 
-phases:
-  pre_build:
-    commands:
-      - echo Logging in to Amazon ECR...
-      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech
-
-  build:
-    commands:
-      - echo Pulling Docker image from ECR...
-      - docker pull 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest
-
-  post_build:
-    commands:
-      - echo Starting the application...
-      - docker-compose up
+hooks:
+  BeforeInstall:
+    - location: scripts/before_install.sh
+      timeout: 1200
+      runas: root
+  AfterInstall:
+    - location: scripts/build_run.sh
+      timeout: 600
+      runas: root
