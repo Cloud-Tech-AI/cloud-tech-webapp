@@ -1,0 +1,23 @@
+# INITIAL
+sudo apt-get install poetry
+poetry install
+
+
+# TERMINAL 1
+python manage.py migrate
+python manage.py makemigrations
+python manage.py migrate
+python manage.py collectstatic
+
+python manage.py createsuperuser --username=<YOUR USERNAME>
+python manage.py create_tenant --schema_name=member --name=member --domain-domain=member.<YOUR DOMAIN>
+python manage.py create_tenant --schema_name=moderator --name=moderator --domain-domain=moderator.<YOUR DOMAIN>
+python manage.py create_tenant --schema_name=hero --name=hero --domain-domain=hero.<YOUR DOMAIN>
+
+
+# TERMINAL 2
+sudo systemctl start redis
+
+
+# TERMINAL 3
+celery -A cloudtech_project worker -l info

@@ -127,4 +127,3 @@ class NewsLetterFilter(django_filters.FilterSet):
     class Meta:
         model = NewsLetter
         fields = ('search_newsletter', 'search_author', 'tag', 'tenant')
-
