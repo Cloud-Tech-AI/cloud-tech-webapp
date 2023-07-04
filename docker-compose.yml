@@ -1,9 +1,10 @@
 version: '3'
 services:
   redis:
-    image: redis:latest
+    image: 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest
     ports:
       - 6379:6379
+    command: systemctl start redis
 
   django-app:
     env_file:
@@ -20,4 +21,3 @@ services:
     command: celery -A cloudtech_project worker -l info
     depends_on:
       - redis
-
