@@ -4,6 +4,7 @@ COPY ./pyproject.toml ./poetry.lock /home/cloudtech/
 WORKDIR /home/cloudtech
 
 RUN apt update && \
+    apt install -y redis-server && \
     pip install -U pip setuptools poetry && \
     poetry export -f requirements.txt --output requirements.txt --without-hashes && \
     pip install --no-cache-dir --upgrade -r requirements.txt
