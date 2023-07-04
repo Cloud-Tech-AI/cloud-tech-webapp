@@ -4,7 +4,7 @@ services:
     image: 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest
     ports:
       - 6379:6379
-    command: systemctl start redis
+    command: redis-server
 
   django-app:
     env_file:
