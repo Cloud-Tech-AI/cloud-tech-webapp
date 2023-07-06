@@ -160,7 +160,7 @@ USE_I18N = True
 USE_TZ = True
 
 # Files Storage settings static and media
-if 'localhost' in TENANT_USERS_DOMAIN:
+if 'localhost' in TENANT_USERS_DOMAIN and False:
     DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
     DEFAULT_MEDIA_STORAGE = 'django.core.files.storage.FileSystemStorage'
     MEDIA_URL = '/media/'
