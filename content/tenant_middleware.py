@@ -27,7 +27,7 @@ class TenantMainMiddleware(MiddlewareMixin):
         """ Extracts hostname from request. Used for custom requests filtering.
             By default removes the request's port and common prefixes.
         """
-        return remove_www(request.get_host().split(':')[0])
+        return remove_www(request.get_host())
 
     def get_tenant(self, domain_model, hostname):
         domain = domain_model.objects.select_related('tenant').get(domain=hostname)
