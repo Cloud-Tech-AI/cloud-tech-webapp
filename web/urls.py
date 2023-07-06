@@ -1,5 +1,5 @@
 from django.urls import path
-from web.views.general import Index, About, RedirectTenant
+from web.views.general import Index, About
 from web.views.blogs import BlogsListView, BlogDetailView
 from web.views.newsletters import NewsLettersListView, NewsLetterDetailView
 from web.views.projects import ProjectsListView
@@ -9,8 +9,7 @@ app_name = 'web'
 
 urlpatterns = [
     path('', Index.as_view(), name='web'),
-    path('about/', About.as_view(), name='about'),
-    path('redirect/<str:domain>/', RedirectTenant.as_view(), name='redirect'),
+    path('about/', About.as_view(), name='about')
 ]
 
 urlpatterns += [
