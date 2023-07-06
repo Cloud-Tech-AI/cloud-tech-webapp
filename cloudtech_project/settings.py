@@ -24,18 +24,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-39yux8xnm4d$aqwc&9!wn_hxz%1ki=1rivuibwj$f38u0gl(5s'
+# Application configuration
+SECRET_KEY = env.str('SECRET_KEY', default='Ishan123')
+DEBUG = env.bool('DEBUG', default=True)
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = [env.str('TENANT_USERS_DOMAIN')[1:]] if env.str('TENANT_USERS_DOMAIN', None) else ['*']
-
-# Application definition
-HAS_MULTI_TYPE_TENANTS = True
-MULTI_TYPE_DATABASE_FIELD = 'type'
-
+# tenant settings
+TENANT_USERS_DOMAIN = env.str('TENANT_USERS_DOMAIN', default='*/localhost')
+PUBLIC_URL = env.str('PUBLIC_URL', default='http://localhost:8000')
+PUBLIC_SCHEMA_NAME = env.str('PUBLIC_SCHEMA_NAME', default='public')
+PUBLIC_SCHEMA_DOMAIN = env.str('PUBLIC_SCHEMA_DOMAIN', default='localhost')
 TENANT_TYPES = {
     'public': {
         'URLCONF': 'cloudtech_project.urls_public',
@@ -68,23 +65,23 @@ TENANT_TYPES = {
         ]
     }
 }
+TENANT_MODEL = 'community.Community'
+TENANT_DOMAIN_MODEL = 'community.Domain'
+SHOW_PUBLIC_IF_NO_TENANT_FOUND = True
 
+# Allowed hosts
+ALLOWED_HOSTS = [env.str('TENANT_USERS_DOMAIN')[1:]] if env.str('TENANT_USERS_DOMAIN', None) else ['*']
+
+# Application definition
+HAS_MULTI_TYPE_TENANTS = True
+MULTI_TYPE_DATABASE_FIELD = 'type'
+
+# Installed apps
 INSTALLED_APPS = []
 for schema in TENANT_TYPES:
     INSTALLED_APPS += [app for app in TENANT_TYPES[schema]["APPS"] if app not in INSTALLED_APPS]
 
-TENANT_MODEL = 'community.Community'
-TENANT_DOMAIN_MODEL = 'community.Domain'
-
-TENANT_USERS_DOMAIN = env.str('TENANT_USERS_DOMAIN', default='*/localhost')
-PUBLIC_URL = env.str('PUBLIC_URL', default='http://localhost:8000')
-PUBLIC_SCHEMA_NAME = env.str('PUBLIC_SCHEMA_NAME', default='public')
-PUBLIC_SCHEMA_DOMAIN = env.str('PUBLIC_SCHEMA_DOMAIN', default='localhost')
-
-print(TENANT_USERS_DOMAIN)
-print(PUBLIC_SCHEMA_NAME)
-print(PUBLIC_SCHEMA_DOMAIN)
-
+# Middleware
 MIDDLEWARE = [
     'content.tenant_middleware.TenantMainMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -96,11 +93,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# URLs
 ROOT_URLCONF = 'cloudtech_project.urls'
 PUBLIC_SCHEMA_URLCONF = 'cloudtech_project.urls_public'
 
-SHOW_PUBLIC_IF_NO_TENANT_FOUND = True
-
+# Templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -117,17 +114,15 @@ TEMPLATES = [
     },
 ]
 
+# WSGI
 WSGI_APPLICATION = 'cloudtech_project.wsgi.application'
 
 # Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
 DATABASE_NAME = env.str('DATABASE_NAME', default='ishan_tenant')
 DATABASE_USER = env.str('DATABASE_USER', default='ishan_tenant')
 DATABASE_PASSWORD = env.str('DATABASE_PASSWORD', default='Ishan@123')
 DATABASE_HOST = env.str('DATABASE_HOST', default='localhost')
 DATABASE_PORT = env.str('DATABASE_PORT', default='5432')
-
 DATABASES = {
     'default': {
         'ENGINE': 'django_tenants.postgresql_backend',
@@ -138,14 +133,11 @@ DATABASES = {
         'PORT': DATABASE_PORT,
     }
 }
-
 DATABASE_ROUTERS = (
     'django_tenants.routers.TenantSyncRouter',
 )
 
 # Password validation
-# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -162,16 +154,12 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Internationalization
-# https://docs.djangoproject.com/en/4.2/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
+# Files Storage settings static and media
 if 'localhost' in TENANT_USERS_DOMAIN:
     DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
     DEFAULT_MEDIA_STORAGE = 'django.core.files.storage.FileSystemStorage'
@@ -194,16 +182,18 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "staticfiles"),
 ]
 
+# Celery settings
 CELERY_BROKER_URL = f"redis://{env.str('REDIS_HOST', default='localhost')}:6379"
 CELERY_RESULT_BACKEND = 'django-db'
 
+# Email settings
 EMAIL_BACKEND = env.str('EMAIL_BACKEND', default="django.core.mail.backends.console.EmailBackend")
 DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL', default="thecloudtechforall@gmail.com")
 if EMAIL_BACKEND == 'django_ses.SESBackend':
     AWS_SES_REGION_NAME = env.str('SES_REGION', default="us-east-1")
     AWS_SES_REGION_ENDPOINT = env.str('SES_ENDPOINT_URL', default="https://email.ap-south-1.amazonaws.com")
 
-
+# Cloud Tech URLs
 CLOUDTECH_URLS = {
     "email":"mailto:ishan.modi24@gmail.com",
     "linkedin":"https://www.linkedin.com/company/cloud-techs/?viewAsMember=true",

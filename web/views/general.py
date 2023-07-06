@@ -21,11 +21,3 @@ class About(GetTenantsMixin, TemplateView):
         context['tenants'] = self.get_tenants()
         return context
 
-
-class RedirectTenant(RedirectView):
-    def get_redirect_url(self, *args, **kwargs):
-        domain = kwargs['domain']
-        # Perform any necessary processing using the domain
-
-        # Return the desired URL to redirect to
-        return f"http://{domain}:8000/"

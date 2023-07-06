@@ -20,7 +20,7 @@
       <img src="{% static 'assets/img/nav/contrib.jpg' %}" class="dropdown-btn circular-image" onclick="toggleDropdown()">
       <div class="dropdown-content" id="dropdown-content">
         {% for tenant in tenants %}
-        <a class="dropdown-item" href="{% url 'web:redirect' tenant.get_domains|first %}">{{ tenant.name }}</a>
+        <a class="dropdown-item" href="{% url tenant.get_domains|first %}">{{ tenant.name }}</a>
         {% endfor %}
         </a>
       </div>
