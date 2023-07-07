@@ -160,7 +160,7 @@ USE_I18N = True
 USE_TZ = True
 
 # Files Storage settings static and media
-if 'localhost' in TENANT_USERS_DOMAIN and False:
+if 'localhost' in TENANT_USERS_DOMAIN:
     DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
     DEFAULT_MEDIA_STORAGE = 'django.core.files.storage.FileSystemStorage'
     MEDIA_URL = '/media/'
@@ -183,7 +183,7 @@ STATICFILES_DIRS = [
 ]
 
 # Celery settings
-CELERY_BROKER_URL = f"redis://{env.str('REDIS_HOST', default='localhost')}:6379"
+CELERY_BROKER_URL = f"redis://{env.str('REDIS_HOST', default='localhost')}:6379/0"
 CELERY_RESULT_BACKEND = 'django-db'
 
 # Email settings
