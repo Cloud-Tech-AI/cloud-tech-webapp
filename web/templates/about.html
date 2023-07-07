@@ -1,4 +1,5 @@
 {% extends 'layouts/base_web.html' %}
+{% load static %}
 
 {% block title %}About{% endblock title %}
 
@@ -13,7 +14,7 @@
         <div class="row">
             <div class="col-lg-3 content">
                 <div class="circular-image">
-                    <img src="/static/assets/img/nav/cloudtech_logo.jpg" class="img-fluid" alt="">
+                    <img src="{% static 'assets/img/nav/cloudtech_logo.jpg' %}" class="img-fluid" alt="">
                 </div>
                 <br>
                 <h2>Cloud Tech</h2>

@@ -19,6 +19,7 @@
                 </button>
                 </a>&nbsp;&nbsp;&nbsp;&nbsp;
             <form class="d-flex">
+                {% csrf_token %}
                 {{ filter.form.search_blog }}&nbsp;
                 {{ filter.form.tag }}&nbsp;
                 <button type="submit" class="btn-sm rounded" style="border: 1px; width: 100px; height: 35px;">
