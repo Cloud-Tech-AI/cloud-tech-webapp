@@ -48,7 +48,7 @@ touch .env
 # setup nginx
 sudo apt-get update
 sudo apt-get install nginx -y
-
+sudo rm -r /etc/nginx/sites-available/default
 config_block='
 server {
     listen 80 default_server;
@@ -61,5 +61,4 @@ server {
 }
 '
 echo "$config_block" | sudo tee -a /etc/nginx/sites-available/default
-
 sudo service nginx restart

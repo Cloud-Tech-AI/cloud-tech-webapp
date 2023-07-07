@@ -1,3 +1,7 @@
 #!/bin/sh
 set -e
-exec "$@"
+
+for cmd in "$@"; do
+    echo "Executing command: $cmd"
+    eval "$cmd"
+done
