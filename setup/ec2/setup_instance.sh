@@ -44,3 +44,22 @@ cd cloudtech_project
 
 # Create .env file
 touch .env
+
+# setup nginx
+sudo apt-get update
+sudo apt-get install nginx -y
+
+config_block='
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name *.cloudtechforall.ml;
+
+    location / {
+        uwsgi_pass 127.0.0.1:8000;
+    }
+}
+'
+echo "$config_block" | sudo tee -a /etc/nginx/sites-available/default
+
+sudo service nginx restart

@@ -12,7 +12,11 @@ services:
     image: 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest
     ports:
       - 8000:8000
-    command: python manage.py runserver 0.0.0.0:8000
+    command:
+      - python manage.py collectstatic --noinput
+      - python manage.py makemigrations
+      - python manage.py migrate
+      - uwsgi --http :8000 --master --enable-threads --module cloudtech_project.wsgi
 
   celery-worker:
     env_file:
