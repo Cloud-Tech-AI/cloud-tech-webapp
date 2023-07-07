@@ -140,13 +140,13 @@
       link.classList.add("selected");
     }
   }
-
+  
   var imagePaths = [];
   var numberOfImages = 5;
   var element = document.getElementById("storage");
-  var static = element.getAttribute("data-static-url");
+  var staticURL = element.getAttribute("data-static-url");
   for (var i = 1; i <= numberOfImages; i++) {
-    var imagePath = static+ "/assets/img/gallery/img" + i + ".jpg";
+    var imagePath = staticURL + "/img" + i + ".jpg";
     imagePaths.push(imagePath);
   }
 
@@ -158,7 +158,7 @@
 
   var currentIndex = 0;
   var galleryContainer = document.querySelector('.gallery');
-  if (galleryContainer){
+  if (galleryContainer) {
     galleryContainer.appendChild(images[currentIndex]);
 
     function showNextImage() {
