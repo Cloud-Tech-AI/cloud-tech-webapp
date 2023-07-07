@@ -5,6 +5,7 @@ WORKDIR /home/cloudtech
 
 RUN apt update && \
     apt install -y redis-server && \
+    apt install -y build-essential python3-dev && \
     pip install uWSGI && \
     pip install -U pip setuptools poetry && \
     poetry export -f requirements.txt --output requirements.txt --without-hashes && \
