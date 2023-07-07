@@ -183,7 +183,7 @@ STATICFILES_DIRS = [
 ]
 
 # Celery settings
-CELERY_BROKER_URL = f"redis://{env.str('REDIS_HOST', default='localhost')}:6379"
+CELERY_BROKER_URL = f"redis://{env.str('REDIS_HOST', default='localhost')}:6379/0"
 CELERY_RESULT_BACKEND = 'django-db'
 
 # Email settings
