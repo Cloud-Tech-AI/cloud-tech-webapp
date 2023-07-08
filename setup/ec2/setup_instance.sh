@@ -48,7 +48,8 @@ touch .env
 # setup nginx
 sudo apt-get update
 sudo apt-get install nginx -y
-sudo rm -r /etc/nginx/sites-available/default
+systemctl nginx status
+sudo truncate -s 0 /etc/nginx/sites-available/default
 config_block='
 server {
     listen 80 default_server;
@@ -56,9 +57,12 @@ server {
     server_name *.cloudtechforall.ml;
 
     location / {
-        uwsgi_pass 127.0.0.1:8000;
+        proxy_pass http://<EC2-public-ip>:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 }
 '
-echo "$config_block" | sudo tee -a /etc/nginx/sites-available/default
+echo  "$config_block" | sudo tee -a /etc/nginx/sites-available/default
 sudo service nginx restart
