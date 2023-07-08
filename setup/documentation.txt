@@ -23,7 +23,7 @@ postgresql
 docker
 docker-compose
 nginx
-wsgi
+uwsgi
 AWS_S3
 AWS_EC2
 AWS_ECR
