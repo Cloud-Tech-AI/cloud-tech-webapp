@@ -2,24 +2,24 @@
 Steps to setup postgresql locally on ubuntu
 
 ## INSTALL POSTGRESQL
-'''bash
+```bash
 sudo apt update
 sudo apt install postgresql postgresql-contrib
-'''
+```
 
 ## START SERVICE
-'''bash
+```bash
 sudo service postgresql start
-'''
+```
 
 ## LOG INTO POSTGRESQL
-'''bash
+```bash
 sudo -u postgres psql
-'''
+```
 
 ## CREATE USER AND DATABASE
-'''bash
+```bash
 CREATE DATABASE your_database;
 CREATE USER your_user WITH ENCRYPTED PASSWORD 'your_password';
 GRANT ALL PRIVILEGES ON DATABASE your_database TO your_user;
-'''
+```
