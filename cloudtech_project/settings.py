@@ -192,7 +192,7 @@ EMAIL_BACKEND = env.str('EMAIL_BACKEND', default="django.core.mail.backends.cons
 DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL', default="thecloudtechforall@gmail.com")
 if EMAIL_BACKEND == 'django_ses.SESBackend':
     AWS_SES_REGION_NAME = env.str('SES_REGION', default="us-east-1")
-    AWS_SES_REGION_ENDPOINT = env.str('SES_ENDPOINT_URL', default="https://email.ap-south-1.amazonaws.com")
+    AWS_SES_REGION_ENDPOINT = env.str('SES_ENDPOINT_URL', default="email.ap-south-1.amazonaws.com")
 
 # Cloud Tech URLs
 CLOUDTECH_URLS = {
