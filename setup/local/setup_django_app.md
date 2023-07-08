@@ -2,13 +2,13 @@
 Steps to setup django locally on ubuntu
 
 ## INITIAL
-'''bash
+```bash
 sudo apt-get install poetry
 poetry install
-'''
+```
 
 ## TERMINAL 1
-'''bash
+```bash
 python manage.py migrate
 python manage.py makemigrations
 python manage.py migrate
@@ -20,15 +20,15 @@ python manage.py create_tenant --schema_name=moderator --name=moderator --domain
 python manage.py create_tenant --schema_name=hero --name=hero --domain-domain=hero.<YOUR DOMAIN>:<PORT>
 
 python manage.py runserver
-'''
+```
 
 ## TERMINAL 2
-'''bash
+```bash
 sudo systemctl start redis
-'''
+```
 
 
 ## TERMINAL 3
-'''bash
+```bash
 celery -A cloudtech_project worker -l info
-'''
+```
