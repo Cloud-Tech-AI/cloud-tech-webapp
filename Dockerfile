@@ -4,7 +4,6 @@ COPY ./pyproject.toml ./poetry.lock /home/cloudtech/
 WORKDIR /home/cloudtech
 
 RUN apt update && \
-    apt install -y redis-server && \
     apt install -y build-essential python3-dev && \
     pip install uWSGI && \
     pip install -U pip setuptools poetry && \

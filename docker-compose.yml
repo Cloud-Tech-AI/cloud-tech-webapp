@@ -1,11 +1,9 @@
 version: '3'
 services:
   redis:
-    image: 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest
+    image: redis:latest
     ports:
       - 6379:6379
-    command: 
-      - redis-server
 
   django-app:
     env_file:
