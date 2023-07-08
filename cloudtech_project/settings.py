@@ -30,6 +30,7 @@ DEBUG = env.bool('DEBUG', default=True)
 
 # tenant settings
 TENANT_USERS_DOMAIN = env.str('TENANT_USERS_DOMAIN', default='*.localhost')
+TENANT_BASE_URL = env.str('TENANT_BASE_URL', default='http://%s.localhost:8000')
 PUBLIC_URL = env.str('PUBLIC_URL', default='http://localhost:8000')
 PUBLIC_SCHEMA_NAME = env.str('PUBLIC_SCHEMA_NAME', default='public')
 PUBLIC_SCHEMA_DOMAIN = env.str('PUBLIC_SCHEMA_DOMAIN', default='localhost')
