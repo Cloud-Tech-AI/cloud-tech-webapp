@@ -12,7 +12,7 @@ class BasePost(UUIDMixin, TrailMixin, models.Model):
     pub_date = models.DateTimeField(null=True, blank=True)
     sub_title = models.CharField(max_length=500, null=False, blank=False)
     image = models.ImageField(upload_to='', null=False, blank=False)
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, blank=True)
 
     def save(self, *args, **kwargs):
         if not self.pub_date:
@@ -25,12 +25,12 @@ class BasePost(UUIDMixin, TrailMixin, models.Model):
 
 class Blog(BasePost, models.Model):
     body = models.TextField(null=True, blank=True)
-    co_author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    co_author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
 
 class NewsLetter(BasePost, models.Model):
     body = models.TextField(null=True,blank=True)
-    co_author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    co_author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
 
 class Project(BasePost, models.Model):
