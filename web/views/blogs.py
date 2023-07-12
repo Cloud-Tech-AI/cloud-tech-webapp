@@ -1,5 +1,5 @@
 import logging
-from markdown import markdown
+import markdown2
 from django.views.generic import ListView,DetailView
 from django_filters.views import FilterView
 from django_tenants.utils import tenant_context
@@ -52,6 +52,6 @@ class BlogDetailView(GetTenantsMixin, DetailView):
         context['previous_page'] = self.request.META.get('HTTP_REFERER')
         context['tenants'] = self.get_tenants()
         markdown_text = self.object.body
-        html_content = markdown(markdown_text)
+        html_content = markdown2.markdown(markdown_text)
         context['html_content'] = html_content
         return context
