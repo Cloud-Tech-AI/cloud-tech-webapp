@@ -1,5 +1,5 @@
 import logging
-from markdown import markdown
+import markdown2
 
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, UpdateView
@@ -39,7 +39,7 @@ class BlogDetailView(LoginRequiredMixin, IsValidUserMixin, DetailView):
         context = super().get_context_data(**kwargs)
         context['previous_page'] = self.request.META.get('HTTP_REFERER')
         markdown_text = self.object.body
-        html_content = markdown(markdown_text)
+        html_content = markdown2.markdown(markdown_text)
         context['html_content'] = html_content
         return context
     
