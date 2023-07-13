@@ -56,6 +56,11 @@ server {
     listen [::]:80 default_server;
     server_name *.cloudtechforall.ml;
 
+    listen 443 ssl;
+    server_name cloudtechforall.ml *.cloudtechforall.ml; 
+    ssl_certificate /etc/letsencrypt/live/cloudtechforall.ml/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/cloudtechforall.ml/privkey.pem;
+
     location / {
         proxy_pass http://<EC2-public-ip>:8000;
         proxy_set_header Host $host;
@@ -66,3 +71,7 @@ server {
 '
 echo  "$config_block" | sudo tee -a /etc/nginx/sites-available/default
 sudo service nginx restart
+
+# ssl cert using certbot
+# sudo apt install certbot python3-certbot-nginx
+# sudo certbot certonly --dns-route53 -d cloudtechforall.ml -d '*.cloudtechforall.ml' (route53 access to IAM attached to EC2)
