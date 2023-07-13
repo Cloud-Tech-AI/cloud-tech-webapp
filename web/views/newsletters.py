@@ -30,7 +30,7 @@ class NewsLettersListView(GetTenantsMixin, ListView):
             with tenant_context(tenant):
                 filtered_newsletters = self.filterset_class(self.request.GET, queryset=self.get_queryset(tenant = tenant))
                 newsletters.extend(list(filtered_newsletters.qs))
-        context['newsletters'] = newsletters
+        context['newsletters'] = sorted(newsletters, key=lambda x: x.pub_date, reverse=True)
         context['filter'] = self.filterset_class
         return context
 
