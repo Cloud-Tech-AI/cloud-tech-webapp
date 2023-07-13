@@ -66,3 +66,8 @@ server {
 '
 echo  "$config_block" | sudo tee -a /etc/nginx/sites-available/default
 sudo service nginx restart
+
+# ssl cert using certbot
+# sudo apt install certbot python3-certbot-nginx
+# sudo certbot --nginx -d cloudtechforall.ml -d www.cloudtechforall.ml
+
