@@ -46,7 +46,7 @@
                                 {{ tag.name }}&nbsp;
                             {% endfor %}
                         </div>
-                        <small class="text-muted">{{ blog.pub_date|date:"M d" }}</small>
+                        <small class="text-muted">{{ blog.pub_date|date:"M d, Y" }}</small>
                     </div>
                     <div class="col-lg-3">
                         <img src="{{ blog.image.url }}">

@@ -32,7 +32,7 @@ class BlogsListView(GetTenantsMixin, ListView):
             with tenant_context(tenant):
                 filtered_blogs = self.filterset_class(self.request.GET, queryset=self.get_queryset(tenant = tenant))
                 blogs.extend(list(filtered_blogs.qs))
-        context['blogs'] = blogs
+        context['blogs'] = sorted(blogs, key=lambda x: x.pub_date, reverse=True)
         context['filter'] = self.filterset_class
         return context
     
