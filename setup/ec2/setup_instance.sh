@@ -43,7 +43,10 @@ mkdir cloudtech_project
 cd cloudtech_project
 
 # Create .env file
-touch .env
+touch .env  # add env variables as per your project requirements
+
+# Create docker-compose.yml file
+touch docker-compose.yml  # add docker-compose.yml as per your project requirements
 
 # setup nginx
 sudo apt-get update
