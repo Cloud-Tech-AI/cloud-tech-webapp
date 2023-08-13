@@ -2,6 +2,9 @@
 SECRET_KEY=<YOUR_SECRET_KEY>
 DEBUG=False
 
+# CSRF SETTINGS
+CSRF_TRUSTED_ORIGINS=https://cloudtechforall.ml,https://public.cloudtechforall.ml,https://member.cloudtechforall.ml,https://moderator.cloudtechforall.ml,https://hero.cloudtechforall.ml
+
 # TENANT SETTINGS
 TENANT_USERS_DOMAIN=*.cloudtechforall.ml
 TENANT_BASE_URL=http://%s.cloudtechforall.ml

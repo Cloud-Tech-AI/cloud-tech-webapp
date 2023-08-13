@@ -154,6 +154,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# CSRF settings
+CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS',
+                                default=[
+                                    "http://localhost",
+                                    "http://public.localhost",
+                                ])
+
 # Internationalization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
