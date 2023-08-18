@@ -142,7 +142,7 @@
   }
   
   var imagePaths = [];
-  var numberOfImages = 5;
+  var numberOfImages = 7;
   var element = document.getElementById("storage");
   var staticURL = element.getAttribute("data-static-url");
   for (var i = 1; i <= numberOfImages; i++) {
