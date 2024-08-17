@@ -10,6 +10,8 @@ phases:
   pre_build:
     commands:
       #- echo "Adit@2401" | docker login --username "cloudtech2401" --password-stdin
+      - aws --version
+      - aws s3 ls
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 851725593378.dkr.ecr.ap-south-1.amazonaws.com
   build:
