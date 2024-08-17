@@ -8,27 +8,18 @@ phases:
   pre_build:
     commands:
       - echo "Adit@2401" | docker login --username "cloudtech2401" --password-stdin
-
-      - echo Deleting the Docker image if it exists...
-      - |
-        if docker inspect 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest >/dev/null 2>&1; then
-          docker rmi 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest
-        fi
       - echo Logging in to Amazon ECR...
-      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech
-      - echo Deleting the Docker image from ECR if it exists...
-      - |
-        if aws ecr describe-images --repository-name 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech --image-ids imageTag=latest >/dev/null 2>&1; then
-          aws ecr batch-delete-image --repository-name 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech --image-ids imageTag=latest
-        fi
+      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 851725593378.dkr.ecr.ap-south-1.amazonaws.com
   build:
     commands:
       - echo Building the Docker image...
-      - docker build -t 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest .
+      - docker build -t cloudtech .
   post_build:
     commands:
+      - echo Tagging the Docker image...
+      - docker tag cloudtech:latest 851725593378.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest
       - echo Pushing the Docker image to Amazon ECR...
-      - docker push 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest
+      - docker push 851725593378.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest
 
 artifacts:
   files:
