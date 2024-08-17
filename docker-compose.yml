@@ -8,7 +8,7 @@ services:
   django-app:
     env_file:
       - cloudtech_project/.env
-    image: 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest
+    image: 851725593378.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest
     ports:
       - 8000:8000
     command:
@@ -20,7 +20,7 @@ services:
   celery-worker:
     env_file:
       - cloudtech_project/.env
-    image: 392488130328.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest
+    image: 851725593378.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest
     command: 
       - celery -A cloudtech_project worker -l info
     depends_on:
