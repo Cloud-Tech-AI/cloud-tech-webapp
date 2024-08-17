@@ -2,9 +2,9 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/cloud-tech-webapp/
+    destination: /root/cloud-tech-webapp/
 permissions:
-  - object: /home/ubuntu/cloud-tech-webapp/
+  - object: /root/cloud-tech-webapp/
     pattern: "**"
     owner: root
     group: root

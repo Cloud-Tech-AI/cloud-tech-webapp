@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# login as sudo user
-sudo su -
-
 # change to the project directory
 cd cloud-tech-webapp
 
