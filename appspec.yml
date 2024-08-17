@@ -11,17 +11,10 @@ permissions:
 
 hooks:
   BeforeInstall:
-    - inline:
-      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 851725593378.dkr.ecr.ap-south-1.amazonaws.com 
-      - docker pull 851725593378.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest
+    - location: scripts/before_install.sh
       timeout: 1200
       runas: root
   AfterInstall:
-    - inline:
-      - cd cloud-tech-webapp
-      - git pull
-      - ls -a
-      - docker-compose down
-      - docker-compose up -d
+    - location: scripts/build_run.sh
       timeout: 600
       runas: root
