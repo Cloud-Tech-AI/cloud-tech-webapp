@@ -1,6 +1,13 @@
 #!/bin/bash
 
-cd /home/ubuntu/cloud-tech-webapp
+# login as sudo user
+sudo su -
+
+# change to the project directory
+cd cloud-tech-webapp
+
+# Update the repository
+git pull
 
 # List all files in the current directory
 ls -a
