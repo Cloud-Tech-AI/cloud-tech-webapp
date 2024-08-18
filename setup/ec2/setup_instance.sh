@@ -12,20 +12,33 @@ apt install -y git
 
 # Install Docker
 apt install -y docker.io
-
-# Add the current user to the docker group
-usermod -aG docker $USER
-
-# Start the Docker service
-service docker start
+usermod -aG docker $USER # Add the current user to the docker group
+service docker start # Start the Docker service
 
 # Install Docker Compose
 apt install -y docker-compose
+
+# Install Postgresql
+apt install -y postgresql postgresql-contrib
+service postgresql start # Start the Postgresql service
 
 # Install AWS CLI v2
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 ./aws/install
+rm -rf awscliv2.zip aws install # Clean up
+
+# Display installed versions
+docker --version
+docker-compose --version
+psql --version
+aws --version
+
+# Setup the project
+git clone https://github.com/Cloud-Tech-AI/cloud-tech-webapp.git
+cd cloud-tech-webapp/cloudtech_project # Navigate to the project directory
+touch .env  # add env variables as per your project requirements
+cd ../.. # Navigate back to the root directory
 
 # Install the CodeDeploy agent
 apt install -y ruby
@@ -33,20 +46,6 @@ apt install -y wget
 wget https://aws-codedeploy-us-west-2.s3.us-west-2.amazonaws.com/latest/install
 chmod +x ./install
 ./install auto
-
-# Clean up temporary files
-rm -rf awscliv2.zip aws install
-
-# Display installed versions
-docker --version
-docker-compose --version
-aws --version
-
-# Create directories
-git clone https://github.com/Cloud-Tech-AI/cloud-tech-webapp.git
-
-# Create .env file
-touch .env  # add env variables as per your project requirements
 
 # setup nginx
 apt-get update
