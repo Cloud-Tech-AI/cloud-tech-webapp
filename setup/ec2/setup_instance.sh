@@ -16,7 +16,7 @@ usermod -aG docker $USER # Add the current user to the docker group
 service docker start # Start the Docker service
 
 # Install Docker Compose
-apt install -y docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d '"' -f 4)/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
 # Install Postgresql
 apt install -y postgresql postgresql-contrib
