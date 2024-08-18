@@ -52,18 +52,18 @@ chmod +x ./install
 # setup nginx
 apt-get update
 apt-get install nginx -y
-systemctl nginx status
+systemctl status nginx
 truncate -s 0 /etc/nginx/sites-available/default
 config_block='
 server {
     listen 80 default_server;
     listen [::]:80 default_server;
-    server_name *.cloudtechforall.ml;
+    server_name *.cloudtechforall.store;
 
     listen 443 ssl;
-    server_name cloudtechforall.ml *.cloudtechforall.ml; 
-    ssl_certificate /etc/letsencrypt/live/cloudtechforall.ml/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/cloudtechforall.ml/privkey.pem;
+    server_name cloudtechforall.store *.cloudtechforall.store; 
+    ssl_certificate /etc/letsencrypt/live/cloudtechforall.store/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/cloudtechforall.store/privkey.pem;
 
     location / {
         proxy_pass http://<EC2-public-ip>:8000;
@@ -77,5 +77,5 @@ echo  "$config_block" | tee -a /etc/nginx/sites-available/default
 service nginx restart
 
 # ssl cert using certbot
-# apt install certbot python3-certbot-nginx
-# certbot certonly --dns-route53 -d cloudtechforall.ml -d '*.cloudtechforall.ml' (route53 access to IAM attached to EC2)
+# apt-get install python3-certbot-dns-route53 -y
+# certbot certonly --dns-route53 -d cloudtechforall.store -d '*.cloudtechforall.store'

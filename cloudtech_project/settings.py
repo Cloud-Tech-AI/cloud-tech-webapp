@@ -25,166 +25,172 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # Application configuration
-SECRET_KEY = env.str('SECRET_KEY', default='Ishan123')
-DEBUG = env.bool('DEBUG', default=True)
+SECRET_KEY = env.str("SECRET_KEY", default="Ishan123")
+DEBUG = env.bool("DEBUG", default=True)
 
 # tenant settings
-TENANT_USERS_DOMAIN = env.str('TENANT_USERS_DOMAIN', default='*.localhost')
-TENANT_BASE_URL = env.str('TENANT_BASE_URL', default='http://%s.localhost:8000')
-PUBLIC_URL = env.str('PUBLIC_URL', default='http://localhost:8000')
-PUBLIC_SCHEMA_NAME = env.str('PUBLIC_SCHEMA_NAME', default='public')
-PUBLIC_SCHEMA_DOMAIN = env.str('PUBLIC_SCHEMA_DOMAIN', default='localhost')
+TENANT_USERS_DOMAIN = env.str("TENANT_USERS_DOMAIN", default="*.localhost")
+TENANT_BASE_URL = env.str("TENANT_BASE_URL", default="http://%s.localhost:8000")
+PUBLIC_URL = env.str("PUBLIC_URL", default="http://localhost:8000")
+PUBLIC_SCHEMA_NAME = env.str("PUBLIC_SCHEMA_NAME", default="public")
+PUBLIC_SCHEMA_DOMAIN = env.str("PUBLIC_SCHEMA_DOMAIN", default="localhost")
 TENANT_TYPES = {
-    'public': {
-        'URLCONF': 'cloudtech_project.urls_public',
-        'APPS': [
-            'django.contrib.admin',
-            'django.contrib.auth',
-            'django.contrib.contenttypes',
-            'django.contrib.sessions',
-            'django.contrib.messages',
-            'django.contrib.staticfiles',
-            'django_tenants',
-            'django_filters',
-            'django_celery_results',
-            'web',
-            'mixins',
-            'community',
-        ]
+    "public": {
+        "URLCONF": "cloudtech_project.urls_public",
+        "APPS": [
+            "django.contrib.admin",
+            "django.contrib.auth",
+            "django.contrib.contenttypes",
+            "django.contrib.sessions",
+            "django.contrib.messages",
+            "django.contrib.staticfiles",
+            "django_tenants",
+            "django_filters",
+            "django_celery_results",
+            "web",
+            "mixins",
+            "community",
+        ],
     },
-    'content': {
-        'URLCONF': 'cloudtech_project.urls',
-        'APPS': [
-            'django.contrib.admin',
-            'django.contrib.contenttypes',
-            'django.contrib.sessions',
-            'django.contrib.messages',
-            'django.contrib.staticfiles',
-            'django_filters',
-            'home',
-            'content',
-        ]
-    }
+    "content": {
+        "URLCONF": "cloudtech_project.urls",
+        "APPS": [
+            "django.contrib.admin",
+            "django.contrib.contenttypes",
+            "django.contrib.sessions",
+            "django.contrib.messages",
+            "django.contrib.staticfiles",
+            "django_filters",
+            "home",
+            "content",
+        ],
+    },
 }
-TENANT_MODEL = 'community.Community'
-TENANT_DOMAIN_MODEL = 'community.Domain'
+TENANT_MODEL = "community.Community"
+TENANT_DOMAIN_MODEL = "community.Domain"
 SHOW_PUBLIC_IF_NO_TENANT_FOUND = True
 
 # Allowed hosts
-ALLOWED_HOSTS = [env.str('TENANT_USERS_DOMAIN')[1:]] if env.str('TENANT_USERS_DOMAIN', None) else ['*']
+ALLOWED_HOSTS = (
+    [env.str("TENANT_USERS_DOMAIN")[1:]]
+    if env.str("TENANT_USERS_DOMAIN", None)
+    else ["*"]
+)
 
 # Application definition
 HAS_MULTI_TYPE_TENANTS = True
-MULTI_TYPE_DATABASE_FIELD = 'type'
+MULTI_TYPE_DATABASE_FIELD = "type"
 
 # Installed apps
 INSTALLED_APPS = []
 for schema in TENANT_TYPES:
-    INSTALLED_APPS += [app for app in TENANT_TYPES[schema]["APPS"] if app not in INSTALLED_APPS]
+    INSTALLED_APPS += [
+        app for app in TENANT_TYPES[schema]["APPS"] if app not in INSTALLED_APPS
+    ]
 
 # Middleware
 MIDDLEWARE = [
-    'content.tenant_middleware.TenantMainMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "content.tenant_middleware.TenantMainMiddleware",
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
 # URLs
-ROOT_URLCONF = 'cloudtech_project.urls'
-PUBLIC_SCHEMA_URLCONF = 'cloudtech_project.urls_public'
+ROOT_URLCONF = "cloudtech_project.urls"
+PUBLIC_SCHEMA_URLCONF = "cloudtech_project.urls_public"
 
 # Templates
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [BASE_DIR / "templates"],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
 # WSGI
-WSGI_APPLICATION = 'cloudtech_project.wsgi.application'
+WSGI_APPLICATION = "cloudtech_project.wsgi.application"
 
 # Database
-DATABASE_NAME = env.str('DATABASE_NAME', default='ishan_tenant')
-DATABASE_USER = env.str('DATABASE_USER', default='ishan_tenant')
-DATABASE_PASSWORD = env.str('DATABASE_PASSWORD', default='Ishan@123')
-DATABASE_HOST = env.str('DATABASE_HOST', default='localhost')
-DATABASE_PORT = env.str('DATABASE_PORT', default='5432')
+DATABASE_NAME = env.str("DATABASE_NAME", default="ishan_tenant")
+DATABASE_USER = env.str("DATABASE_USER", default="ishan_tenant")
+DATABASE_PASSWORD = env.str("DATABASE_PASSWORD", default="Ishan@123")
+DATABASE_HOST = env.str("DATABASE_HOST", default="localhost")
+DATABASE_PORT = env.str("DATABASE_PORT", default="5432")
 DATABASES = {
-    'default': {
-        'ENGINE': 'django_tenants.postgresql_backend',
-        'NAME': DATABASE_NAME,
-        'USER': DATABASE_USER,
-        'PASSWORD': DATABASE_PASSWORD,
-        'HOST': DATABASE_HOST,
-        'PORT': DATABASE_PORT,
+    "default": {
+        "ENGINE": "django_tenants.postgresql_backend",
+        "NAME": DATABASE_NAME,
+        "USER": DATABASE_USER,
+        "PASSWORD": DATABASE_PASSWORD,
+        "HOST": DATABASE_HOST,
+        "PORT": DATABASE_PORT,
     }
 }
-DATABASE_ROUTERS = (
-    'django_tenants.routers.TenantSyncRouter',
-)
+DATABASE_ROUTERS = ("django_tenants.routers.TenantSyncRouter",)
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
 # CSRF settings
-CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS',
-                                default=[
-                                    "http://localhost",
-                                    "http://public.localhost",
-                                ])
+CSRF_TRUSTED_ORIGINS = env.list(
+    "CSRF_TRUSTED_ORIGINS",
+    default=[
+        "http://localhost",
+        "http://public.localhost",
+    ],
+)
 
 # Internationalization
-LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = "en-us"
+TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 
 # Files Storage settings static and media
-if 'localhost' in TENANT_USERS_DOMAIN:
-    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
-    DEFAULT_MEDIA_STORAGE = 'django.core.files.storage.FileSystemStorage'
-    MEDIA_URL = '/media/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
-    STATIC_URL = '/static/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+if "localhost" in TENANT_USERS_DOMAIN:
+    DEFAULT_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
+    DEFAULT_MEDIA_STORAGE = "django.core.files.storage.FileSystemStorage"
+    MEDIA_URL = "/media/"
+    MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+    STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+    STATIC_URL = "/static/"
+    STATIC_ROOT = os.path.join(BASE_DIR, "static")
 else:
-    DEFAULT_FILE_STORAGE = 'cloudtech_project.storage_backends.MediaStorage'
-    DEFAULT_MEDIA_STORAGE = 'cloudtech_project.storage_backends.MediaStorage'
+    DEFAULT_FILE_STORAGE = "cloudtech_project.storage_backends.MediaStorage"
+    DEFAULT_MEDIA_STORAGE = "cloudtech_project.storage_backends.MediaStorage"
     AWS_S3_FILE_OVERWRITE = False
     AWS_QUERYSTRING_AUTH = True
-    AWS_S3_SIGNATURE_VERSION = 's3v4'
+    AWS_S3_SIGNATURE_VERSION = "s3v4"
     AWS_S3_ADDRESSING_STYLE = "path"
-    STATICFILES_STORAGE = 'cloudtech_project.storage_backends.StaticStorage'
-    STATIC_URL = '/static/' # This doesn't get used
+    STATICFILES_STORAGE = "cloudtech_project.storage_backends.StaticStorage"
+    STATIC_URL = "/static/"  # This doesn't get used
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "staticfiles"),
@@ -192,20 +198,26 @@ STATICFILES_DIRS = [
 
 # Celery settings
 CELERY_BROKER_URL = f"redis://{env.str('REDIS_HOST', default='localhost')}:6379/0"
-CELERY_RESULT_BACKEND = 'django-db'
+CELERY_RESULT_BACKEND = "django-db"
 
 # Email settings
-EMAIL_BACKEND = env.str('EMAIL_BACKEND', default="django.core.mail.backends.console.EmailBackend")
-DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL', default="thecloudtechforall@gmail.com")
-if EMAIL_BACKEND == 'django_ses.SESBackend':
-    AWS_SES_REGION_NAME = env.str('SES_REGION', default="us-east-1")
-    AWS_SES_REGION_ENDPOINT = env.str('SES_ENDPOINT_URL', default="email.ap-south-1.amazonaws.com")
+EMAIL_BACKEND = env.str(
+    "EMAIL_BACKEND", default="django.core.mail.backends.console.EmailBackend"
+)
+DEFAULT_FROM_EMAIL = env.str(
+    "DEFAULT_FROM_EMAIL", default="thecloudtechforall@gmail.com"
+)
+if EMAIL_BACKEND == "django_ses.SESBackend":
+    AWS_SES_REGION_NAME = env.str("SES_REGION", default="us-east-1")
+    AWS_SES_REGION_ENDPOINT = env.str(
+        "SES_ENDPOINT_URL", default="email.ap-south-1.amazonaws.com"
+    )
 
 # Cloud Tech URLs
 CLOUDTECH_URLS = {
-    "email":"mailto:ishan.modi24@gmail.com",
-    "linkedin":"https://www.linkedin.com/company/cloud-techs/?viewAsMember=true",
-    "twitter":"https://twitter.com/AboutCloudTech",
-    "github": "https://github.com/Cloud-Tech-Projects",
-    "youtube":"https://www.youtube.com/@aboutcloudtech"
+    "email": "mailto:ishan.modi24@gmail.com",
+    "linkedin": "https://www.linkedin.com/company/cloud-techs/?viewAsMember=true",
+    "twitter": "https://twitter.com/AboutCloudTech",
+    "github": "https://github.com/Cloud-Tech-AI",
+    "youtube": "https://www.youtube.com/@aboutcloudtech",
 }
