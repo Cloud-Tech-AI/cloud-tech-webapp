@@ -35,10 +35,10 @@ psql --version
 aws --version
 
 # Setup the project
-git clone https://github.com/Cloud-Tech-AI/cloud-tech-webapp.git
-cd cloud-tech-webapp/cloudtech_project # Navigate to the project directory
+mkdir cloud-tech-webapp
+cd cloud-tech-webapp
 touch .env  # add env variables as per your project requirements
-cd ../.. # Navigate back to the root directory
+cd ../
 
 # Install the CodeDeploy agent
 apt install -y ruby
