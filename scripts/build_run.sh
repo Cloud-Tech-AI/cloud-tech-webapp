@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# change to the project directory
-cd cloud-tech-webapp
-
 # List all files in the current directory
 ls -a
 
