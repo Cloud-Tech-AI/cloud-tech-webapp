@@ -16,6 +16,8 @@ phases:
       - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 851725593378.dkr.ecr.ap-south-1.amazonaws.com
   build:
     commands:
+      - remove the existing image
+      - docker rmi 851725593378.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest
       - echo Building the Docker image...
       - docker build -t cloudtech .
   post_build:

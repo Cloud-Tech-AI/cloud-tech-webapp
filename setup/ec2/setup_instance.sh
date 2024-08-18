@@ -37,8 +37,10 @@ aws --version
 # Setup the project
 mkdir cloud-tech-webapp
 cd cloud-tech-webapp
+mkdir cloudtech_project
+cd cloudtech_project
 touch .env  # add env variables as per your project requirements
-cd ../
+cd ../../
 
 # Install the CodeDeploy agent
 apt install -y ruby
