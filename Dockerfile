@@ -20,6 +20,7 @@ COPY ./templates ./templates
 COPY ./web ./web
 COPY ./manage.py ./manage.py
 COPY docker/entrypoint.sh ./entrypoint.sh
+COPY ./docker-compose.yml ./docker-compose.yml
 
 RUN chmod +x ./entrypoint.sh && \
     rm -rf /root/.cache/pip

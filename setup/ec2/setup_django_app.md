@@ -2,7 +2,7 @@
 
 ### GET THE CONTAINER RUNNING
 ```bash
-docker-compose up -d
+docker ps -a
 ```
 
 ### LOG INTO THE CONTAINER
