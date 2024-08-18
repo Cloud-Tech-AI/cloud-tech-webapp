@@ -3,21 +3,21 @@ version: 0.2
 phases:
   install:
     commands:
-      #- nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://127.0.0.1:2375 --storage-driver=overlay2 &
-      #- timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
       - pip3 install -q awscli --upgrade --user
-      #- yum -q install -y jq
   pre_build:
     commands:
-      #- echo "Adit@2401" | docker login --username "cloudtech2401" --password-stdin
       - aws --version
       - aws s3 ls
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 851725593378.dkr.ecr.ap-south-1.amazonaws.com
+      - if docker image inspect 851725593378.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest > /dev/null 2>&1; then
+          echo "Image exists. Removing...";
+          docker rmi 851725593378.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest;
+        else
+          echo "Image does not exist. Skipping removal.";
+        fi
   build:
     commands:
-      - remove the existing image
-      - docker rmi 851725593378.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest
       - echo Building the Docker image...
       - docker build -t cloudtech .
   post_build:
