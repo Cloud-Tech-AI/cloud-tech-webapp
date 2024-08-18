@@ -1,7 +1,7 @@
 ## ONE TIME SETUP
 ### LOG INTO POSTGRESQL
 ```bash
-sudo -u postgres -h <RDS-DB-endpoint> psql
+psql -U postgres -h <RDS-DB-endpoint> --password
 ```
 
 ### CREATE USER AND DATABASE
