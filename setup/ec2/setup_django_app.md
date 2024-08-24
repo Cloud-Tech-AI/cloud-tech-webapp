@@ -1,15 +1,4 @@
 ## ONE TIME SETUP
-
-### GET THE CONTAINER RUNNING
-```bash
-docker ps -a
-```
-
-### LOG INTO THE CONTAINER
-```bash
-docker exec -it <CONTAINER ID> /bin/bash
-```
-
 ### RUN MIGRATIONS AND CREATE SUPERUSER/TENANTS
 ```bash 
 python manage.py migrate

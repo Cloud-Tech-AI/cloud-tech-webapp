@@ -10,12 +10,6 @@ phases:
       - aws s3 ls
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 851725593378.dkr.ecr.ap-south-1.amazonaws.com
-      - if docker image inspect 851725593378.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest > /dev/null 2>&1; then
-          echo "Image exists. Removing...";
-          docker rmi 851725593378.dkr.ecr.ap-south-1.amazonaws.com/cloudtech:latest;
-        else
-          echo "Image does not exist. Skipping removal.";
-        fi
   build:
     commands:
       - echo Building the Docker image...
