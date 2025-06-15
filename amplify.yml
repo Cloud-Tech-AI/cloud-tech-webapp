@@ -3,10 +3,15 @@ frontend:
   phases:
     preBuild:
       commands:
-        - npm ci
+        - echo "Node version:" && node --version
+        - echo "NPM version:" && npm --version
+        - npm ci --legacy-peer-deps
     build:
       commands:
+        - echo "Starting build process..."
         - npm run build
+        - echo "Build completed successfully"
+        - ls -la out/
   artifacts:
     baseDirectory: out
     files:
@@ -22,3 +27,19 @@ frontend:
           value: 'DENY'
         - key: 'X-XSS-Protection'
           value: '1; mode=block'
+        - key: 'X-Content-Type-Options'
+          value: 'nosniff'
+        - key: 'Referrer-Policy'
+          value: 'strict-origin-when-cross-origin'
+    - pattern: '**/*.html'
+      headers:
+        - key: 'Cache-Control'
+          value: 'public, max-age=3600'
+    - pattern: '**/*.js'
+      headers:
+        - key: 'Cache-Control'
+          value: 'public, max-age=31536000, immutable'
+    - pattern: '**/*.css'
+      headers:
+        - key: 'Cache-Control'
+          value: 'public, max-age=31536000, immutable'

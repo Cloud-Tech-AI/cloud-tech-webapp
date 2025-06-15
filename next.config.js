@@ -7,7 +7,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['images.unsplash.com', 'via.placeholder.com'],
+    domains: ['images.unsplash.com', 'via.placeholder.com', 'picsum.photos'],
     unoptimized: true
   },
   trailingSlash: true,
@@ -22,9 +22,24 @@ const nextConfig = {
     maxInactiveAge: 25 * 1000,
     pagesBufferLength: 2,
   },
-  // Remove basePath and assetPrefix for Amplify deployment
-  // assetPrefix: process.env.NODE_ENV === 'production' ? '/cloud-tech-webapp-revamp' : '',
-  // basePath: process.env.NODE_ENV === 'production' ? '/cloud-tech-webapp-revamp' : '',
+  // Amplify-specific configurations
+  env: {
+    CUSTOM_KEY: 'my-value',
+  },
+  // Ensure proper static export
+  exportPathMap: async function (
+    defaultPathMap,
+    { dev, dir, outDir, distDir, buildId }
+  ) {
+    return {
+      '/': { page: '/' },
+      '/about': { page: '/about' },
+      '/contact': { page: '/contact' },
+      '/blog': { page: '/blog' },
+      '/podcast': { page: '/podcast' },
+      '/speaking': { page: '/speaking' },
+    }
+  },
 }
 
 module.exports = withBundleAnalyzer(nextConfig)
