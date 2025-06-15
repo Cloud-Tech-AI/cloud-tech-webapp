@@ -5,8 +5,15 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "npx serve out -s",
+    "start:dev": "next start",
+    "export": "next build",
+    "serve": "npx serve out -s -p 3000",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf .next out",
+    "build:analyze": "ANALYZE=true next build"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.16",
@@ -28,11 +35,14 @@
     "tailwindcss": "^3.3.6"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^15.3.3",
     "@types/node": "^20.10.5",
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
+    "cross-env": "^7.0.3",
     "eslint": "^8.56.0",
     "eslint-config-next": "14.0.4",
+    "serve": "^14.2.4",
     "typescript": "^5.3.3"
   }
 }
