@@ -8,38 +8,23 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ['images.unsplash.com', 'via.placeholder.com', 'picsum.photos'],
-    unoptimized: true
+    unoptimized: true,
   },
   trailingSlash: true,
-  output: 'export',
-  distDir: 'out',
+  output: 'export',  // enable static export via config
+  // Remove distDir - Next.js will output static files to 'out' by default with output: 'export'
+
   // Improve build performance
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-  // Handle build errors gracefully
-  onDemandEntries: {
-    maxInactiveAge: 25 * 1000,
-    pagesBufferLength: 2,
-  },
-  // Amplify-specific configurations
+
+  // Amplify-specific environment variables
   env: {
     CUSTOM_KEY: 'my-value',
   },
-  // Ensure proper static export
-  exportPathMap: async function (
-    defaultPathMap,
-    { dev, dir, outDir, distDir, buildId }
-  ) {
-    return {
-      '/': { page: '/' },
-      '/about': { page: '/about' },
-      '/contact': { page: '/contact' },
-      '/blog': { page: '/blog' },
-      '/podcast': { page: '/podcast' },
-      '/speaking': { page: '/speaking' },
-    }
-  },
+
+  // Removed exportPathMap - Next.js 14+ automatically handles static exports
 }
 
 module.exports = withBundleAnalyzer(nextConfig)
