@@ -30,11 +30,11 @@ export const getStaticProps: GetStaticProps = async () => {
     {
       id: '1',
       title: 'The Future of Serverless Computing',
-      description: 'Join us as we explore the latest trends in serverless architecture with industry expert John Smith. We discuss AWS Lambda, Azure Functions, and the future of event-driven computing.',
+      description: 'Join us as we explore the latest trends in serverless architecture. Adit and Ishan discuss AWS Lambda, Azure Functions, and the future of event-driven computing.',
       audioUrl: 'https://example.com/episode-1.mp3',
       duration: '45:30',
       publishedAt: '2024-01-15',
-      guests: ['John Smith', 'Jane Doe'],
+      guests: ['Adit Modi', 'Ishan Modi'],
       tags: ['serverless', 'aws', 'azure'],
       showNotes: `
 # Episode 1: The Future of Serverless Computing
@@ -51,24 +51,22 @@ export const getStaticProps: GetStaticProps = async () => {
 - [Azure Functions Guide](https://docs.microsoft.com/en-us/azure/azure-functions/)
 - [Serverless Framework](https://www.serverless.com/)
 
-## Guest Information
-**John Smith** - Senior Cloud Architect at TechCorp
-- Twitter: @johnsmith
-- LinkedIn: linkedin.com/in/johnsmith
+## Hosts
+**Adit Modi** - Co-Founder & Lead Cloud Architect
+- LinkedIn: https://www.linkedin.com/in/adit-n-modi/
 
-**Jane Doe** - DevOps Engineer at CloudCo
-- Twitter: @janedoe
-- LinkedIn: linkedin.com/in/janedoe
+**Ishan Modi** - Co-Founder & ML Engineer
+- LinkedIn: https://www.linkedin.com/in/ishan-modi-5765521a1/
       `
     },
     {
       id: '2',
       title: 'Kubernetes Security Best Practices',
-      description: 'A deep dive into securing your Kubernetes clusters with security expert Sarah Johnson. Learn about RBAC, network policies, and container security.',
+      description: 'A deep dive into securing your Kubernetes clusters. Adit and Ishan cover RBAC, network policies, and container security best practices.',
       audioUrl: 'https://example.com/episode-2.mp3',
       duration: '52:15',
       publishedAt: '2024-01-08',
-      guests: ['Sarah Johnson'],
+      guests: ['Adit Modi', 'Ishan Modi'],
       tags: ['kubernetes', 'security', 'devops'],
       showNotes: `
 # Episode 2: Kubernetes Security Best Practices
@@ -85,20 +83,22 @@ export const getStaticProps: GetStaticProps = async () => {
 - [Falco Security Monitoring](https://falco.org/)
 - [OPA Gatekeeper](https://open-policy-agent.github.io/gatekeeper/)
 
-## Guest Information
-**Sarah Johnson** - Security Engineer at SecureTech
-- Twitter: @sarahjohnson
-- LinkedIn: linkedin.com/in/sarahjohnson
+## Hosts
+**Adit Modi** - Co-Founder & Lead Cloud Architect
+- LinkedIn: https://www.linkedin.com/in/adit-n-modi/
+
+**Ishan Modi** - Co-Founder & ML Engineer
+- LinkedIn: https://www.linkedin.com/in/ishan-modi-5765521a1/
       `
     },
     {
       id: '3',
       title: 'Multi-Cloud Strategy and Management',
-      description: 'Exploring multi-cloud architectures with cloud strategist Mike Chen. Learn how to manage workloads across AWS, Azure, and GCP effectively.',
+      description: 'Exploring multi-cloud architectures with Adit and Ishan. Learn how to manage workloads across AWS, Azure, and GCP effectively.',
       audioUrl: 'https://example.com/episode-3.mp3',
       duration: '48:45',
       publishedAt: '2024-01-01',
-      guests: ['Mike Chen'],
+      guests: ['Adit Modi', 'Ishan Modi'],
       tags: ['multi-cloud', 'aws', 'azure', 'gcp'],
       showNotes: `
 # Episode 3: Multi-Cloud Strategy and Management
@@ -115,10 +115,12 @@ export const getStaticProps: GetStaticProps = async () => {
 - [Kubernetes Multi-Cloud](https://kubernetes.io/)
 - [Cloud Cost Management Tools](https://cloudcostmanagement.com/)
 
-## Guest Information
-**Mike Chen** - Cloud Strategy Consultant
-- Twitter: @mikechen
-- LinkedIn: linkedin.com/in/mikechen
+## Hosts
+**Adit Modi** - Co-Founder & Lead Cloud Architect
+- LinkedIn: https://www.linkedin.com/in/adit-n-modi/
+
+**Ishan Modi** - Co-Founder & ML Engineer
+- LinkedIn: https://www.linkedin.com/in/ishan-modi-5765521a1/
       `
     }
   ]

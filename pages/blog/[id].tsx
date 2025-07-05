@@ -102,7 +102,7 @@ Lambda functions can be triggered by various AWS services:
 ## Conclusion
 
 AWS Lambda is a powerful tool for building serverless applications. Start small, experiment, and gradually build more complex systems as you become comfortable with the service.`,
-      author: 'John Smith',
+      author: 'Adit Modi',
       publishedAt: '2024-01-15',
       category: 'AWS',
       tags: ['aws', 'lambda', 'serverless', 'tutorial'],

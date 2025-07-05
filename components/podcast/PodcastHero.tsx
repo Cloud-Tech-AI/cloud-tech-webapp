@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FiPlay, FiHeadphones, FiMic } from 'react-icons/fi'
+import { FiPlay, FiHeadphones, FiMic, FiUsers } from 'react-icons/fi'
 
 export default function PodcastHero() {
   return (
@@ -18,8 +18,11 @@ export default function PodcastHero() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
               Cloud Tech Podcast
             </h1>
-            <p className="text-xl lg:text-2xl text-gray-100 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl lg:text-2xl text-gray-100 mb-4 max-w-3xl mx-auto">
               Weekly conversations with cloud computing experts, industry leaders, and innovators shaping the future of technology.
+            </p>
+            <p className="text-lg text-gray-200 mb-8 max-w-2xl mx-auto">
+              Hosted and produced by <strong>Adit Modi</strong> and <strong>Ishan Modi</strong>
             </p>
           </motion.div>
           
@@ -27,7 +30,7 @@ export default function PodcastHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto"
+            className="grid grid-cols-1 sm:grid-cols-4 gap-8 max-w-5xl mx-auto"
           >
             <div className="text-center">
               <div className="bg-white bg-opacity-20 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
@@ -43,6 +46,14 @@ export default function PodcastHero() {
               </div>
               <h3 className="text-lg font-semibold text-white mb-2">500K+ Downloads</h3>
               <p className="text-gray-200">Monthly listeners worldwide</p>
+            </div>
+            
+            <div className="text-center">
+              <div className="bg-white bg-opacity-20 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                <FiUsers className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold text-white mb-2">Joint Hosts</h3>
+              <p className="text-gray-200">Collaborative hosting by both founders</p>
             </div>
             
             <div className="text-center">

@@ -7,9 +7,9 @@ import { HiCloud } from 'react-icons/hi'
 
 const navigation = [
   { name: 'Home', href: '/' },
+  { name: 'Newsletter', href: '/newsletter' },
   { name: 'Podcast', href: '/podcast' },
   { name: 'Blog', href: '/blog' },
-  { name: 'Speaking', href: '/speaking' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
 ]

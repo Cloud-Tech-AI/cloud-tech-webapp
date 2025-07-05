@@ -42,11 +42,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     {
       id: '1',
       title: 'The Future of Serverless Computing',
-      description: 'Join us as we explore the latest trends in serverless architecture with industry expert John Smith. We discuss AWS Lambda, Azure Functions, and the future of event-driven computing.',
+      description: 'Join us as we explore the latest trends in serverless architecture with industry expert Adit Modi. We discuss AWS Lambda, Azure Functions, and the future of event-driven computing.',
       audioUrl: 'https://example.com/episode-1.mp3',
       duration: '45:30',
       publishedAt: '2024-01-15',
-      guests: ['John Smith', 'Jane Doe'],
+      guests: ['Adit Modi', 'Jane Doe'],
       tags: ['serverless', 'aws', 'azure'],
       showNotes: `
 # Episode 1: The Future of Serverless Computing
@@ -64,7 +64,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 - [Serverless Framework](https://www.serverless.com/)
 
 ## Guest Information
-**John Smith** - Senior Cloud Architect at TechCorp
+**Adit Modi** - Senior Cloud Architect at TechCorp
 - Twitter: @johnsmith
 - LinkedIn: linkedin.com/in/johnsmith
 

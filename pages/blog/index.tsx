@@ -87,7 +87,7 @@ Lambda functions can be triggered by various AWS services:
 ## Conclusion
 
 AWS Lambda is a powerful tool for building serverless applications. Start small, experiment, and gradually build more complex systems as you become comfortable with the service.`,
-      author: 'John Smith',
+      author: 'Adit Modi',
       publishedAt: '2024-01-15',
       category: 'AWS',
       tags: ['aws', 'lambda', 'serverless', 'tutorial'],
@@ -153,7 +153,7 @@ spec:
 ## Conclusion
 
 Kubernetes security requires a multi-layered approach. Implement these practices to build a secure foundation for your applications.`,
-      author: 'Sarah Johnson',
+      author: 'Ishan Modi',
       publishedAt: '2024-01-10',
       category: 'Kubernetes',
       tags: ['kubernetes', 'security', 'devops', 'best-practices'],
@@ -216,7 +216,7 @@ Multi-cloud refers to using multiple cloud computing services from different pro
 ## Conclusion
 
 Multi-cloud can provide significant benefits but requires careful planning and execution. Consider your specific needs and capabilities before embarking on a multi-cloud journey.`,
-      author: 'Mike Chen',
+      author: 'Adit Modi',
       publishedAt: '2024-01-05',
       category: 'Cloud Strategy',
       tags: ['multi-cloud', 'architecture', 'strategy', 'aws', 'azure', 'gcp'],

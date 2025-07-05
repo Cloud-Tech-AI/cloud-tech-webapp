@@ -5,49 +5,25 @@ import { FiTwitter, FiLinkedin, FiGithub } from 'react-icons/fi'
 const team = [
   {
     id: '1',
-    name: 'John Smith',
-    role: 'Founder & Lead Cloud Architect',
-    bio: 'John has over 15 years of experience in cloud computing and has helped hundreds of organizations migrate to the cloud. He\'s a certified AWS Solutions Architect and frequent speaker at cloud conferences.',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face',
+    name: 'Adit Modi',
+    role: 'Co-Founder & Lead Cloud Architect',
+    bio: 'Adit has over 5 years of experience in cloud computing and has helped hundreds of organizations migrate to the cloud. He\'s a certified AWS Solutions Architect and frequent speaker at cloud conferences. Co-creator of all blogs, podcasts, and educational content.',
+    image: 'https://media.licdn.com/dms/image/v2/D4D03AQGVqQe3byPFAQ/profile-displayphoto-shrink_400_400/B4DZcAvkRnG8Ak-/0/1748064159646?e=1756339200&v=beta&t=h3NwYRcZFBKIjL-nk-QpRuSDkpAZrrKIPuEgrR7PqSk',
     social: {
-      twitter: 'https://twitter.com/johnsmith',
-      linkedin: 'https://linkedin.com/in/johnsmith',
-      github: 'https://github.com/johnsmith'
+      twitter: 'https://x.com/adi_12_modi',
+      linkedin: 'https://www.linkedin.com/in/adit-n-modi/',
+      github: 'https://github.com/AditModi'
     }
   },
   {
     id: '2',
-    name: 'Sarah Johnson',
-    role: 'Security Expert & Podcast Host',
-    bio: 'Sarah specializes in cloud security and compliance. She has worked with Fortune 500 companies to implement secure cloud architectures and is passionate about making security accessible to all.',
-    image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face',
+    name: 'Ishan Modi',
+    role: 'Co-Founder & ML Engineer',
+    bio: 'Ishan is a Machine Learning Engineer specializing in document intelligence, with expertise in AI, MLOps, and cloud platforms like AWS and GCP. Co-creator of all blogs, podcasts, and educational content.',
+    image: '',
     social: {
-      twitter: 'https://twitter.com/sarahjohnson',
-      linkedin: 'https://linkedin.com/in/sarahjohnson'
-    }
-  },
-  {
-    id: '3',
-    name: 'Mike Chen',
-    role: 'Multi-Cloud Strategy Consultant',
-    bio: 'Mike helps organizations navigate multi-cloud strategies and has extensive experience with AWS, Azure, and GCP. He\'s the author of several cloud architecture whitepapers.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face',
-    social: {
-      twitter: 'https://twitter.com/mikechen',
-      linkedin: 'https://linkedin.com/in/mikechen',
-      github: 'https://github.com/mikechen'
-    }
-  },
-  {
-    id: '4',
-    name: 'Emily Rodriguez',
-    role: 'DevOps Engineer & Content Creator',
-    bio: 'Emily is passionate about DevOps practices and automation. She creates content about CI/CD, Infrastructure as Code, and modern development practices.',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face',
-    social: {
-      twitter: 'https://twitter.com/emilyrodriguez',
-      linkedin: 'https://linkedin.com/in/emilyrodriguez',
-      github: 'https://github.com/emilyrodriguez'
+      twitter: 'https://x.com/ishan_modi24',
+      linkedin: 'https://www.linkedin.com/in/ishan-modi-5765521a1/'
     }
   }
 ]
@@ -67,11 +43,11 @@ export default function Team() {
             Meet Our Team
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Our team consists of experienced cloud professionals, thought leaders, and passionate educators who are dedicated to sharing knowledge and building community.
+            Our team consists of experienced cloud professionals, thought leaders, and passionate educators who are dedicated to sharing knowledge and building community. All our blogs, podcasts, and content are a joint effort by both founders.
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {team.map((member, index) => (
             <motion.div
               key={member.id}
@@ -82,13 +58,21 @@ export default function Team() {
               className="card text-center hover:shadow-xl transition-shadow duration-300"
             >
               <div className="relative mb-6">
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  width={200}
-                  height={200}
-                  className="w-32 h-32 rounded-full mx-auto object-cover"
-                />
+                {member.image ? (
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    width={200}
+                    height={200}
+                    className="w-32 h-32 rounded-full mx-auto object-cover"
+                  />
+                ) : (
+                  <div className="w-32 h-32 rounded-full mx-auto bg-gradient-to-r from-primary-500 to-secondary-500 flex items-center justify-center">
+                    <span className="text-white text-2xl font-bold">
+                      {member.name.split(' ').map(n => n[0]).join('')}
+                    </span>
+                  </div>
+                )}
               </div>
               
               <h3 className="text-xl font-bold text-gray-900 mb-2">
@@ -138,6 +122,42 @@ export default function Team() {
             </motion.div>
           ))}
         </div>
+
+        {/* Joint Effort Notice */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="text-center mt-12 bg-white rounded-lg p-8 shadow-sm"
+        >
+          <h3 className="text-xl font-bold text-gray-900 mb-4">
+            Collaborative Content Creation
+          </h3>
+          <p className="text-gray-600 max-w-3xl mx-auto">
+            All our blogs, podcasts, and educational content are created through the collaborative efforts of both Adit and Ishan Modi. 
+            This joint approach ensures comprehensive coverage of cloud technologies, combining deep technical expertise in cloud architecture 
+            with cutting-edge insights in AI/ML and document intelligence.
+          </p>
+          <div className="flex justify-center space-x-8 mt-6">
+            <a
+              href="https://www.linkedin.com/in/adit-n-modi/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-600 hover:text-primary-800 font-medium"
+            >
+              Connect with Adit
+            </a>
+            <a
+              href="https://www.linkedin.com/in/ishan-modi-5765521a1/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-600 hover:text-primary-800 font-medium"
+            >
+              Connect with Ishan
+            </a>
+          </div>
+        </motion.div>
       </div>
     </div>
   )

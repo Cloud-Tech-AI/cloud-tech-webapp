@@ -23,20 +23,18 @@ export interface BlogPost {
   image: string
 }
 
-export interface SpeakingEvent {
+export interface Newsletter {
   id: string
   title: string
-  description: string
-  date: string
-  location: string
-  venue: string
-  type: 'conference' | 'workshop' | 'meetup' | 'keynote' | 'panel'
-  speaker: string
-  topic: string
-  registrationUrl: string | null
-  slidesUrl: string | null
-  videoUrl: string | null
+  excerpt: string
+  content: string
+  publishedAt: string
+  category: string
+  tags: string[]
+  readTime: number
   image: string
+  linkedinUrl?: string
+  subscribers?: number
 }
 
 export interface TeamMember {

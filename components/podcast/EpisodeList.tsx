@@ -1,27 +1,43 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { FiPlay, FiClock, FiCalendar, FiUser } from 'react-icons/fi'
+import { FiPlay, FiClock, FiCalendar, FiUser, FiArrowRight } from 'react-icons/fi'
 import { Episode } from '@/types'
 
 interface EpisodeListProps {
   episodes: Episode[]
+  showAll?: boolean
+  maxEpisodes?: number
 }
 
-export default function EpisodeList({ episodes }: EpisodeListProps) {
+export default function EpisodeList({ episodes, showAll = true, maxEpisodes = 4 }: EpisodeListProps) {
+  const displayEpisodes = showAll ? episodes : episodes.slice(0, maxEpisodes)
+  const hasMoreEpisodes = !showAll && episodes.length > maxEpisodes
+
   return (
     <div className="bg-gray-50 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Latest Episodes
-          </h2>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-3xl font-bold text-gray-900">
+              Latest Episodes
+            </h2>
+            {!showAll && hasMoreEpisodes && (
+              <Link
+                href="/podcast"
+                className="text-primary-600 hover:text-primary-800 font-medium flex items-center space-x-1"
+              >
+                <span>View All</span>
+                <FiArrowRight className="h-4 w-4" />
+              </Link>
+            )}
+          </div>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Explore our collection of podcast episodes featuring industry experts discussing the latest trends in cloud computing.
           </p>
         </div>
         
         <div className="space-y-8">
-          {episodes.map((episode, index) => (
+          {displayEpisodes.map((episode, index) => (
             <motion.div
               key={episode.id}
               initial={{ opacity: 0, y: 20 }}
@@ -99,6 +115,17 @@ export default function EpisodeList({ episodes }: EpisodeListProps) {
             </motion.div>
           ))}
         </div>
+
+        {!showAll && hasMoreEpisodes && (
+          <div className="text-center pt-12">
+            <Link
+              href="/podcast"
+              className="btn-primary"
+            >
+              View All Episodes ({episodes.length} total)
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   )

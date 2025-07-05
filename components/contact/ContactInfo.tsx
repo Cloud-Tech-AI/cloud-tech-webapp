@@ -6,22 +6,22 @@ const contactMethods = [
     icon: FiMail,
     title: 'Email Us',
     description: 'Send us an email and we\'ll respond within 24 hours',
-    contact: 'hello@cloudtech.com',
-    link: 'mailto:hello@cloudtech.com'
+    contact: 'cloudtechforall@gmail.com',
+    link: 'mailto:cloudtechforall@gmail.com'
   },
   {
     icon: FiMessageCircle,
     title: 'Join Our Discord',
     description: 'Get instant help from our community',
     contact: 'Discord Community',
-    link: 'https://discord.gg/cloudtech'
+    link: 'https://discord.gg/bQpH4Y9Q'
   },
   {
     icon: FiTwitter,
     title: 'Follow on Twitter',
     description: 'Stay updated with our latest news and updates',
     contact: '@cloudtech',
-    link: 'https://twitter.com/cloudtech'
+    link: 'https://x.com/AboutCloudTech'
   }
 ]
 
@@ -29,19 +29,19 @@ const socialLinks = [
   {
     name: 'Twitter',
     icon: FiTwitter,
-    url: 'https://twitter.com/cloudtech',
+    url: 'https://x.com/AboutCloudTech',
     color: 'hover:text-blue-500'
   },
   {
     name: 'LinkedIn',
     icon: FiLinkedin,
-    url: 'https://linkedin.com/company/cloudtech',
+    url: 'https://www.linkedin.com/company/cloud-techs/',
     color: 'hover:text-blue-700'
   },
   {
     name: 'GitHub',
     icon: FiGithub,
-    url: 'https://github.com/cloud-tech-ai',
+    url: 'https://github.com/Cloud-Tech-AI',
     color: 'hover:text-gray-900'
   }
 ]
