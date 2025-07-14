@@ -113,7 +113,7 @@ export default function Footer() {
                 <ul className="mt-4 space-y-4">
                   <li>
                     <a
-                      href="/newsletter"
+                      href="https://cloudtechforall.store/newsletter"
                       className="text-base text-gray-400 hover:text-gray-300 transition-colors duration-200"
                     >
                       Newsletter
