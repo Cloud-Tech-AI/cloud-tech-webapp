@@ -168,7 +168,7 @@ spec:
 ## Conclusion
 
 Kubernetes security requires a multi-layered approach. Implement these practices to build a secure foundation for your applications.`,
-      author: 'Sarah Johnson',
+      author: 'Adit Modi',
       publishedAt: '2024-01-10',
       category: 'Kubernetes',
       tags: ['kubernetes', 'security', 'devops', 'best-practices'],
@@ -231,7 +231,7 @@ Multi-cloud refers to using multiple cloud computing services from different pro
 ## Conclusion
 
 Multi-cloud can provide significant benefits but requires careful planning and execution. Consider your specific needs and capabilities before embarking on a multi-cloud journey.`,
-      author: 'Mike Chen',
+      author: 'Adit Modi',
       publishedAt: '2024-01-05',
       category: 'Cloud Strategy',
       tags: ['multi-cloud', 'architecture', 'strategy', 'aws', 'azure', 'gcp'],

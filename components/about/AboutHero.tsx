@@ -42,7 +42,7 @@ export default function AboutHero() {
                 <FiUsers className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-lg font-semibold text-white mb-2">Our Community</h3>
-              <p className="text-gray-200">25,000+ cloud professionals worldwide</p>
+              <p className="text-gray-200">5000 cloud professionals worldwide</p>
             </div>
             
             <div className="text-center">

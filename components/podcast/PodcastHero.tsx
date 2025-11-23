@@ -44,7 +44,7 @@ export default function PodcastHero() {
               <div className="bg-white bg-opacity-20 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                 <FiHeadphones className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2">500K+ Downloads</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">500+ Downloads</h3>
               <p className="text-gray-200">Monthly listeners worldwide</p>
             </div>
             

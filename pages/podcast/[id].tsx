@@ -46,7 +46,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       audioUrl: 'https://example.com/episode-1.mp3',
       duration: '45:30',
       publishedAt: '2024-01-15',
-      guests: ['Adit Modi', 'Jane Doe'],
+      guests: ['Adit Modi', 'Ishan Modi'],
       tags: ['serverless', 'aws', 'azure'],
       showNotes: `
 # Episode 1: The Future of Serverless Computing
@@ -64,23 +64,23 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 - [Serverless Framework](https://www.serverless.com/)
 
 ## Guest Information
-**Adit Modi** - Senior Cloud Architect at TechCorp
-- Twitter: @johnsmith
-- LinkedIn: linkedin.com/in/johnsmith
+**Adit Modi** - Solution Architect at Lauren
+- Twitter: @adi_12_modi
+- LinkedIn: linkedin.com/in/adit-n-modi
 
-**Jane Doe** - DevOps Engineer at CloudCo
-- Twitter: @janedoe
-- LinkedIn: linkedin.com/in/janedoe
+**Ishan Modi** - Senior Machine Learning Engineer at Avalara
+- Twitter: @ishanmodi24
+- LinkedIn: linkedin.com/in/ishan-modi-5765521a1
       `
     },
     {
       id: '2',
       title: 'Kubernetes Security Best Practices',
-      description: 'A deep dive into securing your Kubernetes clusters with security expert Sarah Johnson. Learn about RBAC, network policies, and container security.',
+      description: 'A deep dive into securing your Kubernetes clusters with security expert Adit Modi. Learn about RBAC, network policies, and container security.',
       audioUrl: 'https://example.com/episode-2.mp3',
       duration: '52:15',
       publishedAt: '2024-01-08',
-      guests: ['Sarah Johnson'],
+      guests: ['Adit Modi'],
       tags: ['kubernetes', 'security', 'devops'],
       showNotes: `
 # Episode 2: Kubernetes Security Best Practices
@@ -98,19 +98,19 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 - [OPA Gatekeeper](https://open-policy-agent.github.io/gatekeeper/)
 
 ## Guest Information
-**Sarah Johnson** - Security Engineer at SecureTech
-- Twitter: @sarahjohnson
-- LinkedIn: linkedin.com/in/sarahjohnson
+**Adit Modi** - Solution Architect at Lauren
+- Twitter: @adi_12_modi
+- LinkedIn: linkedin.com/in/adit-n-modi
       `
     },
     {
       id: '3',
       title: 'Multi-Cloud Strategy and Management',
-      description: 'Exploring multi-cloud architectures with cloud strategist Mike Chen. Learn how to manage workloads across AWS, Azure, and GCP effectively.',
+      description: 'Exploring multi-cloud architectures with Adit Modi. Learn how to manage workloads across AWS, Azure, and GCP effectively.',
       audioUrl: 'https://example.com/episode-3.mp3',
       duration: '48:45',
       publishedAt: '2024-01-01',
-      guests: ['Mike Chen'],
+      guests: ['Adit Modi'],
       tags: ['multi-cloud', 'aws', 'azure', 'gcp'],
       showNotes: `
 # Episode 3: Multi-Cloud Strategy and Management
@@ -128,9 +128,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 - [Cloud Cost Management Tools](https://cloudcostmanagement.com/)
 
 ## Guest Information
-**Mike Chen** - Cloud Strategy Consultant
-- Twitter: @mikechen
-- LinkedIn: linkedin.com/in/mikechen
+**Adit Modi** - Solution Architect at Lauren
+- Twitter: @adi_12_modi
+- LinkedIn: linkedin.com/in/adit-n-modi
       `
     }
   ]

@@ -132,7 +132,7 @@ export default function Newsletter() {
             </p>
           </motion.div>
 
-          {/* LinkedIn Newsletter Link */}
+          {/* Newsletter Link */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -146,7 +146,7 @@ export default function Newsletter() {
               rel="noopener noreferrer"
               className="inline-flex items-center space-x-2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-6 py-3 rounded-lg transition-all duration-200 backdrop-blur-sm"
             >
-              <span>Read our LinkedIn Newsletter</span>
+              <span>Read our Newsletter</span>
               <FiExternalLink className="h-4 w-4" />
             </a>
           </motion.div>

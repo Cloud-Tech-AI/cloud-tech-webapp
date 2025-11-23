@@ -5,14 +5,14 @@ const stats = [
   {
     id: 1,
     name: 'Community Members',
-    value: '25,000+',
+    value: '5000',
     icon: FiUsers,
     description: 'Active cloud professionals'
   },
   {
     id: 2,
     name: 'Podcast Downloads',
-    value: '500K+',
+    value: '500+',
     icon: FiHeadphones,
     description: 'Monthly episode downloads'
   },

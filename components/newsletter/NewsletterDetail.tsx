@@ -92,7 +92,7 @@ export default function NewsletterDetail({ newsletter }: NewsletterDetailProps) 
                   rel="noopener noreferrer"
                   className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-800 font-medium"
                 >
-                  <span>View on LinkedIn</span>
+                  <span>View on Newsletter</span>
                   <FiExternalLink className="h-4 w-4" />
                 </a>
               )}
@@ -180,12 +180,12 @@ export default function NewsletterDetail({ newsletter }: NewsletterDetailProps) 
               Get weekly insights on cloud computing, DevOps, AI/ML, and emerging technologies delivered to your inbox.
             </p>
             <a
-              href="https://www.linkedin.com/newsletters/everything-about-cloud-tech-7079093941148540928/"
+              href="https://substack.com/@everythingaboutcloudtech?"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary inline-flex items-center space-x-2"
             >
-              <span>Subscribe on LinkedIn</span>
+              <span>Subscribe Newsletter</span>
               <FiExternalLink className="h-4 w-4" />
             </a>
           </div>

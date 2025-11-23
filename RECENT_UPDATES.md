@@ -15,7 +15,7 @@ This document outlines the recent changes made to the Cloud Tech website to bett
   - Practical tips, how-tos, and deep dives into DevOps, AI/ML, and cloud security
   - Early access to blogs, podcasts, and virtual event announcements
   - Curated news and expert commentary on the latest in cloud technology
-- Added LinkedIn newsletter link: https://www.linkedin.com/newsletters/everything-about-cloud-tech-7079093941148540928/
+- Added newsletter link: https://substack.com/@everythingaboutcloudtech?
 - Added recent newsletter topics section with sample headlines
 - Made name field required (previously optional)
 - Enhanced visual design with icons and better layout
@@ -65,7 +65,7 @@ This document outlines the recent changes made to the Cloud Tech website to bett
 - Enhanced form validation
 - Better visual hierarchy with icons
 - Responsive grid layout for value propositions
-- External link to LinkedIn newsletter
+- External link to Newsletter
 - Recent topics showcase
 - Improved accessibility
 

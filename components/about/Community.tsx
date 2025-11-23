@@ -4,7 +4,7 @@ import { FiUsers, FiGlobe, FiTrendingUp, FiHeart, FiMessageCircle, FiBookOpen } 
 const stats = [
   {
     icon: FiUsers,
-    value: '25,000+',
+    value: '5000',
     label: 'Community Members',
     description: 'Active professionals worldwide'
   },
@@ -16,7 +16,7 @@ const stats = [
   },
   {
     icon: FiTrendingUp,
-    value: '500K+',
+    value: '500+',
     label: 'Monthly Listeners',
     description: 'Podcast downloads per month'
   },
