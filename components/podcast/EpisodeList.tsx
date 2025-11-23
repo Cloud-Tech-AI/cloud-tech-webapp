@@ -10,7 +10,8 @@ interface EpisodeListProps {
 }
 
 export default function EpisodeList({ episodes, showAll = true, maxEpisodes = 4 }: EpisodeListProps) {
-  const displayEpisodes = showAll ? episodes : episodes.slice(0, maxEpisodes)
+  const sortedEpisodes = [...episodes].sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+  const displayEpisodes = showAll ? sortedEpisodes : sortedEpisodes.slice(0, maxEpisodes)
   const hasMoreEpisodes = !showAll && episodes.length > maxEpisodes
 
   return (
@@ -48,10 +49,17 @@ export default function EpisodeList({ episodes, showAll = true, maxEpisodes = 4 
             >
               <div className="flex flex-col lg:flex-row gap-6">
                 <div className="lg:w-1/3">
-                  <div className="relative bg-gradient-to-br from-primary-500 to-secondary-500 rounded-lg p-8 text-white">
+                  <div className={`relative rounded-lg p-8 text-white ${
+                    episode.type === 'monthly' 
+                      ? 'bg-gradient-to-br from-blue-500 to-purple-500' 
+                      : 'bg-gradient-to-br from-green-500 to-teal-500'
+                  }`}>
                     <div className="text-center">
                       <div className="bg-white bg-opacity-20 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                         <FiPlay className="h-8 w-8" />
+                      </div>
+                      <div className="text-xs font-semibold mb-1 opacity-90">
+                        {episode.type === 'monthly' ? 'Cloud & Tech Monthly' : 'Cloud & Tech Conversation'}
                       </div>
                       <div className="text-sm font-semibold mb-2">Episode {episode.id}</div>
                       <div className="flex items-center justify-center space-x-1 text-sm">
@@ -68,10 +76,16 @@ export default function EpisodeList({ episodes, showAll = true, maxEpisodes = 4 
                       <FiCalendar className="h-4 w-4" />
                       <span>{new Date(episode.publishedAt).toLocaleDateString()}</span>
                     </div>
-                    {episode.guests.length > 0 && (
+                    {episode.type === 'conversation' && episode.guests.length > 0 && (
                       <div className="flex items-center space-x-1">
                         <FiUser className="h-4 w-4" />
                         <span>with {episode.guests.join(', ')}</span>
+                      </div>
+                    )}
+                    {episode.type === 'monthly' && (
+                      <div className="flex items-center space-x-1">
+                        <FiUser className="h-4 w-4" />
+                        <span>Adit & Ishan Modi</span>
                       </div>
                     )}
                   </div>
@@ -96,13 +110,15 @@ export default function EpisodeList({ episodes, showAll = true, maxEpisodes = 4 
                   </div>
                   
                   <div className="flex flex-col sm:flex-row gap-3">
-                    <Link
-                      href={`/podcast/${episode.id}`}
+                    <a
+                      href={episode.youtubeUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="btn-primary flex items-center justify-center space-x-2"
                     >
                       <FiPlay className="h-4 w-4" />
-                      <span>Listen Now</span>
-                    </Link>
+                      <span>Watch on YouTube</span>
+                    </a>
                     <Link
                       href={`/podcast/${episode.id}#show-notes`}
                       className="btn-outline flex items-center justify-center space-x-2"

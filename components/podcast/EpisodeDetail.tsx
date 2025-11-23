@@ -41,6 +41,10 @@ export default function EpisodeDetail({ episode }: EpisodeDetailProps) {
               {episode.description}
             </p>
             
+            <div className="text-sm font-semibold mb-2 opacity-90">
+              {episode.type === 'monthly' ? 'Cloud & Tech Monthly' : 'Cloud & Tech Conversation'}
+            </div>
+            
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-6 text-sm opacity-90 mb-8">
               <div className="flex items-center space-x-1">
                 <FiClock className="h-4 w-4" />
@@ -50,21 +54,29 @@ export default function EpisodeDetail({ episode }: EpisodeDetailProps) {
                 <FiCalendar className="h-4 w-4" />
                 <span>{new Date(episode.publishedAt).toLocaleDateString()}</span>
               </div>
-              {episode.guests.length > 0 && (
+              {episode.type === 'conversation' && episode.guests.length > 0 && (
                 <div className="flex items-center space-x-1">
                   <FiUser className="h-4 w-4" />
                   <span>with {episode.guests.join(', ')}</span>
                 </div>
               )}
+              {episode.type === 'monthly' && (
+                <div className="flex items-center space-x-1">
+                  <FiUser className="h-4 w-4" />
+                  <span>Adit & Ishan Modi</span>
+                </div>
+              )}
             </div>
             
-            <button
-              onClick={togglePlay}
+            <a
+              href={episode.youtubeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-white text-primary-600 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-colors duration-200 flex items-center space-x-2 mx-auto"
             >
-              {isPlaying ? <FiPause className="h-5 w-5" /> : <FiPlay className="h-5 w-5" />}
-              <span>{isPlaying ? 'Pause' : 'Play Episode'}</span>
-            </button>
+              <FiPlay className="h-5 w-5" />
+              <span>Watch on YouTube</span>
+            </a>
           </motion.div>
         </div>
       </div>

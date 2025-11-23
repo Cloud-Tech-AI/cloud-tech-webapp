@@ -8,6 +8,8 @@ export interface Episode {
   guests: string[]
   tags: string[]
   showNotes: string
+  type: 'monthly' | 'conversation'
+  youtubeUrl: string
 }
 
 export interface BlogPost {
@@ -21,6 +23,7 @@ export interface BlogPost {
   tags: string[]
   readTime: number
   image: string
+  url?: string
 }
 
 export interface Newsletter {
@@ -33,7 +36,7 @@ export interface Newsletter {
   tags: string[]
   readTime: number
   image: string
-  linkedinUrl?: string
+  url?: string
   subscribers?: number
 }
 

@@ -44,7 +44,7 @@ export default function NewsletterHero() {
               <div className="bg-white bg-opacity-20 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                 <FiUsers className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2">10K+ Subscribers</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">50+ Subscribers</h3>
               <p className="text-gray-200">Growing community of cloud professionals</p>
             </div>
             
@@ -65,12 +65,12 @@ export default function NewsletterHero() {
             className="mb-8"
           >
             <a
-              href="https://www.linkedin.com/newsletters/everything-about-cloud-tech-7079093941148540928/"
+              href="https://everythingaboutcloudtech.substack.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center space-x-2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-8 py-4 rounded-lg transition-all duration-200 backdrop-blur-sm text-lg font-semibold"
             >
-              <span>Subscribe on LinkedIn</span>
+              <span>Subscribe on Newsletter</span>
               <FiExternalLink className="h-5 w-5" />
             </a>
           </motion.div>

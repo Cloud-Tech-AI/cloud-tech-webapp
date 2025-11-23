@@ -40,7 +40,7 @@ export default function NewsletterCategories({ categories }: NewsletterCategorie
           Get weekly insights delivered to your inbox
         </p>
         <a
-          href="https://substack.com/@everythingaboutcloudtech?"
+          href="https://everythingaboutcloudtech.substack.com/"
           target="_blank"
           rel="noopener noreferrer"
           className="btn-primary text-sm w-full text-center"

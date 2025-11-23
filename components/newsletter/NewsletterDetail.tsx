@@ -85,9 +85,9 @@ export default function NewsletterDetail({ newsletter }: NewsletterDetailProps) 
                 <span className="hidden sm:inline">Share</span>
               </button>
               
-              {newsletter.linkedinUrl && (
+              {newsletter.url && (
                 <a
-                  href={newsletter.linkedinUrl}
+                  href={newsletter.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-800 font-medium"
@@ -180,7 +180,7 @@ export default function NewsletterDetail({ newsletter }: NewsletterDetailProps) 
               Get weekly insights on cloud computing, DevOps, AI/ML, and emerging technologies delivered to your inbox.
             </p>
             <a
-              href="https://substack.com/@everythingaboutcloudtech?"
+              href="https://everythingaboutcloudtech.substack.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary inline-flex items-center space-x-2"

@@ -6,9 +6,9 @@ const team = [
   {
     id: '1',
     name: 'Adit Modi',
-    role: 'Co-Founder & Lead Cloud Architect',
-    bio: 'Adit has over 5 years of experience in cloud computing and has helped hundreds of organizations migrate to the cloud. He\'s a certified AWS Solutions Architect and frequent speaker at cloud conferences. Co-creator of all blogs, podcasts, and educational content.',
-    image: 'https://media.licdn.com/dms/image/v2/D4D03AQGVqQe3byPFAQ/profile-displayphoto-shrink_400_400/B4DZcAvkRnG8Ak-/0/1748064159646?e=1756339200&v=beta&t=h3NwYRcZFBKIjL-nk-QpRuSDkpAZrrKIPuEgrR7PqSk',
+    role: 'Co-Founder & Solution Architect',
+    bio: 'Adit Modi is a Solution Architect at Lauren with over a decade of hands-on experience in cloud and DevOps. He holds 12 AWS certifications and specializes in AWS-related DevOps, Data Engineering, and Infrastructure as Code (IaC). As an AWS Ambassador and HashiCorp Ambassador, Adit is a passionate advocate for community-driven growth, actively contributing to the tech community as a speaker, organizer, and volunteer.',
+    image: 'https://media.licdn.com/dms/image/v2/D4D03AQGVqQe3byPFAQ/profile-displayphoto-shrink_200_200/B4DZcAvkRnG8Ac-/0/1748064159528?e=1765411200&v=beta&t=EAboNKsxSdZAdSkfabvzmir2a1tSUjIHvQuhb10ukWM',
     social: {
       twitter: 'https://x.com/adi_12_modi',
       linkedin: 'https://www.linkedin.com/in/adit-n-modi/',
@@ -20,7 +20,7 @@ const team = [
     name: 'Ishan Modi',
     role: 'Co-Founder & ML Engineer',
     bio: 'Ishan is a Machine Learning Engineer specializing in document intelligence, with expertise in AI, MLOps, and cloud platforms like AWS and GCP. Co-creator of all blogs, podcasts, and educational content.',
-    image: '',
+    image: 'https://media.licdn.com/dms/image/v2/D4D03AQHSb4Ag_IOP0Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1692356117718?e=1765411200&v=beta&t=Lh3DC0wDC_Uwt2UEGE-P92hNZTjJkYnVI6ZCuBjLky4',
     social: {
       twitter: 'https://x.com/ishan_modi24',
       linkedin: 'https://www.linkedin.com/in/ishan-modi-5765521a1/'
